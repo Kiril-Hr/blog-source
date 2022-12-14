@@ -1,7 +1,7 @@
 import { title } from 'process'
 import React from 'react'
 import ReactDOM from 'react-dom/client'
-import Content, { test } from './Content'
+import Content from './Content'
 
 type TitleProps = {
    title: string
@@ -18,7 +18,7 @@ const App = () => {
    return (
       <>
          <Title title="React.js" text="Hello" />
-         <Content />
+         <Content h1="About something" h2="About something else" />
       </>
    )
 }

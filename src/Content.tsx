@@ -1,22 +1,27 @@
-const Content = () => {
+type Props = {
+   h1?: string
+   h2?: string
+}
+
+function Content({ h1, h2 }: Props) {
    return (
       <>
+         {h1}
          <p>
-            Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-            Reprehenderit, animi. Dignissimos, ex est eaque iusto, alias
-            accusamus rerum corrupti perspiciatis officiis id eligendi? Facilis
-            tempore excepturi sit nesciunt ipsam incidunt.
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Est veniam
+            blanditiis quaerat exercitationem. Similique, nesciunt. Voluptatum
+            consequatur deserunt, esse veritatis nihil ipsa nam dolorem aut
+            molestias aspernatur, error eum illo.
          </p>
+         {h2}
          <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Natus odio,
-            officiis dicta dolore corporis cupiditate ea, earum temporibus quis
-            vel, in nam. Officiis, labore. Cupiditate tempora veritatis nobis
-            consequatur impedit.
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Est veniam
+            blanditiis quaerat exercitationem. Similique, nesciunt. Voluptatum
+            consequatur deserunt, esse veritatis nihil ipsa nam dolorem aut
+            molestias aspernatur, error eum illo.
          </p>
       </>
    )
 }
-
-export const test = 10
 
 export default Content
