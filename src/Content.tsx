@@ -1,4 +1,4 @@
-import './Content.css'
+import './Content.scss'
 
 type Props = {
    h1?: string
