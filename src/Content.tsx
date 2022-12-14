@@ -1,4 +1,4 @@
-import './Content.scss'
+import classes from './Content.module.scss'
 
 type Props = {
    h1?: string
@@ -9,7 +9,7 @@ function Content({ h1, h2 }: Props) {
    return (
       <>
          {h1}
-         <p className="tomato">
+         <p className={`${classes.tomato} ${classes['fz-50']}`}>
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Est veniam
             blanditiis quaerat exercitationem. Similique, nesciunt. Voluptatum
             consequatur deserunt, esse veritatis nihil ipsa nam dolorem aut
