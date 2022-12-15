@@ -1,0 +1,92 @@
+@import './fonts';
+* {
+    box-sizing: border-box;
+}
+header {
+    display: flex;
+    justify-content: flex-start;
+    height: 100%;
+    .container-for-aside-menu {
+        position: fixed;
+        overflow-y: auto;
+        height: 100%;
+        /* chrome, safari */
+        &::-webkit-scrollbar { 
+            width: 0; 
+        }
+        /* ie 10+ */
+        -ms-overflow-style: none; 
+        /* mozilla */
+        overflow: -moz-scrollbars-none;
+        .aside-menu {
+            position: relative;
+            width: 220px;
+            height: max-content;
+            background-color: #232A34;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            .logo-menu {
+                margin: 60px 0;
+                width: 60px;
+                height: 77px;
+                background: url(../public/images/logo.svg) no-repeat center / cover;
+                cursor: pointer;
+            }
+            .container-menu {
+                width: 100%;
+                .menu {
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    li {
+                        display: flex;
+                        justify-content: center;
+                        align-items: flex-end;
+                        position: relative;
+                        list-style: none;
+                        width: 100%;
+                        height: 120px;
+                        border-bottom: 1px solid #2A3241;
+                        cursor: pointer;
+                        .my-account {
+                            width: 40px;
+                            height: 40px;
+                            left: 90px;
+                            top: 25px;
+                        }
+                        svg {
+                            position: absolute;
+                            top: 40px;
+                            left: 95px;
+                            width: 30px;
+                            height: 25px;
+                            fill: #7E8890;
+                            transition: all .3s cubic-bezier(.42, .01, .58, 1);
+    
+                        }
+                        a {
+                            font-family: Arial, Helvetica, sans-serif;;
+                            font-weight: 800;
+                            color: #7E8890;
+                            font-size: 16px;
+                            letter-spacing: 0;
+                            text-decoration: none;
+                            transition: all .3s cubic-bezier(.42, .01, .58, 1);
+                            margin-bottom: 25px;
+                        }
+                        &:hover {
+                            svg {
+                                fill: #F4AD24;
+                            }
+                            a {
+                                color: #F4AD24;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+    
+}
