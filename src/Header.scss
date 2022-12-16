@@ -90,7 +90,7 @@ header {
     }
     
 }
-@media(max-width: 1368px) {
+@media(max-width: 1024px) {
     header {
         .container-for-aside-menu {
             display: flex;
@@ -167,6 +167,7 @@ header {
                     .menu {
                         width: 100%;
                         li {
+                            text-align: center;
                             align-items: center;
                             transition: all .3s cubic-bezier(.42, .01, .58, 1);
                             &:hover {
@@ -183,6 +184,9 @@ header {
                                 display: none;
                             }
                             a {
+                                line-height: 80px;
+                                height: 100%;
+                                width: 100%;
                                 margin-bottom: 0;
                                 color: #4A4E57;
                             }

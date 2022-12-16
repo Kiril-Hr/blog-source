@@ -81,7 +81,6 @@ const Header = () => {
       </>
    )
 }
-
 const hbMenu = document.querySelector('.hb-menu')
 const containerMenu = document.querySelector('.container-menu')
 hbMenu?.addEventListener('click', () => {
