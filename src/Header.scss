@@ -1,15 +1,17 @@
 @import './fonts';
-* {
-    box-sizing: border-box;
+body {
+    background: #181E25;
 }
 header {
     display: flex;
     justify-content: flex-start;
-    height: 100%;
+    height: fit-content;
     .container-for-aside-menu {
         position: fixed;
         overflow-y: auto;
         height: 100%;
+        background-color: #232A34;
+        border-right: 1px solid #2A3241;
         /* chrome, safari */
         &::-webkit-scrollbar { 
             width: 0; 
@@ -22,7 +24,6 @@ header {
             position: relative;
             width: 220px;
             height: max-content;
-            background-color: #232A34;
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -44,7 +45,6 @@ header {
                         justify-content: center;
                         align-items: flex-end;
                         position: relative;
-                        list-style: none;
                         width: 100%;
                         height: 120px;
                         border-bottom: 1px solid #2A3241;
@@ -89,4 +89,108 @@ header {
         }
     }
     
+}
+@media(max-width: 1368px) {
+    header {
+        .container-for-aside-menu {
+            display: flex;
+            align-items: center;
+            z-index: 20;
+            width: 100%;
+            height: 100px;
+            overflow: unset;
+            .hb-menu.active {
+                &::after {
+                    top: 13px;
+                    transform: rotate(135deg);
+                }
+                &:before {
+                    bottom: 13px;
+                    transform: rotate(45deg);
+                }
+                span {
+                    transform: scale(0);
+                }
+            }
+            .hb-menu {
+                width: 40px;
+                height: 31px;
+                margin-right: 50px;
+                position: relative;
+                cursor: pointer;
+                &:hover {
+                    &::after,
+                    &:before,
+                    span {
+                        background: #F4AD24;
+                    }
+                }
+                &::after,
+                &:before,
+                span {
+                    content: "";
+                    position: absolute;
+                    width: 100%;
+                    height: 5px;
+                    background: white;
+                    transition: all .3s cubic-bezier(.42, .01, .58, 1);
+                    border-radius: 5px;
+                }
+                &::after {
+                    top: 0;
+                }
+                span {
+                    top: 13px;
+                }
+                &:before {
+                    bottom: 0;
+                }
+            }
+            .aside-menu {
+                flex-direction: row;
+                justify-content: space-between;
+                width: 100%;
+                .logo-menu {
+                    width: 50px;
+                    height: 67px;
+                    margin: 0  0  0 50px;
+                }
+                .container-menu.active {
+                    display: flex;
+                    z-index: 15;
+                }
+                .container-menu {
+                    display: none;
+                    position: absolute;
+                    top: 84px;
+                    background: white;
+                    .menu {
+                        width: 100%;
+                        li {
+                            align-items: center;
+                            transition: all .3s cubic-bezier(.42, .01, .58, 1);
+                            &:hover {
+                                background: #F4AD24;
+                                a {
+                                    color: white;
+                                }
+                            }
+                            border-bottom: 1px solid rgb(218, 216, 216);
+                            height: 80px;
+                            width: 100%;                            
+                            svg,
+                            .my-account {
+                                display: none;
+                            }
+                            a {
+                                margin-bottom: 0;
+                                color: #4A4E57;
+                            }
+                        }
+                    }
+                }
+            }
+            
+        }
+    }
 }

@@ -72,10 +72,21 @@ const Header = () => {
                         </li>
                      </ul>
                   </div>
+                  <div className="hb-menu">
+                     <span />
+                  </div>
                </nav>
             </div>
          </header>
       </>
    )
 }
+
+const hbMenu = document.querySelector('.hb-menu')
+const containerMenu = document.querySelector('.container-menu')
+hbMenu?.addEventListener('click', () => {
+   hbMenu.classList.toggle('active')
+   containerMenu?.classList.toggle('active')
+})
+
 export default Header
