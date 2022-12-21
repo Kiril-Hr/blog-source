@@ -1,0 +1,10 @@
+@import '../fonts';
+
+article {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: 60px;
+    gap: 30px 2%;
+    padding: 0 5%;
+}
