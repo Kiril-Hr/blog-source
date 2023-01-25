@@ -1,6 +1,4 @@
-import React, { useState } from 'react'
 import './SortArticles.scss'
-import blogsArray from '../Blogs/BlogsArray'
 type Props = {}
 const SortArticles = (props: Props) => {
    return (

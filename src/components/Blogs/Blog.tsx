@@ -15,17 +15,17 @@ const Blog = (props: Props) => {
       <>
          <div className="article">
             <p className="chapter">{props.chapter}</p>
-            <img src={props.photo} alt="article-photo" className="img" />
+            <img src={props.photo} alt="article" className="img" />
             <div className="descr">
-               <a>{props.title}</a>
+               <a href="../../public/index.html">{props.title}</a>
                <p>{props.description}</p>
             </div>
             <div className="date-author-name-link">
                <time dateTime="">{props.date}</time>
                <div className="author-name-link">
                   <h4>{props.author}</h4>
-                  <a href="#">{props.nickname}</a>
-                  <img src={props.authorPhoto} alt="author-photo" />
+                  <a href="../../public/index.html">{props.nickname}</a>
+                  <img src={props.authorPhoto} alt="author" />
                </div>
             </div>
          </div>

@@ -19,22 +19,22 @@ const HbMenu = ({ active, setActive }: Props) => {
                >
                   <ul className="mobile-menu">
                      <li>
-                        <a href="#">Home</a>
+                        <a href="../../public/index.html">Home</a>
                      </li>
                      <li>
-                        <a href="#">About</a>
+                        <a href="../../public/index.html">About</a>
                      </li>
                      <li>
-                        <a href="#">Blogs</a>
+                        <a href="../../public/index.html">Blogs</a>
                      </li>
                      <li>
-                        <a href="#">Articles</a>
+                        <a href="../../public/index.html">Articles</a>
                      </li>
                      <li>
-                        <a href="#">Contacts</a>
+                        <a href="../../public/index.html">Contacts</a>
                      </li>
                      <li>
-                        <a href="#">My Account</a>
+                        <a href="../../public/index.html">My Account</a>
                      </li>
                   </ul>
                </div>
