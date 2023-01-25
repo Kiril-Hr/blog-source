@@ -1,4 +1,9 @@
 @import './fonts';
+header {
+    display: flex;
+    justify-content: flex-start;
+    height: fit-content;
+}
 .container-for-all {
     display: flex;
     .main-footer-container {
@@ -6,7 +11,12 @@
         flex-direction: column;
         width: 100%;
         margin-left: 220px;
-        padding: 60px 20px;
+        padding: 60px 0;
+    }
+}
+.container-for-mobile-menu {
+    .mobile-menu {
+        display: none;
     }
 }
 @media(max-width: 1024px) {
@@ -15,6 +25,61 @@
             margin-top: 100px;
             margin-left: 0;
             padding: 60px 20px;
+        }
+    }
+    .hb-menu.active {
+        &::after {
+            top: 13px;
+            transform: rotate(135deg);
+        }
+        &:before {
+            bottom: 13px;
+            transform: rotate(45deg);
+        }
+        span {
+            transform: scale(0);
+        }
+    }
+    .container-menu-mobile {
+        position: fixed;
+        width: 100%;
+        z-index: 20;
+        background-color: #232A34;
+    }
+    .hb-menu {
+        z-index: 25;
+        top: 35px;
+        right: 50px;
+        width: 40px;
+        height: 31px;
+        position: absolute;
+        cursor: pointer;
+        &:hover {
+            &::after,
+            &:before,
+            span {
+                background: #F4AD24;
+            }
+        }
+        &::after,
+        &:before,
+        span {
+            content: "";
+            position: absolute;
+            width: 100%;
+            height: 5px;
+            background: white;
+            transition: all .3s cubic-bezier(.42, .01, .58, 1);
+            border-radius: 5px;
+        }
+        &::after {
+            top: 0;
+        }
+        span {
+            top: 13px;
+        }
+        &:before {
+            bottom: 0;
         }
     }
 }

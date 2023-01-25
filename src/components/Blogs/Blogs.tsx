@@ -11,6 +11,7 @@ type BlogsProps = {
    author: string
    nickname: string
    authorPhoto: string
+   chapter: string
 }
 const Blogs = (props: Props) => {
    return (
@@ -25,8 +26,10 @@ const Blogs = (props: Props) => {
                author,
                nickname,
                authorPhoto,
+               chapter,
             }: BlogsProps) => (
                <Blog
+                  chapter={chapter}
                   photo={photo}
                   title={title}
                   description={description}

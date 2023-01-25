@@ -7,6 +7,7 @@ type BlogsProps = {
     author: string
     nickname: string
     authorPhoto: string
+    chapter: string
 }
 
 const blogsArray:BlogsProps[] = [
@@ -18,7 +19,8 @@ const blogsArray:BlogsProps[] = [
         date: '2022-12-22',
         author: 'John Altron',
         nickname: 'Alaska',
-        authorPhoto: 'images/account-imgs/1.png'
+        authorPhoto: 'images/account-imgs/1.png',
+        chapter: 'space'
     },
     {
         key: 2,
@@ -28,7 +30,8 @@ const blogsArray:BlogsProps[] = [
         date: '2022-12-22',
         author: 'John Altron',
         nickname: 'Alaska',
-        authorPhoto: 'images/account-imgs/2.png'
+        authorPhoto: 'images/account-imgs/2.png',
+        chapter: 'urban'
     },
     {
         key: 3,
@@ -38,7 +41,8 @@ const blogsArray:BlogsProps[] = [
         date: '2022-12-22',
         author: 'John Altron',
         nickname: 'Alaska',
-        authorPhoto: 'images/account-imgs/3.png'
+        authorPhoto: 'images/account-imgs/3.png',
+        chapter: 'urban'
     },
     {
         key: 4,
@@ -48,7 +52,8 @@ const blogsArray:BlogsProps[] = [
         date: '2022-12-22',
         author: 'John Altron',
         nickname: 'Alaska',
-        authorPhoto: 'images/account-imgs/4.png'
+        authorPhoto: 'images/account-imgs/4.png',
+        chapter: 'nature'
     },
     {
         key: 5,
@@ -58,7 +63,8 @@ const blogsArray:BlogsProps[] = [
         date: '2022-12-22',
         author: 'John Altron',
         nickname: 'Alaska',
-        authorPhoto: 'images/account-imgs/5.png'
+        authorPhoto: 'images/account-imgs/5.png',
+        chapter: 'adventure'
     },
     {
         key: 6,
@@ -68,7 +74,8 @@ const blogsArray:BlogsProps[] = [
         date: '2022-12-22',
         author: 'John Altron',
         nickname: 'Alaska',
-        authorPhoto: 'images/account-imgs/6.png'
+        authorPhoto: 'images/account-imgs/6.png',
+        chapter: 'lftips'
     },
     {
         key: 7,
@@ -78,7 +85,8 @@ const blogsArray:BlogsProps[] = [
         date: '2022-12-22',
         author: 'John Altron',
         nickname: 'Alaska',
-        authorPhoto: 'images/account-imgs/7.png'
+        authorPhoto: 'images/account-imgs/7.png',
+        chapter: 'lftips'
     },
     {
         key: 8,
@@ -88,7 +96,8 @@ const blogsArray:BlogsProps[] = [
         date: '2022-12-22',
         author: 'John Altron',
         nickname: 'Alaska',
-        authorPhoto: 'images/account-imgs/8.png'
+        authorPhoto: 'images/account-imgs/8.png',
+        chapter: 'tech'
     },
     {
         key: 9,
@@ -98,7 +107,8 @@ const blogsArray:BlogsProps[] = [
         date: '2022-12-22',
         author: 'John Altron',
         nickname: 'Alaska',
-        authorPhoto: 'images/account-imgs/9.png'
+        authorPhoto: 'images/account-imgs/9.png',
+        chapter: 'art'
     }
 ]
 

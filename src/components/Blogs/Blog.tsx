@@ -8,11 +8,13 @@ type Props = {
    author: string
    nickname: string
    authorPhoto: string
+   chapter: string
 }
 const Blog = (props: Props) => {
    return (
       <>
          <div className="article">
+            <p className="chapter">{props.chapter}</p>
             <img src={props.photo} alt="article-photo" className="img" />
             <div className="descr">
                <a>{props.title}</a>
