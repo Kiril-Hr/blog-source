@@ -6,7 +6,6 @@ import Header from './Header/Header'
 import Main from './Main/Main'
 import './index.scss'
 import HbMenu from './components/HbMenu/HbMenu'
-import { type } from '@testing-library/user-event/dist/type'
 
 const App = () => {
    const [menuActive, setMenuActive] = useState<boolean>(false)
