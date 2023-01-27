@@ -1,6 +1,6 @@
-import './Blogs.scss'
-import Blog from './Blog'
-import blogsArray from './BlogsArray'
+import './ArticleTemplate.scss'
+import ArticleTemplate from './ArticleTemplate'
+import { blogsArray } from './ArticlesArray'
 type Props = {}
 type BlogsProps = {
    key: number
@@ -28,7 +28,7 @@ const Blogs = (props: Props) => {
                authorPhoto,
                chapter,
             }: BlogsProps) => (
-               <Blog
+               <ArticleTemplate
                   chapter={chapter}
                   photo={photo}
                   title={title}

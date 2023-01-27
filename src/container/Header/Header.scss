@@ -1,8 +1,9 @@
-@import '../fonts';
+@import '../../fonts';
  
 .container-for-aside-menu {
     position: fixed;
     overflow-y: auto;
+    z-index: 20;
     height: 100%;
     background-color: #232A34;
     border-right: 1px solid #2A3241;
@@ -25,7 +26,7 @@
             margin: 60px 0;
             width: 60px;
             height: 77px;
-            background: url(../../public/images/logo.svg) no-repeat center / cover;
+            background: url(../../../public/images/logo.svg) no-repeat center / cover;
             cursor: pointer;
         }
         .container-menu {

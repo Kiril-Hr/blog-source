@@ -1,4 +1,4 @@
-import './Blogs.scss'
+import './ArticleTemplate.scss'
 type Props = {
    key: number
    photo: string
@@ -10,7 +10,7 @@ type Props = {
    authorPhoto: string
    chapter: string
 }
-const Blog = (props: Props) => {
+const ArticleTemplate = (props: Props) => {
    return (
       <>
          <div className="article">
@@ -32,4 +32,4 @@ const Blog = (props: Props) => {
       </>
    )
 }
-export default Blog
+export default ArticleTemplate

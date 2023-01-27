@@ -1,4 +1,4 @@
-@import './fonts';
+@import '../../fonts';
 header {
     display: flex;
     justify-content: flex-start;
@@ -28,6 +28,13 @@ header {
         }
     }
     .hb-menu.active {
+       
+        &::after,
+        &:before,
+        span {
+            background: #F4AD24;
+        }
+        
         &::after {
             top: 13px;
             transform: rotate(135deg);
@@ -54,13 +61,6 @@ header {
         height: 31px;
         position: absolute;
         cursor: pointer;
-        &:hover {
-            &::after,
-            &:before,
-            span {
-                background: #F4AD24;
-            }
-        }
         &::after,
         &:before,
         span {
@@ -82,4 +82,25 @@ header {
             bottom: 0;
         }
     }
+    .container-for-mobile-menu {
+        .mobile-menu {
+            .container-mobile-menu {
+                .mobile-menu {
+                    li {
+                        a {
+                            display: block;
+                            text-decoration: none;
+                            font-size: 24px;
+                            font-weight: 900;
+                            text-transform: uppercase;
+                            letter-spacing: 2px;
+                            &:hover {
+                               
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }  
 }

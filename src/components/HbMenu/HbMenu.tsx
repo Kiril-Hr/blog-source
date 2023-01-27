@@ -1,3 +1,4 @@
+import { NavLink } from 'react-router-dom'
 import './HbMenu.scss'
 type Props = {
    active: any
@@ -19,22 +20,19 @@ const HbMenu = ({ active, setActive }: Props) => {
                >
                   <ul className="mobile-menu">
                      <li>
-                        <a href="../../public/index.html">Home</a>
+                        <NavLink to="/">Home</NavLink>
                      </li>
                      <li>
-                        <a href="../../public/index.html">About</a>
+                        <NavLink to="/myblog">My Blog</NavLink>
                      </li>
                      <li>
-                        <a href="../../public/index.html">Blogs</a>
+                        <NavLink to="/blogs">Blogs</NavLink>
                      </li>
                      <li>
-                        <a href="../../public/index.html">Articles</a>
+                        <NavLink to="/articles">Articles</NavLink>
                      </li>
                      <li>
-                        <a href="../../public/index.html">Contacts</a>
-                     </li>
-                     <li>
-                        <a href="../../public/index.html">My Account</a>
+                        <NavLink to="/myaccount">My Account</NavLink>
                      </li>
                   </ul>
                </div>
