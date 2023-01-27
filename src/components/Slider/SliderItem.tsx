@@ -1,9 +1,9 @@
-import { SwiperItemType } from '../../types'
-import './SwiperItem.scss'
+import { SliderItemType } from '../../types'
+import './SliderItem.scss'
 
-export type Props = SwiperItemType
+export type Props = SliderItemType
 
-const SwiperItem = ({ photo, title, description, date, author, nickname, authorPhoto, chapter }: Props) => {
+const SliderItem = ({ photo, title, description, date, author, nickname, authorPhoto, chapter }: Props) => {
   return (
     <div className="article-home" draggable={false}>
             <p className="chapter-home">{chapter}</p>
@@ -24,4 +24,4 @@ const SwiperItem = ({ photo, title, description, date, author, nickname, authorP
   )
 }
 
-export default SwiperItem
+export default SliderItem

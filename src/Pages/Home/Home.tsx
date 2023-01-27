@@ -1,5 +1,5 @@
 import { popularArticklesArray } from "../../components/ArticlesComponent/ArticlesArray"
-import Swiper from "../../components/Swiper/Swiper"
+import Slider from "../../components/Slider/Slider"
 import './Home.scss'
 
 const Home = () => {
@@ -9,7 +9,7 @@ const Home = () => {
   return (
     <>
       <div className="container-swiper">
-          <Swiper items={items}/>
+          <Slider items={items}/>
       </div>
     </>
   )

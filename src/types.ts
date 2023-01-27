@@ -1,4 +1,4 @@
-export type SwiperItemType = {
+export type SliderItemType = {
     key: number
     photo: string
     title: string

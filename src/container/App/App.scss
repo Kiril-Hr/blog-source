@@ -5,12 +5,9 @@ header {
     height: fit-content;
 }
 .container-for-all {
-    display: flex;
     .main-footer-container {
         display: flex;
         flex-direction: column;
-        width: 100%;
-        margin-left: 220px;
         padding: 60px 0;
     }
 }
@@ -94,9 +91,6 @@ header {
                             font-weight: 900;
                             text-transform: uppercase;
                             letter-spacing: 2px;
-                            &:hover {
-                               
-                            }
                         }
                     }
                 }
