@@ -1,6 +1,7 @@
+import { Link } from 'react-router-dom'
 import './ArticleTemplate.scss'
 type Props = {
-   key: number
+   id?: number
    photo: string
    title: string
    description: string
@@ -10,22 +11,22 @@ type Props = {
    authorPhoto: string
    chapter: string
 }
-const ArticleTemplate = (props: Props) => {
+const ArticleTemplate = ({id, photo, title, description, date, author, nickname, authorPhoto, chapter}: Props) => {
    return (
       <>
          <div className="article">
-            <p className="chapter">{props.chapter}</p>
-            <img src={props.photo} alt="article" className="img" />
+            <p className="chapter">{chapter}</p>
+            <img src={photo} alt="article" className="img" />
             <div className="descr">
-               <a href="../../public/index.html">{props.title}</a>
-               <p>{props.description}</p>
+               <Link to={`/article/${id}`}>{title}</Link>
+               <p>{description}</p>
             </div>
             <div className="date-author-name-link">
-               <time dateTime="">{props.date}</time>
+               <time dateTime={date}>{date}</time>
                <div className="author-name-link">
-                  <h4>{props.author}</h4>
-                  <a href="../../public/index.html">{props.nickname}</a>
-                  <img src={props.authorPhoto} alt="author" />
+                  <h4>{author}</h4>
+                  <a href="../../public/index.html">{nickname}</a>
+                  <img src={authorPhoto} alt="author" />
                </div>
             </div>
          </div>

@@ -3,7 +3,7 @@
 .container-for-aside-menu {
     display: block;
     z-index: 20;
-    height: 150px;
+    height: 68px;
     width: 100%;
     background-color: #232A34;
     border-right: 1px solid #2A3241;
@@ -11,19 +11,19 @@
         display: flex;
         justify-content: space-between;
         align-items: center;
-        gap: 30px;
+        gap: 15px;
         height: 100%;
-        padding: 0 60px;
+        padding: 0 45px;
         .logo-menu {
-            width: 60px;
-            height: 77px;
-            background: url(../../../public/images/logo.svg) no-repeat center / cover;
+            width: 40px;
+            height: 45px;
+            background: url(../../../public/images/logo.svg) no-repeat center / contain;
             cursor: pointer;
         }
         .container-menu {
             .menu {
                 display: flex;
-                gap: 60px;
+                gap: 40px;
                 align-items: center;
                 li {
                     display: flex;
@@ -34,29 +34,25 @@
                     height: max-content;
                     border-bottom: 1px solid #2A3241;
                     cursor: pointer;
-                    &:last-child {
-                        width: 60px;
-                        height: 60px;
-                    }
                     .my-account {
-                        width: 60px;
-                        height: 60px;
-                        left: 0;
-                        top: 0;
+                        display: block;
+                        width: 45px;
+                        height: 45px;
+                        margin-right: 0;
                     }
                     svg {
-                        margin-right: 10px;
-                        width: 30px;
-                        height: 25px;
+                        margin-right: 9px;
+                        width: 25px;
+                        height: 20px;
                         fill: #7E8890;
                         transition: all .3s cubic-bezier(.42, .01, .58, 1);
                     }
                     a {
                         font-family: Arial, Helvetica, sans-serif;
-                        font-weight: 800;
+                        font-weight: 900;
                         color: #7E8890;
-                        font-size: 16px;
-                        letter-spacing: 0;
+                        font-size: 0.85rem;
+                        letter-spacing: 0.05rem;
                         text-decoration: none;
                         transition: all .3s cubic-bezier(.42, .01, .58, 1);
                     }

@@ -16,7 +16,7 @@ const Slider = ({items}: Props) => {
       simulateTouch= {true}
     >
       {items.map((item) => (
-          <SwiperSlide><SliderItem {...item} key={item.key}/></SwiperSlide>
+          <SwiperSlide><SliderItem {...item} key={item.id}/></SwiperSlide>
       ))}
     </Swiper>
           

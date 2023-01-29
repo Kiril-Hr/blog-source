@@ -1,5 +1,5 @@
 export type SliderItemType = {
-    key: number
+    id: number
     photo: string
     title: string
     description: string

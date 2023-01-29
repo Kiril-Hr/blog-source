@@ -1,9 +1,9 @@
 import './ArticleTemplate.scss'
 import ArticleTemplate from './ArticleTemplate'
 import { blogsArray } from './ArticlesArray'
-type Props = {}
+
 type BlogsProps = {
-   key: number
+   id: number
    photo: string
    title: string
    description: string
@@ -13,12 +13,12 @@ type BlogsProps = {
    authorPhoto: string
    chapter: string
 }
-const Blogs = (props: Props) => {
+const ArticlesList = () => {
    return (
       <>
          {blogsArray.map(
             ({
-               key,
+               id,
                photo,
                title,
                description,
@@ -37,11 +37,12 @@ const Blogs = (props: Props) => {
                   author={author}
                   nickname={nickname}
                   authorPhoto={authorPhoto}
-                  key={key}
+                  key={id}
+                  id={id}
                />
             )
          )}
       </>
    )
 }
-export default Blogs
+export default ArticlesList
