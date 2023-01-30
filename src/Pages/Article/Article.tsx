@@ -71,7 +71,8 @@ const Article = () => {
                 </Swiper>
             </div>
           </div>
-        </div>  
+        </div>
+
       </div>
     </>
   )

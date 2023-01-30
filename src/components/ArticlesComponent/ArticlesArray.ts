@@ -8,7 +8,6 @@ export type BlogsProps = {
     nickname: string
     authorPhoto: string
     chapter: string
-    
 }
 
 const blogsArray:BlogsProps[] = [
@@ -21,7 +20,7 @@ const blogsArray:BlogsProps[] = [
         author: 'John Altron',
         nickname: 'Alaska',
         authorPhoto: '../images/account-imgs/1.png',
-        chapter: 'space'
+        chapter: 'space',
     },
     {
         id: 2,

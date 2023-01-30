@@ -1,3 +1,4 @@
+
 .selected-article {
     display: flex;
     flex-direction: column;
@@ -15,6 +16,7 @@
     flex-direction: column;
     gap: 15px;
     max-height: 1200px;
+    margin-bottom: 60px;
     .container-slider-main-photo {
         display: flex;
         justify-content: space-between;
@@ -26,7 +28,7 @@
         > .img {
             flex-grow: 2;
             max-width: 1500px;
-            max-height: 760px;
+            max-height: 940px;
             object-fit: cover;
             @media(min-width: 2501px) {
                 min-width: 1600px;
@@ -44,6 +46,7 @@
                 max-width: 1045px;
             }
             @media(max-width: 1850px) {
+                max-height: 700px;
                 max-width: none;
                 padding-bottom: 50px;
                 border-bottom: 1px solid white;

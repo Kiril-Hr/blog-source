@@ -6,6 +6,7 @@ import Article from '../../Pages/Article/Article'
 import MyAccount from '../../Pages/MyAccount/MyAccount'
 import Blogs from '../../Pages/Blogs/Blogs'
 import MyBlog from '../../Pages/MyBlog/MyBlog'
+import CreatedArticle from '../../Pages/CreatedArticle/CreatedArticle'
 
 
 
@@ -19,6 +20,7 @@ const Main = () => {
             <Route path='myaccount' element={<MyAccount />}/>
             <Route path='blogs' element={<Blogs />}/>
             <Route path='myblog' element={<MyBlog />}/>
+            <Route path='createarticle' element={<CreatedArticle />}/>
          </Routes>
       </>
    )
