@@ -4,7 +4,7 @@ import {
    blogsArray,
    BlogsProps,
    getBlogsObject,
-} from '../../components/ArticlesComponent/ArticlesArray'
+} from '../../shared/ArticlesArray'
 import RelatedArticleTemplate from '../../components/ArticlesComponent/RelatedArticleTemplate'
 import Title from '../../components/Title/Title'
 import './Article.scss'

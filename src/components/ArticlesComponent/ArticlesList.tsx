@@ -1,6 +1,6 @@
 import './ArticleTemplate.scss'
 import ArticleTemplate from './ArticleTemplate'
-import { blogsArray } from './ArticlesArray'
+import { blogsArray } from '../../shared/ArticlesArray'
 
 type BlogsProps = {
    id: number

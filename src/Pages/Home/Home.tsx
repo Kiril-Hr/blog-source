@@ -1,11 +1,10 @@
-import { blogsArray } from '../../components/ArticlesComponent/ArticlesArray'
+import { blogsArray } from '../../shared/ArticlesArray'
 import Slider from '../../components/Slider/Slider'
 import Title from '../../components/Title/Title'
-import Article from '../Article/Article'
 import './Home.scss'
 
 const Home = () => {
-   const items = blogsArray.sort(
+   const items = [...blogsArray].sort(
       (a: any, b: any) => b.popularity - a.popularity
    )
    items.length = 7
