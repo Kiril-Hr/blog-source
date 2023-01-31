@@ -27,7 +27,7 @@ const Article = () => {
             Math.abs(currentArticle.id - article.id) <= 50 &&
             article.id !== currentArticle.id
       )
-      .sort((a: any, b: any) => b - a)
+      .sort((a: any, b: any) => b.id - a.id)
 
    const maxQtyRelatedArticles = () =>
       filteredArticlesByChapter.length > 10

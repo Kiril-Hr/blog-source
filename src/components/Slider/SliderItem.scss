@@ -9,6 +9,14 @@
     border-radius: 8px;
     transition: all 0.45s cubic-bezier(0.25, 0.46, 0.45, 0.94);
     cursor: pointer;
+    @media(max-width: 1024px) {
+        max-width: 555px;
+        width: 555px;
+    }
+    @media(max-width: 650px) {
+        max-width: 555px;
+        width: fit-content;
+    }
     .chapter-home {
         position: absolute;
         width: 120px;
@@ -96,10 +104,5 @@
         
     }
 }
-@media(max-width: 1024px) {
-    .article-home {
-        max-width: unset;
-        width: 555px;
-    }
-}
+
 

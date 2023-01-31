@@ -2,6 +2,7 @@ import { Component } from 'react'
 import { convertFromRaw } from 'draft-js'
 import { Editor } from 'react-draft-wysiwyg'
 import 'react-draft-wysiwyg/dist/react-draft-wysiwyg.css'
+import './TextEditor.scss'
 
 const content = {
    entityMap: {},
@@ -36,7 +37,7 @@ export default class TextEditor extends Component {
    render() {
       const { contentState }: any = this.state
       return (
-         <div>
+         <div className="text-editor">
             <Editor
                wrapperClassName="demo-wrapper"
                editorClassName="demo-editor"

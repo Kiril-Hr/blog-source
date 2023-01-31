@@ -1,6 +1,6 @@
 import './SortArticles.scss'
-type Props = {}
-const SortArticles = (props: Props) => {
+
+const SortArticles = () => {
    return (
       <>
          <div className="wrapper-sort-btn">

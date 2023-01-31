@@ -25,7 +25,6 @@ header {
         }
     }
     .hb-menu.active {
-       
         &::after,
         &:before,
         span {
@@ -81,6 +80,7 @@ header {
     }
     .container-for-mobile-menu {
         .mobile-menu {
+            display: flex;
             .container-mobile-menu {
                 .mobile-menu {
                     li {

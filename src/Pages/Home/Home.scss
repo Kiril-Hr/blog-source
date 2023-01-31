@@ -1,4 +1,25 @@
 .container-swiper {
-    padding: 40px 40px;
+    width: 1500px;
+    margin: 0 auto;
+    padding: 35px;
     overflow: hidden;
+    @media(max-width: 1500px) {
+        max-width: 1000px;
+        width: 100%;
+        min-width: 300px;
+    }
+}
+.title {
+    margin-bottom: 30px;
+    text-align: center;
+}
+.home-desc {
+    margin: 0 4% 30px 4%;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: 900;
+    font-size: 2rem;
+    line-height: 2.2rem;
+    letter-spacing: 0.2rem;
+    color: white;
+    text-align: center;
 }
