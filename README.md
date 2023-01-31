@@ -1,6 +1,6 @@
 # Last build Version Here
 
- https://63d3e1f53797e7004e38ce2d--dynamic-horse-fed0f2.netlify.app/
+ https://master--dynamic-horse-fed0f2.netlify.app/
 
 # Getting Started with Create React App
 
