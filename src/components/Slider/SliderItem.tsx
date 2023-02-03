@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom'
-import { cutDescr } from '../../shared/functions'
+import { cutDescr } from '../../utils/functions'
 import { SliderItemType } from '../../types'
 import './SliderItem.scss'
 

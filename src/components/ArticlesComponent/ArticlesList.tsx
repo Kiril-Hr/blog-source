@@ -1,6 +1,9 @@
 import './ArticleTemplate.scss'
 import ArticleTemplate from './ArticleTemplate'
-import { blogsArray } from '../../shared/ArticlesArray'
+import { useDispatch, useSelector } from 'react-redux'
+import { blogsArray } from '../../utils/ArticlesArray'
+import { useEffect } from 'react'
+import { fetchPosts } from '../../redux/slices/posts'
 
 type BlogsProps = {
    id: number
@@ -12,11 +15,22 @@ type BlogsProps = {
    nickname: string
    authorPhoto: string
    chapter: string
+   tags?: {
+      [key: string]: string
+   }
 }
 const ArticlesList = () => {
+   const dispatch = useDispatch<any>()
+   const { posts, tags } = useSelector((state: any) => state.posts)
+   const isPostLoading = posts.status === 'loading'
+
+   useEffect(() => {
+      dispatch(fetchPosts())
+   }, [])
+
    return (
       <>
-         {blogsArray.map(
+         {(isPostLoading ? posts.items : blogsArray).map(
             ({
                id,
                photo,
@@ -27,20 +41,25 @@ const ArticlesList = () => {
                nickname,
                authorPhoto,
                chapter,
-            }: BlogsProps) => (
-               <ArticleTemplate
-                  chapter={chapter}
-                  photo={photo}
-                  title={title}
-                  description={description}
-                  date={date}
-                  author={author}
-                  nickname={nickname}
-                  authorPhoto={authorPhoto}
-                  key={id}
-                  id={id}
-               />
-            )
+               tags,
+            }: BlogsProps) =>
+               isPostLoading ? (
+                  <ArticleTemplate />
+               ) : (
+                  <ArticleTemplate
+                     chapter={chapter}
+                     photo={photo}
+                     title={title}
+                     description={description}
+                     date={date}
+                     author={author}
+                     nickname={nickname}
+                     authorPhoto={authorPhoto}
+                     key={id}
+                     id={id}
+                     tags={tags}
+                  />
+               )
          )}
       </>
    )

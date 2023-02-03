@@ -20,10 +20,10 @@ const HbMenu = ({ active, setActive }: Props) => {
                >
                   <ul className="mobile-menu">
                      <li>
-                        <NavLink to="/">Home</NavLink>
+                        <NavLink to="/">Main</NavLink>
                      </li>
                      <li>
-                        <NavLink to="/myblog">My Blog</NavLink>
+                        <NavLink to="/my-blog">My Blog</NavLink>
                      </li>
                      <li>
                         <NavLink to="/blogs">Blogs</NavLink>
@@ -32,7 +32,7 @@ const HbMenu = ({ active, setActive }: Props) => {
                         <NavLink to="/articles">Articles</NavLink>
                      </li>
                      <li>
-                        <NavLink to="/myaccount">My Account</NavLink>
+                        <NavLink to="/account-settings">Settings</NavLink>
                      </li>
                   </ul>
                </div>

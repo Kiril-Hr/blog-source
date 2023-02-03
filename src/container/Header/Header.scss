@@ -1,13 +1,17 @@
 @import '../../fonts';
- 
+
+.container-for-aside-menu.active {
+    border-bottom: 1px solid #F4AD24;
+}
 .container-for-aside-menu {
     display: block;
     z-index: 20;
-    height: 68px;
+    height: 67px;
     width: 100%;
-    background-color: #232A34;
-    border-right: 1px solid #2A3241;
-    .aside-menu {
+    background-color: white;
+    border-bottom: 1px solid #2A3241;
+    transition: .3s;
+    .under-menu {
         display: flex;
         justify-content: space-between;
         align-items: center;
@@ -44,7 +48,7 @@
                         width: 25px;
                         height: 20px;
                         fill: #7E8890;
-                        transition: all .3s cubic-bezier(.42, .01, .58, 1);
+                        transition: all .25s cubic-bezier(.42, .01, .58, 1);
                     }
                     a {
                         font-family: Arial, Helvetica, sans-serif;
@@ -53,19 +57,69 @@
                         font-size: 0.85rem;
                         letter-spacing: 0.05rem;
                         text-decoration: none;
-                        transition: all .3s cubic-bezier(.42, .01, .58, 1);
+                        transition: all .25s cubic-bezier(.42, .01, .58, 1);
                     }
                     &:hover {
-                        svg {
+                        > svg {
                             fill: #F4AD24;
                         }
-                        a {
+                        > a {
                             color: #F4AD24;
                         }
                     }
                 }
             }
         }
+    }
+}
+
+.account-details.active {
+    ul {
+        transform: translateX(0);
+    }
+}
+
+.account-details {
+    position: relative;
+    ul {
+        transition: .3s;
+        transform: translateX(100%);
+        width: 150px;
+        height: max-content;
+        top: 57px;
+        right: -45px;
+        position: absolute;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        z-index: 25;
+        background-color: #232A34;
+        border-left: 1px solid #2A3241;
+        border-bottom: 1px solid #2A3241;
+        border-bottom-left-radius: 6px;
+        &:hover {
+            border-left: 1px solid #F4AD24;
+            border-bottom: 1px solid #F4AD24;
+        }
+        li {
+            padding: 15px;
+            width: 100%;
+            button {
+                font-family: Arial, Helvetica, sans-serif;
+                padding: 0;
+                font-weight: 900;
+                font-size: 0.85rem;
+                transition: 0.25s;
+                background: none;
+                border: none;
+                color: #7E8890;
+                cursor: pointer;
+                &:hover {
+                    color: #F4AD24;
+                }
+            }
+        }
+
     }
 }
 

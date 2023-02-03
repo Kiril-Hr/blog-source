@@ -1,4 +1,4 @@
-import { blogsArray } from '../../shared/ArticlesArray'
+import { blogsArray } from '../../utils/ArticlesArray'
 import Slider from '../../components/Slider/Slider'
 import Title from '../../components/Title/Title'
 import './Home.scss'

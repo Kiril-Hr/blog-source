@@ -8,8 +8,9 @@ export type BlogsProps = {
     nickname: string
     authorPhoto: string
     chapter: string
-    popularity?: number
+    views?: number
 }
+
 
 const blogsArray:BlogsProps[] = [
     {
@@ -22,7 +23,7 @@ const blogsArray:BlogsProps[] = [
         nickname: 'Alaska',
         authorPhoto: '../images/account-imgs/1.png',
         chapter: 'space',
-        popularity: 150
+        views: 150
     },
     {
         id: 2,
@@ -34,7 +35,7 @@ const blogsArray:BlogsProps[] = [
         nickname: 'Alaska',
         authorPhoto: '../images/account-imgs/2.png',
         chapter: 'urban',
-        popularity: 170
+        views: 170
     },
     {
         id: 3,
@@ -46,7 +47,7 @@ const blogsArray:BlogsProps[] = [
         nickname: 'Alaska',
         authorPhoto: '../images/account-imgs/3.png',
         chapter: 'urban',
-        popularity: 175
+        views: 175
     },
     {
         id: 4,
@@ -58,7 +59,7 @@ const blogsArray:BlogsProps[] = [
         nickname: 'Alaska',
         authorPhoto: '../images/account-imgs/4.png',
         chapter: 'nature',
-        popularity: 120
+        views: 120
     },
     {
         id: 5,
@@ -70,7 +71,7 @@ const blogsArray:BlogsProps[] = [
         nickname: 'Alaska',
         authorPhoto: '../images/account-imgs/5.png',
         chapter: 'adventure',
-        popularity: 148
+        views: 148
     },
     {
         id: 6,
@@ -82,7 +83,7 @@ const blogsArray:BlogsProps[] = [
         nickname: 'Alaska',
         authorPhoto: '../images/account-imgs/6.png',
         chapter: 'lftips',
-        popularity: 220
+        views: 220
     },
     {
         id: 7,
@@ -94,7 +95,7 @@ const blogsArray:BlogsProps[] = [
         nickname: 'Alaska',
         authorPhoto: '../images/account-imgs/7.png',
         chapter: 'lftips',
-        popularity: 230    
+        views: 230    
     },
     {
         id: 8,
@@ -106,7 +107,7 @@ const blogsArray:BlogsProps[] = [
         nickname: 'Alaska',
         authorPhoto: '../images/account-imgs/8.png',
         chapter: 'tech',
-        popularity: 90
+        views: 90
     },
     {
         id: 9,
@@ -118,7 +119,7 @@ const blogsArray:BlogsProps[] = [
         nickname: 'Alaska',
         authorPhoto: '../images/account-imgs/9.png',
         chapter: 'art',
-        popularity: 290
+        views: 290
     },
     {
         id: 10,
@@ -130,7 +131,7 @@ const blogsArray:BlogsProps[] = [
         nickname: 'Alaska',
         authorPhoto: '../images/account-imgs/1.png',
         chapter: 'space',
-        popularity: 235
+        views: 235
     },
     {
         id: 11,
@@ -142,7 +143,7 @@ const blogsArray:BlogsProps[] = [
         nickname: 'Alaska',
         authorPhoto: '../images/account-imgs/2.png',
         chapter: 'urban',
-        popularity: 145
+        views: 145
     },
     {
         id: 12,
@@ -154,7 +155,7 @@ const blogsArray:BlogsProps[] = [
         nickname: 'Alaska',
         authorPhoto: '../images/account-imgs/3.png',
         chapter: 'urban',
-        popularity: 105
+        views: 105
     },
     {
         id: 13,
@@ -166,7 +167,7 @@ const blogsArray:BlogsProps[] = [
         nickname: 'Alaska',
         authorPhoto: '../images/account-imgs/4.png',
         chapter: 'nature',
-        popularity: 270
+        views: 270
     },
     {
         id: 14,
@@ -178,7 +179,7 @@ const blogsArray:BlogsProps[] = [
         nickname: 'Alaska',
         authorPhoto: '../images/account-imgs/5.png',
         chapter: 'adventure',
-        popularity: 180
+        views: 180
     },
     {
         id: 15,
@@ -190,7 +191,7 @@ const blogsArray:BlogsProps[] = [
         nickname: 'Alaska',
         authorPhoto: '../images/account-imgs/6.png',
         chapter: 'lftips',
-        popularity: 95
+        views: 95
     },
     {
         id: 16,
@@ -202,7 +203,7 @@ const blogsArray:BlogsProps[] = [
         nickname: 'Alaska',
         authorPhoto: '../images/account-imgs/7.png',
         chapter: 'lftips',
-        popularity: 260
+        views: 260
     },
     {
         id: 17,
@@ -214,7 +215,7 @@ const blogsArray:BlogsProps[] = [
         nickname: 'Alaska',
         authorPhoto: '../images/account-imgs/8.png',
         chapter: 'tech',
-        popularity: 155
+        views: 155
     },
     {
         id: 18,
@@ -226,7 +227,7 @@ const blogsArray:BlogsProps[] = [
         nickname: 'Alaska',
         authorPhoto: '../images/account-imgs/9.png',
         chapter: 'art',
-        popularity: 305
+        views: 305
     },
     {
         id: 19,
@@ -238,7 +239,7 @@ const blogsArray:BlogsProps[] = [
         nickname: 'Alaska',
         authorPhoto: '../images/account-imgs/1.png',
         chapter: 'space',
-        popularity: 220
+        views: 220
     },
     {
         id: 20,
@@ -250,7 +251,7 @@ const blogsArray:BlogsProps[] = [
         nickname: 'Alaska',
         authorPhoto: '../images/account-imgs/2.png',
         chapter: 'urban',
-        popularity: 225
+        views: 225
     },
     {
         id: 21,
@@ -262,7 +263,7 @@ const blogsArray:BlogsProps[] = [
         nickname: 'Alaska',
         authorPhoto: '../images/account-imgs/3.png',
         chapter: 'urban',
-        popularity: 325
+        views: 325
     },
     {
         id: 22,
@@ -274,7 +275,7 @@ const blogsArray:BlogsProps[] = [
         nickname: 'Alaska',
         authorPhoto: '../images/account-imgs/4.png',
         chapter: 'nature',
-        popularity: 235
+        views: 235
     },
     {
         id: 23,
@@ -286,7 +287,7 @@ const blogsArray:BlogsProps[] = [
         nickname: 'Alaska',
         authorPhoto: '../images/account-imgs/5.png',
         chapter: 'adventure',
-        popularity: 295
+        views: 295
     },
     {
         id: 24,
@@ -298,7 +299,7 @@ const blogsArray:BlogsProps[] = [
         nickname: 'Alaska',
         authorPhoto: '../images/account-imgs/6.png',
         chapter: 'lftips',
-        popularity: 355
+        views: 355
     },
     {
         id: 25,
@@ -310,7 +311,7 @@ const blogsArray:BlogsProps[] = [
         nickname: 'Alaska',
         authorPhoto: '../images/account-imgs/7.png',
         chapter: 'lftips',
-        popularity: 235
+        views: 235
     },
     {
         id: 26,
@@ -322,7 +323,7 @@ const blogsArray:BlogsProps[] = [
         nickname: 'Alaska',
         authorPhoto: '../images/account-imgs/8.png',
         chapter: 'tech',
-        popularity: 175
+        views: 175
     },
     {
         id: 27,
@@ -334,7 +335,7 @@ const blogsArray:BlogsProps[] = [
         nickname: 'Alaska',
         authorPhoto: '../images/account-imgs/9.png',
         chapter: 'art',
-        popularity: 135
+        views: 135
     },
     {
         id: 28,
@@ -346,7 +347,7 @@ const blogsArray:BlogsProps[] = [
         nickname: 'Alaska',
         authorPhoto: '../images/account-imgs/1.png',
         chapter: 'space',
-        popularity: 165
+        views: 165
     },
     {
         id: 29,
@@ -358,7 +359,7 @@ const blogsArray:BlogsProps[] = [
         nickname: 'Alaska',
         authorPhoto: '../images/account-imgs/2.png',
         chapter: 'urban',
-        popularity: 65
+        views: 65
     },
     {
         id: 30,
@@ -370,7 +371,7 @@ const blogsArray:BlogsProps[] = [
         nickname: 'Alaska',
         authorPhoto: '../images/account-imgs/3.png',
         chapter: 'urban',
-        popularity: 345
+        views: 345
     },
     {
         id: 31,
@@ -382,7 +383,7 @@ const blogsArray:BlogsProps[] = [
         nickname: 'Alaska',
         authorPhoto: '../images/account-imgs/4.png',
         chapter: 'nature',
-        popularity: 75
+        views: 75
     },
     {
         id: 32,
@@ -394,7 +395,7 @@ const blogsArray:BlogsProps[] = [
         nickname: 'Alaska',
         authorPhoto: '../images/account-imgs/5.png',
         chapter: 'adventure',
-        popularity: 5
+        views: 5
     },
     {
         id: 33,
@@ -406,7 +407,7 @@ const blogsArray:BlogsProps[] = [
         nickname: 'Alaska',
         authorPhoto: '../images/account-imgs/6.png',
         chapter: 'lftips',
-        popularity: 415
+        views: 415
     },
     {
         id: 34,
@@ -418,7 +419,7 @@ const blogsArray:BlogsProps[] = [
         nickname: 'Alaska',
         authorPhoto: '../images/account-imgs/7.png',
         chapter: 'lftips',
-        popularity: 245
+        views: 245
     },
     {
         id: 35,
@@ -430,7 +431,7 @@ const blogsArray:BlogsProps[] = [
         nickname: 'Alaska',
         authorPhoto: '../images/account-imgs/8.png',
         chapter: 'tech',
-        popularity: 395
+        views: 395
     },
     {
         id: 36,
@@ -442,7 +443,7 @@ const blogsArray:BlogsProps[] = [
         nickname: 'Alaska',
         authorPhoto: '../images/account-imgs/9.png',
         chapter: 'art',        
-        popularity: 235
+        views: 235
     },
 ]
 
