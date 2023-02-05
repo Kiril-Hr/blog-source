@@ -1,13 +1,12 @@
 import { useParams } from 'react-router-dom'
-import { Swiper, SwiperSlide } from 'swiper/react'
 import {
    blogsArray,
    BlogsProps,
    getBlogsObject,
 } from '../../utils/ArticlesArray'
-import RelatedArticleTemplate from '../../components/ArticlesComponent/RelatedArticleTemplate'
 import Title from '../../components/Title/Title'
 import './Article.scss'
+import SliderAside from '../../components/Slider/SliderAside'
 
 type ArticlePageProps = {
    [id: number]: BlogsProps
@@ -23,7 +22,7 @@ const Article = () => {
    const filteredArticlesByChapter = blogsArray
       .filter(
          (article) =>
-            article.chapter === currentArticle.chapter &&
+            article.tags === currentArticle.tags &&
             Math.abs(currentArticle.id - article.id) <= 50 &&
             article.id !== currentArticle.id
       )
@@ -53,7 +52,7 @@ const Article = () => {
                <h4>{currentArticle.author}</h4>
                <time>{currentArticle.date}</time>
                <div>
-                  Chapter: <i>{currentArticle.chapter}</i>
+                  Chapter: <i>{currentArticle.tags}</i>
                </div>
             </div>
             <div className="img-of-main-article-plus-related-articles">
@@ -82,36 +81,13 @@ const Article = () => {
                      ) : (
                         ''
                      )}
-                     <Swiper
+                     <SliderAside
+                        items={filteredArticlesByChapter}
                         spaceBetween={30}
                         slidesPerGroup={1}
                         simulateTouch={true}
                         freeMode={true}
-                        breakpoints={{
-                           300: {
-                              direction: 'horizontal',
-                              slidesPerView: 'auto',
-                              slidesPerGroup: 1,
-                           },
-                           1850: {
-                              direction: 'vertical',
-                              slidesPerView: 3,
-                           },
-                           2300: {
-                              direction: 'vertical',
-                              slidesPerView: 4,
-                           },
-                        }}
-                     >
-                        {filteredArticlesByChapter.map((article) => (
-                           <SwiperSlide>
-                              <RelatedArticleTemplate
-                                 {...article}
-                                 key={article.id}
-                              />
-                           </SwiperSlide>
-                        ))}
-                     </Swiper>
+                     />
                   </div>
                </div>
             </div>

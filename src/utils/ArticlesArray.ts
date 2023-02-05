@@ -7,7 +7,7 @@ export type BlogsProps = {
     author: string
     nickname: string
     authorPhoto: string
-    chapter: string
+    tags: string
     views?: number
 }
 
@@ -22,7 +22,7 @@ const blogsArray:BlogsProps[] = [
         author: 'John Altron',
         nickname: 'Alaska',
         authorPhoto: '../images/account-imgs/1.png',
-        chapter: 'space',
+        tags: 'space',
         views: 150
     },
     {
@@ -34,7 +34,7 @@ const blogsArray:BlogsProps[] = [
         author: 'John Altron',
         nickname: 'Alaska',
         authorPhoto: '../images/account-imgs/2.png',
-        chapter: 'urban',
+        tags: 'urban',
         views: 170
     },
     {
@@ -46,7 +46,7 @@ const blogsArray:BlogsProps[] = [
         author: 'John Altron',
         nickname: 'Alaska',
         authorPhoto: '../images/account-imgs/3.png',
-        chapter: 'urban',
+        tags: 'urban',
         views: 175
     },
     {
@@ -58,7 +58,7 @@ const blogsArray:BlogsProps[] = [
         author: 'John Altron',
         nickname: 'Alaska',
         authorPhoto: '../images/account-imgs/4.png',
-        chapter: 'nature',
+        tags: 'nature',
         views: 120
     },
     {
@@ -70,7 +70,7 @@ const blogsArray:BlogsProps[] = [
         author: 'John Altron',
         nickname: 'Alaska',
         authorPhoto: '../images/account-imgs/5.png',
-        chapter: 'adventure',
+        tags: 'adventure',
         views: 148
     },
     {
@@ -82,7 +82,7 @@ const blogsArray:BlogsProps[] = [
         author: 'John Altron',
         nickname: 'Alaska',
         authorPhoto: '../images/account-imgs/6.png',
-        chapter: 'lftips',
+        tags: 'lftips',
         views: 220
     },
     {
@@ -94,7 +94,7 @@ const blogsArray:BlogsProps[] = [
         author: 'John Altron',
         nickname: 'Alaska',
         authorPhoto: '../images/account-imgs/7.png',
-        chapter: 'lftips',
+        tags: 'lftips',
         views: 230    
     },
     {
@@ -106,7 +106,7 @@ const blogsArray:BlogsProps[] = [
         author: 'John Altron',
         nickname: 'Alaska',
         authorPhoto: '../images/account-imgs/8.png',
-        chapter: 'tech',
+        tags: 'tech',
         views: 90
     },
     {
@@ -118,7 +118,7 @@ const blogsArray:BlogsProps[] = [
         author: 'John Altron',
         nickname: 'Alaska',
         authorPhoto: '../images/account-imgs/9.png',
-        chapter: 'art',
+        tags: 'art',
         views: 290
     },
     {
@@ -130,7 +130,7 @@ const blogsArray:BlogsProps[] = [
         author: 'John Altron',
         nickname: 'Alaska',
         authorPhoto: '../images/account-imgs/1.png',
-        chapter: 'space',
+        tags: 'space',
         views: 235
     },
     {
@@ -142,7 +142,7 @@ const blogsArray:BlogsProps[] = [
         author: 'John Altron',
         nickname: 'Alaska',
         authorPhoto: '../images/account-imgs/2.png',
-        chapter: 'urban',
+        tags: 'urban',
         views: 145
     },
     {
@@ -154,7 +154,7 @@ const blogsArray:BlogsProps[] = [
         author: 'John Altron',
         nickname: 'Alaska',
         authorPhoto: '../images/account-imgs/3.png',
-        chapter: 'urban',
+        tags: 'urban',
         views: 105
     },
     {
@@ -166,7 +166,7 @@ const blogsArray:BlogsProps[] = [
         author: 'John Altron',
         nickname: 'Alaska',
         authorPhoto: '../images/account-imgs/4.png',
-        chapter: 'nature',
+        tags: 'nature',
         views: 270
     },
     {
@@ -178,7 +178,7 @@ const blogsArray:BlogsProps[] = [
         author: 'John Altron',
         nickname: 'Alaska',
         authorPhoto: '../images/account-imgs/5.png',
-        chapter: 'adventure',
+        tags: 'adventure',
         views: 180
     },
     {
@@ -190,7 +190,7 @@ const blogsArray:BlogsProps[] = [
         author: 'John Altron',
         nickname: 'Alaska',
         authorPhoto: '../images/account-imgs/6.png',
-        chapter: 'lftips',
+        tags: 'lftips',
         views: 95
     },
     {
@@ -202,7 +202,7 @@ const blogsArray:BlogsProps[] = [
         author: 'John Altron',
         nickname: 'Alaska',
         authorPhoto: '../images/account-imgs/7.png',
-        chapter: 'lftips',
+        tags: 'lftips',
         views: 260
     },
     {
@@ -214,7 +214,7 @@ const blogsArray:BlogsProps[] = [
         author: 'John Altron',
         nickname: 'Alaska',
         authorPhoto: '../images/account-imgs/8.png',
-        chapter: 'tech',
+        tags: 'tech',
         views: 155
     },
     {
@@ -226,7 +226,7 @@ const blogsArray:BlogsProps[] = [
         author: 'John Altron',
         nickname: 'Alaska',
         authorPhoto: '../images/account-imgs/9.png',
-        chapter: 'art',
+        tags: 'art',
         views: 305
     },
     {
@@ -238,7 +238,7 @@ const blogsArray:BlogsProps[] = [
         author: 'John Altron',
         nickname: 'Alaska',
         authorPhoto: '../images/account-imgs/1.png',
-        chapter: 'space',
+        tags: 'space',
         views: 220
     },
     {
@@ -250,7 +250,7 @@ const blogsArray:BlogsProps[] = [
         author: 'John Altron',
         nickname: 'Alaska',
         authorPhoto: '../images/account-imgs/2.png',
-        chapter: 'urban',
+        tags: 'urban',
         views: 225
     },
     {
@@ -262,7 +262,7 @@ const blogsArray:BlogsProps[] = [
         author: 'John Altron',
         nickname: 'Alaska',
         authorPhoto: '../images/account-imgs/3.png',
-        chapter: 'urban',
+        tags: 'urban',
         views: 325
     },
     {
@@ -274,7 +274,7 @@ const blogsArray:BlogsProps[] = [
         author: 'John Altron',
         nickname: 'Alaska',
         authorPhoto: '../images/account-imgs/4.png',
-        chapter: 'nature',
+        tags: 'nature',
         views: 235
     },
     {
@@ -286,7 +286,7 @@ const blogsArray:BlogsProps[] = [
         author: 'John Altron',
         nickname: 'Alaska',
         authorPhoto: '../images/account-imgs/5.png',
-        chapter: 'adventure',
+        tags: 'adventure',
         views: 295
     },
     {
@@ -298,7 +298,7 @@ const blogsArray:BlogsProps[] = [
         author: 'John Altron',
         nickname: 'Alaska',
         authorPhoto: '../images/account-imgs/6.png',
-        chapter: 'lftips',
+        tags: 'lftips',
         views: 355
     },
     {
@@ -310,7 +310,7 @@ const blogsArray:BlogsProps[] = [
         author: 'John Altron',
         nickname: 'Alaska',
         authorPhoto: '../images/account-imgs/7.png',
-        chapter: 'lftips',
+        tags: 'lftips',
         views: 235
     },
     {
@@ -322,7 +322,7 @@ const blogsArray:BlogsProps[] = [
         author: 'John Altron',
         nickname: 'Alaska',
         authorPhoto: '../images/account-imgs/8.png',
-        chapter: 'tech',
+        tags: 'tech',
         views: 175
     },
     {
@@ -334,7 +334,7 @@ const blogsArray:BlogsProps[] = [
         author: 'John Altron',
         nickname: 'Alaska',
         authorPhoto: '../images/account-imgs/9.png',
-        chapter: 'art',
+        tags: 'art',
         views: 135
     },
     {
@@ -346,7 +346,7 @@ const blogsArray:BlogsProps[] = [
         author: 'John Altron',
         nickname: 'Alaska',
         authorPhoto: '../images/account-imgs/1.png',
-        chapter: 'space',
+        tags: 'space',
         views: 165
     },
     {
@@ -358,7 +358,7 @@ const blogsArray:BlogsProps[] = [
         author: 'John Altron',
         nickname: 'Alaska',
         authorPhoto: '../images/account-imgs/2.png',
-        chapter: 'urban',
+        tags: 'urban',
         views: 65
     },
     {
@@ -370,7 +370,7 @@ const blogsArray:BlogsProps[] = [
         author: 'John Altron',
         nickname: 'Alaska',
         authorPhoto: '../images/account-imgs/3.png',
-        chapter: 'urban',
+        tags: 'urban',
         views: 345
     },
     {
@@ -382,7 +382,7 @@ const blogsArray:BlogsProps[] = [
         author: 'John Altron',
         nickname: 'Alaska',
         authorPhoto: '../images/account-imgs/4.png',
-        chapter: 'nature',
+        tags: 'nature',
         views: 75
     },
     {
@@ -394,7 +394,7 @@ const blogsArray:BlogsProps[] = [
         author: 'John Altron',
         nickname: 'Alaska',
         authorPhoto: '../images/account-imgs/5.png',
-        chapter: 'adventure',
+        tags: 'adventure',
         views: 5
     },
     {
@@ -406,7 +406,7 @@ const blogsArray:BlogsProps[] = [
         author: 'John Altron',
         nickname: 'Alaska',
         authorPhoto: '../images/account-imgs/6.png',
-        chapter: 'lftips',
+        tags: 'lftips',
         views: 415
     },
     {
@@ -418,7 +418,7 @@ const blogsArray:BlogsProps[] = [
         author: 'John Altron',
         nickname: 'Alaska',
         authorPhoto: '../images/account-imgs/7.png',
-        chapter: 'lftips',
+        tags: 'lftips',
         views: 245
     },
     {
@@ -430,7 +430,7 @@ const blogsArray:BlogsProps[] = [
         author: 'John Altron',
         nickname: 'Alaska',
         authorPhoto: '../images/account-imgs/8.png',
-        chapter: 'tech',
+        tags: 'tech',
         views: 395
     },
     {
@@ -442,8 +442,20 @@ const blogsArray:BlogsProps[] = [
         author: 'John Altron',
         nickname: 'Alaska',
         authorPhoto: '../images/account-imgs/9.png',
-        chapter: 'art',        
+        tags: 'art',        
         views: 235
+    },
+    {
+        id: 37,
+        photo: '../images/backg-of-blogs/main-article-photo.jpg',
+        title: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet, incidunt!',
+        description: 'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Incidunt, ipsum odio facere obcaecati nemo expedita! Quod nemo alias aperiam nostrum, minus, culpa amet id, nihil error pariatur odit. Ipsum, cupiditate, recusandae ratione ducimus culpa nobis molestiae distinctio iusto iure ipsam labore consequuntur quisquam suscipit fugit eligendi. Neque voluptatem nihil tempore. Lorem ipsum dolor sit amet consectetur, adipisicing elit. Incidunt, ipsum odio facere obcaecati nemo expedita! Quod nemo alias aperiam nostrum, minus, culpa amet id, nihil error pariatur odit. Ipsum, cupiditate, recusandae ratione ducimus culpa nobis molestiae distinctio iusto iure ipsam labore consequuntur quisquam suscipit fugit eligendi. Neque voluptatem nihil tempore.',
+        date: '2022-12-22',
+        author: 'John Altron',
+        nickname: 'Alaska',
+        authorPhoto: '../images/account-imgs/9.png',
+        tags: 'art',        
+        views: 1235
     },
 ]
 

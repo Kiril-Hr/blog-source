@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom'
-import { cutDescr } from '../../utils/functions'
+import { cutText } from '../../utils/functions'
 import './ArticleTemplate.scss'
 type Props = {
    id?: number
@@ -34,7 +34,7 @@ const ArticleTemplate = ({
             <img src={photo} alt="article" className="img" />
             <div className="descr">
                <Link to={`/article/${id}`}>{title}</Link>
-               <p>{cutDescr(description!, 200)}</p>
+               <p>{cutText(description!, 200)}</p>
             </div>
             <div className="date-author-name-link">
                <time dateTime={date}>{date}</time>

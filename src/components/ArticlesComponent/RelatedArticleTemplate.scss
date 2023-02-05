@@ -1,14 +1,15 @@
+@import '../../fonts';
+
 .article-related {
-    max-width: 675px;
-    max-height: 220px;
+    max-width: 900px;
+    max-height: 180px;
     display: flex;
     overflow: hidden;
-    border: 1px solid white;
+    border: 1px solid #2E475D;
     box-shadow: 12px 12px 32px rgba(245, 230, 200, 0.2);
     border-radius: 8px;
     transition: all 0.45s cubic-bezier(0.25, 0.46, 0.45, 0.94);
     cursor: pointer;
-    
     @media(min-width: 2300px) {
         max-width: 730px;
         width: max-content;
@@ -17,23 +18,33 @@
         max-width: 650px;
         width: max-content;
     }
+    @media(max-width: 1550px) {
+        max-width: 500px;
+        max-height: 220px;
+    }
+    @media(max-width: 1250px) {
+        max-width: 430px;
+        max-height: 180px;
+
+    }
     &:hover {
         transform: scale(1.02);
     }
     .img {
         display: block;
         max-width: 185px;
-        background: #F4AD24;
-        border-top-left-radius: 8px;
-        border-top-right-radius: 8px;
-        border-bottom: 1px solid white;
+        background: rgba(105, 105, 105, 0.829);
+        border-bottom: 1px solid #2E475D;
         object-fit: cover;
+        @media(max-width: 1550px) {
+            max-width: 120px;
+        }
     }
     h4,p,time,a {
-        font-family: Arial, Helvetica, sans-serif;
+        font-family: $font-family;
         letter-spacing: 0.1rem;
         text-decoration: none;
-        color: white;
+        color: $color-text;
     }
     a {
         &:hover {
@@ -44,15 +55,15 @@
         margin: 15px;
         overflow: hidden;
         a {
-            font-size: 1.05rem;
-            line-height: 1.1rem;
+            font-size: 0.85rem;
+            line-height: 0.7rem;
             font-weight: 600;
         }
         p {
             margin-top: 10px;
-            font-size: 0.85rem;
+            font-size: 0.7rem;
             font-weight: 400;
-            line-height: 1rem;
+            line-height: 0.8rem;
         }
     }
     .date-author-name-link {
@@ -61,7 +72,7 @@
         align-items: center;
         justify-content: space-between;
         position: relative;
-        border-left: 2px solid white;
+        border-left: 2px solid #2E475D;
         padding: 20px;
         width: 100%;
         max-width: 90px;

@@ -1,4 +1,3 @@
-import './Main.scss'
 import { Route, Routes } from 'react-router-dom'
 import Home from '../../Pages/Home/Home'
 import Articles from '../../Pages/Articles/Articles'

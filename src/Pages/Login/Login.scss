@@ -1,0 +1,89 @@
+@import '../../fonts';
+
+.sin-up-in-login {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    p,a {
+        font-family:  $font-family;
+        font-weight: 800;
+        color: $color-text;
+        font-size: 1.2rem;
+        letter-spacing: 0.07rem;
+        margin-bottom: 15px;
+    }
+    a {
+        color: #10748d;
+        text-decoration: none;
+        &:hover {
+            text-decoration: underline;
+        }
+    }
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    padding: 40px;
+    gap: 40px;
+    height: max-content;
+    width: 450px;
+    margin: 0 auto;
+    border-radius: 8px;
+    border: 1px solid #00000044;
+    p,input {
+        font-family:  $font-family;
+        font-weight: 700;
+        color: $color-text;
+        font-size: 0.9rem;
+        letter-spacing: 0.065rem;
+        margin-bottom: 15px;
+        &:last-child {
+            font-size: 0.95rem;
+            font-weight: 600;
+        }
+    }
+    input {
+        width: 100%;
+        height: 40px;
+        background: #F5F8FA;
+        border: 1px solid $color-text;
+        border-radius: 4px;
+        padding: 5px 10px;
+        outline: none;
+        transition: all .3s cubic-bezier(0.215, 0.610, 0.355, 1);
+    }
+    input:focus {
+        border: 1px solid #00D0E4;
+        box-shadow: 0 0 3px #00D0E4;
+    }
+    .submit {
+        border: 0;
+        color: white;
+        cursor: pointer;
+        background: #FF7F60;
+        transition: .2s;
+        &:hover {
+            background: #FF8F73;
+        }
+    }
+    .remember-me {
+        display: flex;
+        justify-content: flex-start;
+        gap: 20px;
+        align-items: center;
+        cursor: pointer;
+        p {
+            margin-bottom: 0;
+        }
+        input {
+            margin: 0;
+            width: 25px;
+            height: 25px;
+            cursor: pointer;
+            transition: .3s ;
+
+        }
+    }
+}
+

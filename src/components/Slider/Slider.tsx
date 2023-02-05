@@ -1,7 +1,12 @@
 import { Swiper, SwiperSlide } from 'swiper/react'
+import { Navigation, Pagination, EffectFade, Autoplay } from 'swiper'
 import { SliderItemType } from '../../types'
-import './Slider.scss'
 import SliderItem from './SliderItem'
+import './Slider.scss'
+import 'swiper/css/pagination'
+import 'swiper/css'
+import 'swiper/css'
+import 'swiper/css/navigation'
 
 type Props = {
    items: Array<SliderItemType>
@@ -10,6 +15,7 @@ type Props = {
    spaceBetween?: number
    centeredSlides?: boolean
    loop?: boolean
+   sizeDescr?: number
 }
 
 const Slider = ({
@@ -21,20 +27,34 @@ const Slider = ({
    loop = false,
 }: Props) => {
    return (
-      <Swiper
-         spaceBetween={spaceBetween}
-         slidesPerView={slidesPerView}
-         slidesPerGroup={slidesPerGroup}
-         simulateTouch={true}
-         centeredSlides={centeredSlides}
-         loop={loop}
-      >
-         {items.map((item) => (
-            <SwiperSlide>
-               <SliderItem {...item} key={item.id} />
-            </SwiperSlide>
-         ))}
-      </Swiper>
+      <>
+         <div className="slider">
+            <Swiper
+               spaceBetween={spaceBetween}
+               slidesPerView={slidesPerView}
+               slidesPerGroup={slidesPerGroup}
+               simulateTouch={true}
+               centeredSlides={centeredSlides}
+               loop={loop}
+               pagination={{
+                  dynamicBullets: true,
+               }}
+               navigation={true}
+               modules={[Pagination, Navigation]}
+               breakpoints={{
+                  1200: {
+                     simulateTouch: false,
+                  },
+               }}
+            >
+               {items.map((item) => (
+                  <SwiperSlide>
+                     <SliderItem {...item} key={item.id} />
+                  </SwiperSlide>
+               ))}
+            </Swiper>
+         </div>
+      </>
    )
 }
 

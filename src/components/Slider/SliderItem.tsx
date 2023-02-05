@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom'
-import { cutDescr } from '../../utils/functions'
+import { cutText } from '../../utils/functions'
 import { SliderItemType } from '../../types'
 import './SliderItem.scss'
 
@@ -14,15 +14,15 @@ const SliderItem = ({
    author,
    nickname,
    authorPhoto,
-   chapter,
+   tags,
 }: Props) => {
    return (
       <div className="article-home" draggable={false}>
-         <p className="chapter-home">{chapter}</p>
+         <p className="tags-home">{tags}</p>
          <img src={photo} alt="article" className="img" />
          <div className="descr-home">
-            <Link to={`/article/${id}`}>{title}</Link>
-            <p>{cutDescr(description, 250)}</p>
+            <Link to={`/article/${id}`}>{cutText(title!, 50)}</Link>
+            <p>{description}</p>
          </div>
          <div className="date-author-name-link-home">
             <time dateTime="">{date}</time>

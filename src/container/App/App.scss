@@ -1,18 +1,24 @@
 @import '../../fonts';
+body {
+    overflow-x: hidden;
+    background: white;
+}
 header {
     display: flex;
     justify-content: flex-start;
     height: fit-content;
 }
-body {
-    overflow-x: hidden;
-    background: white;
-}
 .container-for-all {
     .main-footer-container {
         display: flex;
         flex-direction: column;
-        padding: 40px 0;
+        padding: 140px 0 40px 0;
+        @media(max-width: 1250px) {
+            padding: 160px 30px 40px 30px;
+        }
+        @media(max-width: 600px) {
+            padding: 160px 15px 40px 15px;
+        }
     }
 }
 .container-for-mobile-menu {
