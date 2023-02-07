@@ -50,7 +50,7 @@ const SliderAside = ({
       >
          {items.map((article) => (
             <SwiperSlide>
-               <RelatedArticleTemplate {...article} key={article.id} />
+               <RelatedArticleTemplate {...article} key={article._id} />
             </SwiperSlide>
          ))}
       </Swiper>

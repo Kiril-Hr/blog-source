@@ -6,14 +6,13 @@ import './SliderItem.scss'
 export type Props = SliderItemType
 
 const SliderItem = ({
-   id,
+   _id,
    photo,
    title,
-   description,
-   date,
-   author,
-   nickname,
-   authorPhoto,
+   text,
+   createdAt,
+   user,
+   userPhoto,
    tags,
 }: Props) => {
    return (
@@ -21,15 +20,14 @@ const SliderItem = ({
          <p className="tags-home">{tags}</p>
          <img src={photo} alt="article" className="img" />
          <div className="descr-home">
-            <Link to={`/article/${id}`}>{cutText(title!, 50)}</Link>
-            <p>{description}</p>
+            <Link to={`/article/${_id}`}>{cutText(title!, 50)}</Link>
+            <p>{text}</p>
          </div>
          <div className="date-author-name-link-home">
-            <time dateTime="">{date}</time>
+            <time dateTime="">{createdAt}</time>
             <div className="author-name-link-home">
-               <h4>{author}</h4>
-               <a href="../../public/index.html">{nickname}</a>
-               <img src={authorPhoto} alt="author" />
+               <h4>{user}</h4>
+               <img src={userPhoto} alt="author" />
             </div>
          </div>
       </div>

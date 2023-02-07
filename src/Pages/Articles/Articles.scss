@@ -1,12 +1,28 @@
-.articles {
-    margin-top: 60px;
-    padding: 0 5%;
+.container-articles-page {
 
-    article {
+    > .title {
+        margin-left: 60px;
+    }
+    .container-articles-tags-section {
         display: flex;
-        justify-content: center;
-        flex-wrap: wrap;
-        margin-top: 60px;
-        gap: 65px;
+        justify-content: space-between;
+        gap: 40px;
+        background: #F6F9FC;
+        margin-top: 30px;
+        padding: 40px 60px;
+        border-top: 2px solid #FF5C35;
+        article {
+            display: flex;
+            flex-direction: column;
+            gap: 65px;
+            @media(min-width: 2100px) {
+                flex-direction: row;
+                flex-wrap: wrap;
+            }
+        }
+    
+        .wrapper-sort-btn {
+            background: #FCEAD7;
+        }
     }
 }

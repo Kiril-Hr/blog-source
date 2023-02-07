@@ -23,8 +23,8 @@ const Article = () => {
       .filter(
          (article) =>
             article.tags === currentArticle.tags &&
-            Math.abs(currentArticle.id - article.id) <= 50 &&
-            article.id !== currentArticle.id
+            Math.abs(currentArticle._id - article._id) <= 50 &&
+            article._id !== currentArticle._id
       )
       .sort((a: any, b: any) => b.id - a.id)
 
@@ -44,13 +44,9 @@ const Article = () => {
                justifyContent={'flex-start'}
             />
             <div className="author-block">
-               <img
-                  src={currentArticle.authorPhoto}
-                  alt={currentArticle.nickname}
-               />
-               <h3>{currentArticle.nickname}</h3>
-               <h4>{currentArticle.author}</h4>
-               <time>{currentArticle.date}</time>
+               <img src={currentArticle.userPhoto} alt={currentArticle.user} />
+               <h4>{currentArticle.user}</h4>
+               <time>{currentArticle.createdAt}</time>
                <div>
                   Chapter: <i>{currentArticle.tags}</i>
                </div>
@@ -68,7 +64,7 @@ const Article = () => {
                <div className="container-slider-main-photo">
                   <img
                      src={currentArticle.photo}
-                     alt={currentArticle.author}
+                     alt={currentArticle.user}
                      className="img"
                   />
                   <div className="related-article-container">

@@ -7,13 +7,23 @@ import { NavLink } from 'react-router-dom'
 import Slider from '../../components/Slider/Slider'
 
 const Home = () => {
-   const items = [...blogsArray].sort((a: any, b: any) => b.views - a.views)
+   const items = [...blogsArray].sort(
+      (a: any, b: any) => b.viewsCount - a.viewsCount
+   )
 
-   const [mainArticle] = items
-
-   const [, , , , , , , , , , ...rest] = items
-
-   const [, one, two, three, four, five, six, seven, eight, nine] = items
+   const [
+      mainArticle,
+      one,
+      two,
+      three,
+      four,
+      five,
+      six,
+      seven,
+      eight,
+      nine,
+      ...rest
+   ] = items
 
    const filteredArrOfArticles = [
       one,
@@ -27,7 +37,14 @@ const Home = () => {
       nine,
    ].sort((a: any, b: any) => b.id - a.id)
 
-   filteredArrOfArticles.length = 5
+   filteredArrOfArticles.length =
+      window.innerWidth > 2600
+         ? 9
+         : window.innerWidth > 2000
+         ? 8
+         : window.innerWidth > 1850
+         ? 7
+         : 6
 
    rest.length =
       window.innerWidth > 2600
@@ -42,18 +59,20 @@ const Home = () => {
       <div className="home">
          <div className="container-popular-main">
             <div className="main-article">
-               <img src={mainArticle.photo} alt={mainArticle.nickname} />
-               <NavLink to={`/article/${mainArticle.id}`}>
+               <img src={mainArticle.photo} alt={mainArticle.user} />
+               <NavLink to={`/article/${mainArticle._id}`}>
                   {mainArticle.title}
                </NavLink>
                <p>
                   {window.innerWidth > 1450
-                     ? cutText(mainArticle.description, 1300)
-                     : cutText(mainArticle.description, 400)}
+                     ? cutText(mainArticle.text!, 1300)
+                     : cutText(mainArticle.text!, 400)}
                </p>
                <div>
-                  <p>{mainArticle.author}</p>
-                  <time dateTime={mainArticle.date}>{mainArticle.date}</time>
+                  <p>{mainArticle.user}</p>
+                  <time dateTime={mainArticle.createdAt}>
+                     {mainArticle.createdAt}
+                  </time>
                </div>
             </div>
             <div className="popular-articles">
@@ -66,11 +85,11 @@ const Home = () => {
                   {rest.map((article) => (
                      <RelatedArticleTemplate
                         title={article.title}
-                        date={article.date}
-                        author={article.author}
+                        createdAt={article.createdAt}
+                        user={article.user}
                         tags={article.tags}
-                        id={article.id}
-                        key={article.id}
+                        _id={article._id}
+                        key={article._id}
                      />
                   ))}
                </div>

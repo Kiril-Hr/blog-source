@@ -3,19 +3,22 @@ import SortArticles from '../../components/SortArticles/SortArticles'
 import Title from '../../components/Title/Title'
 import './Articles.scss'
 
-
 const Articles = () => {
-  return (
-    <>
-        <Title title="Articles" />
-        <section className="articles">
-            <SortArticles />
+   return (
+      <div className="container-articles-page">
+         <Title
+            title="Articles"
+            fontSize="2.65rem"
+            justifyContent="flex-start"
+         />
+         <section className="container-articles-tags-section">
             <article>
-                <ArticlesList />
+               <ArticlesList />
             </article>
-        </section>
-    </>
-  )
+            <SortArticles />
+         </section>
+      </div>
+   )
 }
 
 export default Articles

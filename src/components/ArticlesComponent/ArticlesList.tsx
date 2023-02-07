@@ -4,62 +4,39 @@ import { useDispatch, useSelector } from 'react-redux'
 import { blogsArray } from '../../utils/ArticlesArray'
 import { useEffect } from 'react'
 import { fetchPosts } from '../../redux/slices/posts'
+import { SliderItemType } from '../../types'
+import Skeleton from './Skeleton'
 
-type BlogsProps = {
-   id: number
-   photo: string
-   title: string
-   description: string
-   date: string
-   author: string
-   nickname: string
-   authorPhoto: string
-   chapter: string
-   tags?: {
-      [key: string]: string
-   }
-}
+type BlogsProps = SliderItemType
+
 const ArticlesList = () => {
    const dispatch = useDispatch<any>()
    const { posts, tags } = useSelector((state: any) => state.posts)
-   const isPostLoading = posts.status === 'loading'
+   const isPostLoading: any = posts.status === 'loading'
 
    useEffect(() => {
       dispatch(fetchPosts())
    }, [])
 
+   console.log(posts.items)
+
    return (
       <>
-         {(isPostLoading ? posts.items : blogsArray).map(
-            ({
-               id,
-               photo,
-               title,
-               description,
-               date,
-               author,
-               nickname,
-               authorPhoto,
-               chapter,
-               tags,
-            }: BlogsProps) =>
-               isPostLoading ? (
-                  <ArticleTemplate />
-               ) : (
-                  <ArticleTemplate
-                     chapter={chapter}
-                     photo={photo}
-                     title={title}
-                     description={description}
-                     date={date}
-                     author={author}
-                     nickname={nickname}
-                     authorPhoto={authorPhoto}
-                     key={id}
-                     id={id}
-                     tags={tags}
-                  />
-               )
+         {(isPostLoading ? blogsArray : posts.items).map((obj: BlogsProps) =>
+            isPostLoading ? (
+               <Skeleton />
+            ) : (
+               <ArticleTemplate
+                  title={obj.title}
+                  text={obj.text}
+                  createdAt={obj.createdAt?.slice(0, 10)}
+                  key={obj._id}
+                  _id={obj._id}
+                  viewsCount={obj.viewsCount}
+                  user={obj.user}
+                  tags={obj.tags.length > 3 ? obj.tags.slice(0, 3) : obj.tags}
+               />
+            )
          )}
       </>
    )

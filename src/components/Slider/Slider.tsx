@@ -1,5 +1,5 @@
 import { Swiper, SwiperSlide } from 'swiper/react'
-import { Navigation, Pagination, EffectFade, Autoplay } from 'swiper'
+import { Navigation, Pagination } from 'swiper'
 import { SliderItemType } from '../../types'
 import SliderItem from './SliderItem'
 import './Slider.scss'
@@ -49,7 +49,7 @@ const Slider = ({
             >
                {items.map((item) => (
                   <SwiperSlide>
-                     <SliderItem {...item} key={item.id} />
+                     <SliderItem {...item} key={item._id} />
                   </SwiperSlide>
                ))}
             </Swiper>
