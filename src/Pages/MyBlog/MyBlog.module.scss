@@ -1,0 +1,165 @@
+@import '../../fonts';
+
+.containerUserInfo {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    gap: 40px;
+    .userInfoPhoto {
+        display: flex;
+        justify-content: space-evenly;
+        width: 100%;
+        .userPhoto {
+            img {
+                width: 200px;
+                height: 250px;
+                object-fit: cover;
+            }
+        }
+        .userInfo {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            h2, p, div {
+                font-family: $font-family;
+                font-size: 1.6rem;
+                font-weight: 800;
+                color: $color-text;
+            }
+            div {
+                display: flex;
+                align-items: center;
+                font-size: 1.2rem;
+                font-weight: 600;
+                gap: 20px;
+                p {
+                    font-size: 1rem;
+                    font-weight: 600;
+                }
+            }
+        }
+    }
+    .myArticlesBlock {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 40px;
+        .options {
+            display: flex;
+            align-items: center;
+            justify-content: space-evenly;
+            height: 60px;
+            width: 100%;
+            border-top: 1px solid #FF5C35;
+            border-bottom: 1px solid #FF5C35;
+            button {
+                height: 40px;
+                max-width: 120px;
+                width: 100%;
+                min-width: 60px;
+                border: 0;
+                cursor: pointer;
+                background: #FF7F60;
+                transition: .2s;
+                &:hover {
+                    background: #FF8F73;
+                }
+                a {
+                    text-decoration: none;
+                    color: white;
+                    font-family: $font-family;
+                    font-size: 0.95rem;
+                    font-weight: 600;
+                }
+            }
+        }
+        .containerArticlesTags {
+            display: flex;
+            justify-content: space-between;
+            gap: 15px;
+            width: 100%;
+            @media(min-width: 1250px) {
+                width: unset;
+                justify-content: center;
+                gap: 150px;
+            }
+            @media(max-width: 900px) {
+                gap: 40px;
+                flex-direction: column-reverse;
+                .myArticles {
+                    .myPost {
+                        width: 100%;
+                    }
+                }
+            }
+            .myArticles {
+                width: 100%;
+                display: flex;
+                justify-content: flex-start;
+                gap: 40px;
+                flex-wrap: wrap;
+                .myPost {
+                    height: 120px;
+                    width: 600px;
+                    transition: all 0.25s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+                    border-bottom: 1px solid #DBE4ED;
+                    background: white;
+                    &:hover {
+                        border-bottom: 1px solid #FF5C35;
+                        transform: scale(1.015);
+                    }
+                    .description {
+                        a, p {
+                            font-family: $font-family;
+                            font-size: 1.2rem;
+                            font-weight: 400;
+                            color: $color-text;
+                        }
+                        a {
+                            display: block;
+                            text-decoration: none;
+                            font-size: 1.4rem;
+                            font-weight: 600;
+                            margin-bottom: 10px;
+                            &:hover {
+                                text-decoration: underline;
+                            }
+                        }
+                        p {
+                            margin-bottom: 10px;
+                        }
+                    }
+                    .dateAndViews {
+                        display: flex;
+                        justify-content: space-between;
+                        time, p {
+                            font-family: $font-family;
+                            font-size: 1rem;
+                            font-weight: 600;
+                            color: $color-text;
+                        }
+                        p {
+                            display: flex;
+                            align-items: center;
+                            flex-direction: row-reverse;
+                            gap: 5px;
+                            color: #535353c2;
+                            svg {
+                                fill: #535353c2;
+                                width: 15px;
+                                height: 15px;
+                            }
+                        }
+                    }
+                }
+            }
+            .wrapper-sort-btn {
+                width: 350px;
+                @media(max-width: 900px) {
+                    width: 100%;
+                }
+            }
+        }
+    }
+}

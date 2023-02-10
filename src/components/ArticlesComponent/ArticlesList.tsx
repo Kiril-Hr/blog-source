@@ -3,7 +3,7 @@ import ArticleTemplate from './ArticleTemplate'
 import { useDispatch, useSelector } from 'react-redux'
 import { blogsArray } from '../../utils/ArticlesArray'
 import { useEffect } from 'react'
-import { fetchPosts } from '../../redux/slices/posts'
+import { fetchPosts, fetchTags } from '../../redux/slices/posts'
 import { SliderItemType } from '../../types'
 import Skeleton from './Skeleton'
 
@@ -11,11 +11,12 @@ type BlogsProps = SliderItemType
 
 const ArticlesList = () => {
    const dispatch = useDispatch<any>()
-   const { posts, tags } = useSelector((state: any) => state.posts)
+   const { posts } = useSelector((state: any) => state.posts)
    const isPostLoading: any = posts.status === 'loading'
 
    useEffect(() => {
       dispatch(fetchPosts())
+      dispatch(fetchTags())
    }, [])
 
    console.log(posts.items)

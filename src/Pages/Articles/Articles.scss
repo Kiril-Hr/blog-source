@@ -5,12 +5,18 @@
     }
     .container-articles-tags-section {
         display: flex;
-        justify-content: space-between;
+        justify-content: center;
         gap: 40px;
         background: #F6F9FC;
         margin-top: 30px;
         padding: 40px 60px;
         border-top: 2px solid #FF5C35;
+        @media(min-width: 2310px) {
+            justify-content: space-between;
+        }
+        @media(max-width: 900px) {
+            flex-direction: column-reverse;
+        }
         article {
             display: flex;
             flex-direction: column;

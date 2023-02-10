@@ -2,13 +2,22 @@
 
 .wrapper-sort-btn {
     width: 500px;
-    min-width: 350px;
+    min-width: 220px;
     height: 100%;
     max-height: 600px;
     display: flex;
     flex-direction: column;
     gap: 30px;
     border: 1px solid #FF5C35;
+    @media(min-width: 2310px) {
+        max-width: 900px;
+        width: unset;
+        min-width: 600px;
+    }
+    @media(max-width: 900px) {
+        width: unset;
+        min-width: unset;
+    }
     .title {
         margin: 30px 0 0 30px;
         height: fit-content;
@@ -32,7 +41,6 @@
             border: unset;
             &:hover {
                 transform: scale(1.03);
-                
             }
         }
     }

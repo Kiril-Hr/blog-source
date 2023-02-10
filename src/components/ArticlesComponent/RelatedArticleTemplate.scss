@@ -8,7 +8,7 @@
     border: 1px solid #2E475D;
     box-shadow: 12px 12px 32px rgba(245, 230, 200, 0.2);
     border-radius: 8px;
-    transition: all 0.45s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    transition: all 0.25s cubic-bezier(0.25, 0.46, 0.45, 0.94);
     cursor: pointer;
     @media(min-width: 2300px) {
         max-width: 730px;
@@ -28,7 +28,7 @@
 
     }
     &:hover {
-        transform: scale(1.02);
+        transform: scale(1.015);
     }
     .img {
         display: block;
