@@ -12,12 +12,12 @@ header {
     .main-footer-container {
         display: flex;
         flex-direction: column;
-        padding: 140px 0 40px 0;
+        padding: 140px 0;
         @media(max-width: 1250px) {
-            padding: 160px 30px 40px 30px;
+            padding: 160px 0 40px;
         }
         @media(max-width: 600px) {
-            padding: 160px 15px 40px 15px;
+            padding: 160px 0 40px ;
         }
     }
 }

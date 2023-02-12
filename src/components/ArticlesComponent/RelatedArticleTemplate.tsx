@@ -6,7 +6,7 @@ type Props = SliderItemType
 
 const RelatedArticleTemplate = ({
    _id,
-   photo,
+   imageUrl,
    title,
    text,
    createdAt,
@@ -16,7 +16,7 @@ const RelatedArticleTemplate = ({
    return (
       <>
          <div className="article-related">
-            <img src={photo} alt="article" className="img" />
+            <img src={imageUrl} alt="article" className="img" />
             <div className="descr">
                <Link to={`/article/${_id}`}>{title}</Link>
                <p>{text}</p>

@@ -1,34 +1,27 @@
-import './ArticleTemplate.scss'
 import ArticleTemplate from './ArticleTemplate'
-import { useDispatch, useSelector } from 'react-redux'
 import { blogsArray } from '../../utils/ArticlesArray'
-import { useEffect } from 'react'
-import { fetchPosts, fetchTags } from '../../redux/slices/posts'
 import { SliderItemType } from '../../types'
 import Skeleton from './Skeleton'
 
 type BlogsProps = SliderItemType
 
-const ArticlesList = () => {
-   const dispatch = useDispatch<any>()
-   const { posts } = useSelector((state: any) => state.posts)
-   const isPostLoading: any = posts.status === 'loading'
+type articleProps = {
+   isPostLoading: any
+   posts: any
+}
 
-   useEffect(() => {
-      dispatch(fetchPosts())
-      dispatch(fetchTags())
-   }, [])
-
-   console.log(posts.items)
-
+const ArticlesList = ({ isPostLoading, posts }: articleProps) => {
    return (
       <>
-         {(isPostLoading ? blogsArray : posts.items).map((obj: BlogsProps) =>
+         {(isPostLoading ? blogsArray : posts).map((obj: BlogsProps) =>
             isPostLoading ? (
                <Skeleton />
             ) : (
                <ArticleTemplate
                   title={obj.title}
+                  imageUrl={
+                     obj.imageUrl ? `http://localhost:4444${obj.imageUrl}` : ''
+                  }
                   text={obj.text}
                   createdAt={obj.createdAt?.slice(0, 10)}
                   key={obj._id}

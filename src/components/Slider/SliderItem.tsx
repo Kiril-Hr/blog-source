@@ -7,7 +7,7 @@ export type Props = SliderItemType
 
 const SliderItem = ({
    _id,
-   photo,
+   imageUrl,
    title,
    text,
    createdAt,
@@ -18,7 +18,7 @@ const SliderItem = ({
    return (
       <div className="article-home" draggable={false}>
          <p className="tags-home">{tags}</p>
-         <img src={photo} alt="article" className="img" />
+         <img src={imageUrl} alt="article" className="img" />
          <div className="descr-home">
             <Link to={`/article/${_id}`}>{cutText(title!, 50)}</Link>
             <p>{text}</p>

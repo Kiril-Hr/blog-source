@@ -1,6 +1,6 @@
 export type SliderItemType = {
     _id: number
-    photo?: string
+    imageUrl?: string
     title?: string
     text?: string
     createdAt?: string

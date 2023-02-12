@@ -16,6 +16,7 @@ const Main = () => {
             <Route path="/" element={<Home />} />
             <Route path="articles" element={<Articles />} />
             <Route path="/article/:id" element={<Article />} />
+            <Route path="/article/:id/edit" element={<CreatedArticle />} />
             <Route path="account-settings" element={<MyAccount />} />
             <Route path="blogs" element={<Blogs />} />
             <Route path="my-blog" element={<MyBlog />} />

@@ -6,7 +6,7 @@ export type BlogsProps = SliderItemType
 const blogsArray:BlogsProps[] = [
     {
         _id: 1,
-        photo: '../images/backg-of-blogs/1.jpg',
+        imageUrl: '../images/backg-of-blogs/1.jpg',
         title: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet, inc_idunt!',
         text: 'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Inc_idunt, ipsum odio facere obcaecati nemo expedita! Quod nemo alias aperiam nostrum, minus, culpa amet _id, nihil error pariatur odit. Ipsum, cup_iditate, recusandae ratione ducimus culpa nobis molestiae distinctio iusto iure ipsam labore consequuntur quisquam suscipit fugit eligendi. Neque voluptatem nihil tempore.',
         createdAt: '2022-12-22',
@@ -17,7 +17,7 @@ const blogsArray:BlogsProps[] = [
     },
     {
         _id: 2,
-        photo: '../images/backg-of-blogs/2.jpg',
+        imageUrl: '../images/backg-of-blogs/2.jpg',
         title: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet, inc_idunt!',
         text: 'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Inc_idunt, ipsum odio facere obcaecati nemo expedita! Quod nemo alias aperiam nostrum, minus, culpa amet _id, nihil error pariatur odit. Ipsum, cup_iditate, recusandae ratione ducimus culpa nobis molestiae distinctio iusto iure ipsam labore consequuntur quisquam suscipit fugit eligendi. Neque voluptatem nihil tempore.',
         createdAt: '2022-12-22',
@@ -28,7 +28,7 @@ const blogsArray:BlogsProps[] = [
     },
     {
         _id: 3,
-        photo: '../images/backg-of-blogs/3.jpg',
+        imageUrl: '../images/backg-of-blogs/3.jpg',
         title: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet, inc_idunt!',
         text: 'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Inc_idunt, ipsum odio facere obcaecati nemo expedita! Quod nemo alias aperiam nostrum, minus, culpa amet _id, nihil error pariatur odit. Ipsum, cup_iditate, recusandae ratione ducimus culpa nobis molestiae distinctio iusto iure ipsam labore consequuntur quisquam suscipit fugit eligendi. Neque voluptatem nihil tempore.',
         createdAt: '2022-12-22',
@@ -39,7 +39,7 @@ const blogsArray:BlogsProps[] = [
     },
     {
         _id: 4,
-        photo: '../images/backg-of-blogs/4.jpg',
+        imageUrl: '../images/backg-of-blogs/4.jpg',
         title: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet, inc_idunt!',
         text: 'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Inc_idunt, ipsum odio facere obcaecati nemo expedita! Quod nemo alias aperiam nostrum, minus, culpa amet _id, nihil error pariatur odit. Ipsum, cup_iditate, recusandae ratione ducimus culpa nobis molestiae distinctio iusto iure ipsam labore consequuntur quisquam suscipit fugit eligendi. Neque voluptatem nihil tempore.',
         createdAt: '2022-12-22',
@@ -50,7 +50,7 @@ const blogsArray:BlogsProps[] = [
     },
     {
         _id: 5,
-        photo: '../images/backg-of-blogs/5.jpg',
+        imageUrl: '../images/backg-of-blogs/5.jpg',
         title: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet, inc_idunt!',
         text: 'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Inc_idunt, ipsum odio facere obcaecati nemo expedita! Quod nemo alias aperiam nostrum, minus, culpa amet _id, nihil error pariatur odit. Ipsum, cup_iditate, recusandae ratione ducimus culpa nobis molestiae distinctio iusto iure ipsam labore consequuntur quisquam suscipit fugit eligendi. Neque voluptatem nihil tempore.',
         createdAt: '2022-12-22',
@@ -61,7 +61,7 @@ const blogsArray:BlogsProps[] = [
     },
     {
         _id: 6,
-        photo: '../images/backg-of-blogs/6.jpg',
+        imageUrl: '../images/backg-of-blogs/6.jpg',
         title: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet, inc_idunt!',
         text: 'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Inc_idunt, ipsum odio facere obcaecati nemo expedita! Quod nemo alias aperiam nostrum, minus, culpa amet _id, nihil error pariatur odit. Ipsum, cup_iditate, recusandae ratione ducimus culpa nobis molestiae distinctio iusto iure ipsam labore consequuntur quisquam suscipit fugit eligendi. Neque voluptatem nihil tempore.',
         createdAt: '2022-12-22',
@@ -72,7 +72,7 @@ const blogsArray:BlogsProps[] = [
     },
     {
         _id: 7,
-        photo: '../images/backg-of-blogs/7.png',
+        imageUrl: '../images/backg-of-blogs/7.png',
         title: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet, inc_idunt!',
         text: 'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Inc_idunt, ipsum odio facere obcaecati nemo expedita! Quod nemo alias aperiam nostrum, minus, culpa amet _id, nihil error pariatur odit. Ipsum, cup_iditate, recusandae ratione ducimus culpa nobis molestiae distinctio iusto iure ipsam labore consequuntur quisquam suscipit fugit eligendi. Neque voluptatem nihil tempore.',
         createdAt: '2022-12-22',
@@ -83,7 +83,7 @@ const blogsArray:BlogsProps[] = [
     },
     {
         _id: 8,
-        photo: '../images/backg-of-blogs/8.jpg',
+        imageUrl: '../images/backg-of-blogs/8.jpg',
         title: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet, inc_idunt!',
         text: 'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Inc_idunt, ipsum odio facere obcaecati nemo expedita! Quod nemo alias aperiam nostrum, minus, culpa amet _id, nihil error pariatur odit. Ipsum, cup_iditate, recusandae ratione ducimus culpa nobis molestiae distinctio iusto iure ipsam labore consequuntur quisquam suscipit fugit eligendi. Neque voluptatem nihil tempore.',
         createdAt: '2022-12-22',
@@ -94,7 +94,7 @@ const blogsArray:BlogsProps[] = [
     },
     {
         _id: 9,
-        photo: '../images/backg-of-blogs/9.jpg',
+        imageUrl: '../images/backg-of-blogs/9.jpg',
         title: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet, inc_idunt!',
         text: 'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Inc_idunt, ipsum odio facere obcaecati nemo expedita! Quod nemo alias aperiam nostrum, minus, culpa amet _id, nihil error pariatur odit. Ipsum, cup_iditate, recusandae ratione ducimus culpa nobis molestiae distinctio iusto iure ipsam labore consequuntur quisquam suscipit fugit eligendi. Neque voluptatem nihil tempore.',
         createdAt: '2022-12-22',
@@ -105,7 +105,7 @@ const blogsArray:BlogsProps[] = [
     },
     {
         _id: 10,
-        photo: '../images/backg-of-blogs/1.jpg',
+        imageUrl: '../images/backg-of-blogs/1.jpg',
         title: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet, inc_idunt!',
         text: 'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Inc_idunt, ipsum odio facere obcaecati nemo expedita! Quod nemo alias aperiam nostrum, minus, culpa amet _id, nihil error pariatur odit. Ipsum, cup_iditate, recusandae ratione ducimus culpa nobis molestiae distinctio iusto iure ipsam labore consequuntur quisquam suscipit fugit eligendi. Neque voluptatem nihil tempore.',
         createdAt: '2022-12-22',
@@ -116,7 +116,7 @@ const blogsArray:BlogsProps[] = [
     },
     {
         _id: 11,
-        photo: '../images/backg-of-blogs/2.jpg',
+        imageUrl: '../images/backg-of-blogs/2.jpg',
         title: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet, inc_idunt!',
         text: 'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Inc_idunt, ipsum odio facere obcaecati nemo expedita! Quod nemo alias aperiam nostrum, minus, culpa amet _id, nihil error pariatur odit. Ipsum, cup_iditate, recusandae ratione ducimus culpa nobis molestiae distinctio iusto iure ipsam labore consequuntur quisquam suscipit fugit eligendi. Neque voluptatem nihil tempore.',
         createdAt: '2022-12-22',
@@ -127,7 +127,7 @@ const blogsArray:BlogsProps[] = [
     },
     {
         _id: 12,
-        photo: '../images/backg-of-blogs/3.jpg',
+        imageUrl: '../images/backg-of-blogs/3.jpg',
         title: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet, inc_idunt!',
         text: 'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Inc_idunt, ipsum odio facere obcaecati nemo expedita! Quod nemo alias aperiam nostrum, minus, culpa amet _id, nihil error pariatur odit. Ipsum, cup_iditate, recusandae ratione ducimus culpa nobis molestiae distinctio iusto iure ipsam labore consequuntur quisquam suscipit fugit eligendi. Neque voluptatem nihil tempore.',
         createdAt: '2022-12-22',
@@ -138,7 +138,7 @@ const blogsArray:BlogsProps[] = [
     },
     {
         _id: 13,
-        photo: '../images/backg-of-blogs/4.jpg',
+        imageUrl: '../images/backg-of-blogs/4.jpg',
         title: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet, inc_idunt!',
         text: 'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Inc_idunt, ipsum odio facere obcaecati nemo expedita! Quod nemo alias aperiam nostrum, minus, culpa amet _id, nihil error pariatur odit. Ipsum, cup_iditate, recusandae ratione ducimus culpa nobis molestiae distinctio iusto iure ipsam labore consequuntur quisquam suscipit fugit eligendi. Neque voluptatem nihil tempore.',
         createdAt: '2022-12-22',
@@ -149,7 +149,7 @@ const blogsArray:BlogsProps[] = [
     },
     {
         _id: 14,
-        photo: '../images/backg-of-blogs/5.jpg',
+        imageUrl: '../images/backg-of-blogs/5.jpg',
         title: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet, inc_idunt!',
         text: 'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Inc_idunt, ipsum odio facere obcaecati nemo expedita! Quod nemo alias aperiam nostrum, minus, culpa amet _id, nihil error pariatur odit. Ipsum, cup_iditate, recusandae ratione ducimus culpa nobis molestiae distinctio iusto iure ipsam labore consequuntur quisquam suscipit fugit eligendi. Neque voluptatem nihil tempore.',
         createdAt: '2022-12-22',
@@ -160,7 +160,7 @@ const blogsArray:BlogsProps[] = [
     },
     {
         _id: 15,
-        photo: '../images/backg-of-blogs/6.jpg',
+        imageUrl: '../images/backg-of-blogs/6.jpg',
         title: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet, inc_idunt!',
         text: 'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Inc_idunt, ipsum odio facere obcaecati nemo expedita! Quod nemo alias aperiam nostrum, minus, culpa amet _id, nihil error pariatur odit. Ipsum, cup_iditate, recusandae ratione ducimus culpa nobis molestiae distinctio iusto iure ipsam labore consequuntur quisquam suscipit fugit eligendi. Neque voluptatem nihil tempore.',
         createdAt: '2022-12-22',
@@ -171,7 +171,7 @@ const blogsArray:BlogsProps[] = [
     },
     {
         _id: 16,
-        photo: '../images/backg-of-blogs/7.png',
+        imageUrl: '../images/backg-of-blogs/7.png',
         title: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet, inc_idunt!',
         text: 'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Inc_idunt, ipsum odio facere obcaecati nemo expedita! Quod nemo alias aperiam nostrum, minus, culpa amet _id, nihil error pariatur odit. Ipsum, cup_iditate, recusandae ratione ducimus culpa nobis molestiae distinctio iusto iure ipsam labore consequuntur quisquam suscipit fugit eligendi. Neque voluptatem nihil tempore.',
         createdAt: '2022-12-22',
@@ -182,7 +182,7 @@ const blogsArray:BlogsProps[] = [
     },
     {
         _id: 17,
-        photo: '../images/backg-of-blogs/8.jpg',
+        imageUrl: '../images/backg-of-blogs/8.jpg',
         title: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet, inc_idunt!',
         text: 'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Inc_idunt, ipsum odio facere obcaecati nemo expedita! Quod nemo alias aperiam nostrum, minus, culpa amet _id, nihil error pariatur odit. Ipsum, cup_iditate, recusandae ratione ducimus culpa nobis molestiae distinctio iusto iure ipsam labore consequuntur quisquam suscipit fugit eligendi. Neque voluptatem nihil tempore.',
         createdAt: '2022-12-22',
@@ -193,7 +193,7 @@ const blogsArray:BlogsProps[] = [
     },
     {
         _id: 18,
-        photo: '../images/backg-of-blogs/9.jpg',
+        imageUrl: '../images/backg-of-blogs/9.jpg',
         title: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet, inc_idunt!',
         text: 'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Inc_idunt, ipsum odio facere obcaecati nemo expedita! Quod nemo alias aperiam nostrum, minus, culpa amet _id, nihil error pariatur odit. Ipsum, cup_iditate, recusandae ratione ducimus culpa nobis molestiae distinctio iusto iure ipsam labore consequuntur quisquam suscipit fugit eligendi. Neque voluptatem nihil tempore.',
         createdAt: '2022-12-22',
@@ -204,7 +204,7 @@ const blogsArray:BlogsProps[] = [
     },
     {
         _id: 19,
-        photo: '../images/backg-of-blogs/1.jpg',
+        imageUrl: '../images/backg-of-blogs/1.jpg',
         title: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet, inc_idunt!',
         text: 'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Inc_idunt, ipsum odio facere obcaecati nemo expedita! Quod nemo alias aperiam nostrum, minus, culpa amet _id, nihil error pariatur odit. Ipsum, cup_iditate, recusandae ratione ducimus culpa nobis molestiae distinctio iusto iure ipsam labore consequuntur quisquam suscipit fugit eligendi. Neque voluptatem nihil tempore.',
         createdAt: '2022-12-22',
@@ -215,7 +215,7 @@ const blogsArray:BlogsProps[] = [
     },
     {
         _id: 20,
-        photo: '../images/backg-of-blogs/2.jpg',
+        imageUrl: '../images/backg-of-blogs/2.jpg',
         title: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet, inc_idunt!',
         text: 'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Inc_idunt, ipsum odio facere obcaecati nemo expedita! Quod nemo alias aperiam nostrum, minus, culpa amet _id, nihil error pariatur odit. Ipsum, cup_iditate, recusandae ratione ducimus culpa nobis molestiae distinctio iusto iure ipsam labore consequuntur quisquam suscipit fugit eligendi. Neque voluptatem nihil tempore.',
         createdAt: '2022-12-22',
@@ -226,7 +226,7 @@ const blogsArray:BlogsProps[] = [
     },
     {
         _id: 21,
-        photo: '../images/backg-of-blogs/3.jpg',
+        imageUrl: '../images/backg-of-blogs/3.jpg',
         title: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet, inc_idunt!',
         text: 'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Inc_idunt, ipsum odio facere obcaecati nemo expedita! Quod nemo alias aperiam nostrum, minus, culpa amet _id, nihil error pariatur odit. Ipsum, cup_iditate, recusandae ratione ducimus culpa nobis molestiae distinctio iusto iure ipsam labore consequuntur quisquam suscipit fugit eligendi. Neque voluptatem nihil tempore.',
         createdAt: '2022-12-22',
@@ -237,7 +237,7 @@ const blogsArray:BlogsProps[] = [
     },
     {
         _id: 22,
-        photo: '../images/backg-of-blogs/4.jpg',
+        imageUrl: '../images/backg-of-blogs/4.jpg',
         title: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet, inc_idunt!',
         text: 'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Inc_idunt, ipsum odio facere obcaecati nemo expedita! Quod nemo alias aperiam nostrum, minus, culpa amet _id, nihil error pariatur odit. Ipsum, cup_iditate, recusandae ratione ducimus culpa nobis molestiae distinctio iusto iure ipsam labore consequuntur quisquam suscipit fugit eligendi. Neque voluptatem nihil tempore.',
         createdAt: '2022-12-22',
@@ -248,7 +248,7 @@ const blogsArray:BlogsProps[] = [
     },
     {
         _id: 23,
-        photo: '../images/backg-of-blogs/5.jpg',
+        imageUrl: '../images/backg-of-blogs/5.jpg',
         title: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet, inc_idunt!',
         text: 'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Inc_idunt, ipsum odio facere obcaecati nemo expedita! Quod nemo alias aperiam nostrum, minus, culpa amet _id, nihil error pariatur odit. Ipsum, cup_iditate, recusandae ratione ducimus culpa nobis molestiae distinctio iusto iure ipsam labore consequuntur quisquam suscipit fugit eligendi. Neque voluptatem nihil tempore.',
         createdAt: '2022-12-22',
@@ -259,7 +259,7 @@ const blogsArray:BlogsProps[] = [
     },
     {
         _id: 24,
-        photo: '../images/backg-of-blogs/6.jpg',
+        imageUrl: '../images/backg-of-blogs/6.jpg',
         title: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet, inc_idunt!',
         text: 'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Inc_idunt, ipsum odio facere obcaecati nemo expedita! Quod nemo alias aperiam nostrum, minus, culpa amet _id, nihil error pariatur odit. Ipsum, cup_iditate, recusandae ratione ducimus culpa nobis molestiae distinctio iusto iure ipsam labore consequuntur quisquam suscipit fugit eligendi. Neque voluptatem nihil tempore.',
         createdAt: '2022-12-22',
@@ -270,7 +270,7 @@ const blogsArray:BlogsProps[] = [
     },
     {
         _id: 25,
-        photo: '../images/backg-of-blogs/7.png',
+        imageUrl: '../images/backg-of-blogs/7.png',
         title: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet, inc_idunt!',
         text: 'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Inc_idunt, ipsum odio facere obcaecati nemo expedita! Quod nemo alias aperiam nostrum, minus, culpa amet _id, nihil error pariatur odit. Ipsum, cup_iditate, recusandae ratione ducimus culpa nobis molestiae distinctio iusto iure ipsam labore consequuntur quisquam suscipit fugit eligendi. Neque voluptatem nihil tempore.',
         createdAt: '2022-12-22',
@@ -281,7 +281,7 @@ const blogsArray:BlogsProps[] = [
     },
     {
         _id: 26,
-        photo: '../images/backg-of-blogs/8.jpg',
+        imageUrl: '../images/backg-of-blogs/8.jpg',
         title: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet, inc_idunt!',
         text: 'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Inc_idunt, ipsum odio facere obcaecati nemo expedita! Quod nemo alias aperiam nostrum, minus, culpa amet _id, nihil error pariatur odit. Ipsum, cup_iditate, recusandae ratione ducimus culpa nobis molestiae distinctio iusto iure ipsam labore consequuntur quisquam suscipit fugit eligendi. Neque voluptatem nihil tempore.',
         createdAt: '2022-12-22',
@@ -292,7 +292,7 @@ const blogsArray:BlogsProps[] = [
     },
     {
         _id: 27,
-        photo: '../images/backg-of-blogs/9.jpg',
+        imageUrl: '../images/backg-of-blogs/9.jpg',
         title: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet, inc_idunt!',
         text: 'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Inc_idunt, ipsum odio facere obcaecati nemo expedita! Quod nemo alias aperiam nostrum, minus, culpa amet _id, nihil error pariatur odit. Ipsum, cup_iditate, recusandae ratione ducimus culpa nobis molestiae distinctio iusto iure ipsam labore consequuntur quisquam suscipit fugit eligendi. Neque voluptatem nihil tempore.',
         createdAt: '2022-12-22',
@@ -303,7 +303,7 @@ const blogsArray:BlogsProps[] = [
     },
     {
         _id: 28,
-        photo: '../images/backg-of-blogs/1.jpg',
+        imageUrl: '../images/backg-of-blogs/1.jpg',
         title: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet, inc_idunt!',
         text: 'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Inc_idunt, ipsum odio facere obcaecati nemo expedita! Quod nemo alias aperiam nostrum, minus, culpa amet _id, nihil error pariatur odit. Ipsum, cup_iditate, recusandae ratione ducimus culpa nobis molestiae distinctio iusto iure ipsam labore consequuntur quisquam suscipit fugit eligendi. Neque voluptatem nihil tempore.',
         createdAt: '2022-12-22',
@@ -314,7 +314,7 @@ const blogsArray:BlogsProps[] = [
     },
     {
         _id: 29,
-        photo: '../images/backg-of-blogs/2.jpg',
+        imageUrl: '../images/backg-of-blogs/2.jpg',
         title: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet, inc_idunt!',
         text: 'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Inc_idunt, ipsum odio facere obcaecati nemo expedita! Quod nemo alias aperiam nostrum, minus, culpa amet _id, nihil error pariatur odit. Ipsum, cup_iditate, recusandae ratione ducimus culpa nobis molestiae distinctio iusto iure ipsam labore consequuntur quisquam suscipit fugit eligendi. Neque voluptatem nihil tempore.',
         createdAt: '2022-12-22',
@@ -325,7 +325,7 @@ const blogsArray:BlogsProps[] = [
     },
     {
         _id: 30,
-        photo: '../images/backg-of-blogs/3.jpg',
+        imageUrl: '../images/backg-of-blogs/3.jpg',
         title: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet, inc_idunt!',
         text: 'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Inc_idunt, ipsum odio facere obcaecati nemo expedita! Quod nemo alias aperiam nostrum, minus, culpa amet _id, nihil error pariatur odit. Ipsum, cup_iditate, recusandae ratione ducimus culpa nobis molestiae distinctio iusto iure ipsam labore consequuntur quisquam suscipit fugit eligendi. Neque voluptatem nihil tempore.',
         createdAt: '2022-12-22',
@@ -336,7 +336,7 @@ const blogsArray:BlogsProps[] = [
     },
     {
         _id: 31,
-        photo: '../images/backg-of-blogs/4.jpg',
+        imageUrl: '../images/backg-of-blogs/4.jpg',
         title: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet, inc_idunt!',
         text: 'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Inc_idunt, ipsum odio facere obcaecati nemo expedita! Quod nemo alias aperiam nostrum, minus, culpa amet _id, nihil error pariatur odit. Ipsum, cup_iditate, recusandae ratione ducimus culpa nobis molestiae distinctio iusto iure ipsam labore consequuntur quisquam suscipit fugit eligendi. Neque voluptatem nihil tempore.',
         createdAt: '2022-12-22',
@@ -347,7 +347,7 @@ const blogsArray:BlogsProps[] = [
     },
     {
         _id: 32,
-        photo: '../images/backg-of-blogs/5.jpg',
+        imageUrl: '../images/backg-of-blogs/5.jpg',
         title: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet, inc_idunt!',
         text: 'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Inc_idunt, ipsum odio facere obcaecati nemo expedita! Quod nemo alias aperiam nostrum, minus, culpa amet _id, nihil error pariatur odit. Ipsum, cup_iditate, recusandae ratione ducimus culpa nobis molestiae distinctio iusto iure ipsam labore consequuntur quisquam suscipit fugit eligendi. Neque voluptatem nihil tempore.',
         createdAt: '2022-12-22',
@@ -358,7 +358,7 @@ const blogsArray:BlogsProps[] = [
     },
     {
         _id: 33,
-        photo: '../images/backg-of-blogs/6.jpg',
+        imageUrl: '../images/backg-of-blogs/6.jpg',
         title: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet, inc_idunt!',
         text: 'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Inc_idunt, ipsum odio facere obcaecati nemo expedita! Quod nemo alias aperiam nostrum, minus, culpa amet _id, nihil error pariatur odit. Ipsum, cup_iditate, recusandae ratione ducimus culpa nobis molestiae distinctio iusto iure ipsam labore consequuntur quisquam suscipit fugit eligendi. Neque voluptatem nihil tempore.',
         createdAt: '2022-12-22',
@@ -369,7 +369,7 @@ const blogsArray:BlogsProps[] = [
     },
     {
         _id: 34,
-        photo: '../images/backg-of-blogs/7.png',
+        imageUrl: '../images/backg-of-blogs/7.png',
         title: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet, inc_idunt!',
         text: 'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Inc_idunt, ipsum odio facere obcaecati nemo expedita! Quod nemo alias aperiam nostrum, minus, culpa amet _id, nihil error pariatur odit. Ipsum, cup_iditate, recusandae ratione ducimus culpa nobis molestiae distinctio iusto iure ipsam labore consequuntur quisquam suscipit fugit eligendi. Neque voluptatem nihil tempore.',
         createdAt: '2022-12-22',
@@ -380,7 +380,7 @@ const blogsArray:BlogsProps[] = [
     },
     {
         _id: 35,
-        photo: '../images/backg-of-blogs/8.jpg',
+        imageUrl: '../images/backg-of-blogs/8.jpg',
         title: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet, inc_idunt!',
         text: 'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Inc_idunt, ipsum odio facere obcaecati nemo expedita! Quod nemo alias aperiam nostrum, minus, culpa amet _id, nihil error pariatur odit. Ipsum, cup_iditate, recusandae ratione ducimus culpa nobis molestiae distinctio iusto iure ipsam labore consequuntur quisquam suscipit fugit eligendi. Neque voluptatem nihil tempore.',
         createdAt: '2022-12-22',
@@ -391,7 +391,7 @@ const blogsArray:BlogsProps[] = [
     },
     {
         _id: 36,
-        photo: '../images/backg-of-blogs/9.jpg',
+        imageUrl: '../images/backg-of-blogs/9.jpg',
         title: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet, inc_idunt!',
         text: 'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Inc_idunt, ipsum odio facere obcaecati nemo expedita! Quod nemo alias aperiam nostrum, minus, culpa amet _id, nihil error pariatur odit. Ipsum, cup_iditate, recusandae ratione ducimus culpa nobis molestiae distinctio iusto iure ipsam labore consequuntur quisquam suscipit fugit eligendi. Neque voluptatem nihil tempore.',
         createdAt: '2022-12-22',
@@ -402,7 +402,7 @@ const blogsArray:BlogsProps[] = [
     },
     {
         _id: 37,
-        photo: '../images/backg-of-blogs/main-article-photo.jpg',
+        imageUrl: '../images/backg-of-blogs/main-article-imageUrl.jpg',
         title: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet, inc_idunt!',
         text: 'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Inc_idunt, ipsum odio facere obcaecati nemo expedita! Quod nemo alias aperiam nostrum, minus, culpa amet _id, nihil error pariatur odit. Ipsum, cup_iditate, recusandae ratione ducimus culpa nobis molestiae distinctio iusto iure ipsam labore consequuntur quisquam suscipit fugit eligendi. Neque voluptatem nihil tempore. Lorem ipsum dolor sit amet consectetur, adipisicing elit. Inc_idunt, ipsum odio facere obcaecati nemo expedita! Quod nemo alias aperiam nostrum, minus, culpa amet _id, nihil error pariatur odit. Ipsum, cup_iditate, recusandae ratione ducimus culpa nobis molestiae distinctio iusto iure ipsam labore consequuntur quisquam suscipit fugit eligendi. Neque voluptatem nihil tempore.',
         createdAt: '2022-12-22',

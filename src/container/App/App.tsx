@@ -1,8 +1,8 @@
 import { useState, useEffect } from 'react'
 import { ThunkDispatch } from '@reduxjs/toolkit'
-import { useDispatch, useSelector } from 'react-redux'
+import { useDispatch } from 'react-redux'
 import HbMenu from '../../components/HbMenu/HbMenu'
-import { fetchAuthMe, selectIsAuth } from '../../redux/slices/auth'
+import { fetchAuthMe } from '../../redux/slices/auth'
 import Header from '../Header/Header'
 import Main from '../Main/Main'
 import './App.scss'
@@ -11,11 +11,10 @@ const App = () => {
    const [menuActive, setMenuActive] = useState<boolean>(false)
 
    const dispatch = useDispatch<ThunkDispatch<any, any, any>>()
-   const isAuth = useSelector(selectIsAuth)
 
    useEffect(() => {
       dispatch(fetchAuthMe())
-   }, [])
+   }, []) // eslint-disable-line react-hooks/exhaustive-deps
 
    return (
       <>

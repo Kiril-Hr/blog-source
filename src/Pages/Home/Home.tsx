@@ -59,7 +59,7 @@ const Home = () => {
       <div className="home">
          <div className="container-popular-main">
             <div className="main-article">
-               <img src={mainArticle.photo} alt={mainArticle.user} />
+               <img src={mainArticle.imageUrl} alt={mainArticle.user} />
                <NavLink to={`/article/${mainArticle._id}`}>
                   {mainArticle.title}
                </NavLink>

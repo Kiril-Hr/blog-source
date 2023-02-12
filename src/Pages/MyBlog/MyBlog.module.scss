@@ -5,6 +5,7 @@
     align-items: center;
     flex-direction: column;
     gap: 40px;
+    padding: 0 40px;
     .userInfoPhoto {
         display: flex;
         justify-content: space-evenly;
@@ -100,11 +101,43 @@
                 gap: 40px;
                 flex-wrap: wrap;
                 .myPost {
+                    position: relative;
                     height: 120px;
                     width: 600px;
                     transition: all 0.25s cubic-bezier(0.25, 0.46, 0.45, 0.94);
                     border-bottom: 1px solid #DBE4ED;
                     background: white;
+                    > button {
+                        position: absolute;
+                        padding: 0;
+                        top: 0;
+                        right: 0;
+                        width: 20px;
+                        height: 20px;
+                        cursor: pointer;
+                        background: none;
+                        border: 0;
+                        &:hover {
+                            svg {
+                                fill: rgb(190, 27, 27);
+                            }
+                        }
+                        svg {
+                            fill: #535353c2;
+                            width: 100%;
+                            height: 100%; 
+                        }
+                        &:nth-child(1) {
+                            right: 30px;
+                            &:hover {
+                                svg {
+                                    fill: $color-text;
+                                }
+                            }
+                            
+                        }
+                    }
+                    
                     &:hover {
                         border-bottom: 1px solid #FF5C35;
                         transform: scale(1.015);
@@ -133,6 +166,7 @@
                     .dateAndViews {
                         display: flex;
                         justify-content: space-between;
+                        align-items: center;
                         time, p {
                             font-family: $font-family;
                             font-size: 1rem;
@@ -154,10 +188,45 @@
                     }
                 }
             }
-            .wrapper-sort-btn {
+            .wrapperSortBtn {
+                background: #FCEAD7;
                 width: 350px;
+                min-width: 220px;
+                height: 100%;
+                max-height: 600px;
+                padding: 30px;
+                display: flex;
+                flex-wrap: wrap;
+                gap: 15px;
+                border: 1px solid #FF5C35;
+                @media(min-width: 2310px) {
+                    max-width: 900px;
+                    width: unset;
+                    min-width: 600px;
+                }
                 @media(max-width: 900px) {
                     width: 100%;
+                    min-width: unset;
+                }
+                .title {
+                    margin: 30px 0 0 30px;
+                    height: fit-content;
+                }
+                button {
+                    cursor: pointer;
+                    height: max-content;
+                    width: max-content;
+                    background: #6366fc;
+                    color: white;
+                    font-family: $font-family;
+                    font-size: 0.95rem;
+                    font-weight: 700;
+                    letter-spacing: 1px;
+                    transition: all .3s ;
+                    border: unset;
+                    &:hover {
+                        transform: scale(1.03);
+                    }
                 }
             }
         }

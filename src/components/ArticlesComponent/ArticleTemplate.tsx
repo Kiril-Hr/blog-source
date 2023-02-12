@@ -2,13 +2,13 @@ import { Link } from 'react-router-dom'
 import { SliderItemType } from '../../types'
 import { cutText } from '../../utils/functions'
 import UserInfo from '../UserInfo/UserInfo'
-import './ArticleTemplate.scss'
+import classes from './ArticleTemplate.module.scss'
 
 type Props = SliderItemType
 
 const ArticleTemplate = ({
    _id,
-   photo,
+   imageUrl,
    title,
    text,
    createdAt,
@@ -18,19 +18,19 @@ const ArticleTemplate = ({
 }: Props) => {
    return (
       <>
-         <div className="article">
-            <img src={photo} alt="article" className="img" />
-            <div className="text-container">
-               <div className="descr">
+         <div className={classes.article}>
+            <img src={imageUrl} alt="article" className={classes.img} />
+            <div className={classes.textContainer}>
+               <div className={classes.descr}>
                   <Link to={`/article/${_id}`}>{title}</Link>
                   <p>{cutText(text!, 500)}</p>
                </div>
-               <div className="date-author-name-link">
-                  <div className="date-views">
+               <div className={classes.dateAuthorNameLink}>
+                  <div className={classes.dateViews}>
                      <time dateTime={createdAt}>{createdAt}</time>
-                     <p className="views">
+                     <p className={classes.views}>
                         <svg
-                           id="svg"
+                           className={classes.svg}
                            viewBox="0 0 20 20"
                            xmlns="http://www.w3.org/2000/svg"
                         >
@@ -40,15 +40,16 @@ const ArticleTemplate = ({
                      </p>
                   </div>
 
-                  <div className="tags">
+                  <div className={classes.tags}>
                      {tags.map((tag: string, i: number) => (
-                        <p className="tag" key={i}>
+                        <p className={classes.tag} key={i}>
                            {tag}
                         </p>
                      ))}
                   </div>
-
-                  <UserInfo {...user} />
+                  <div className={classes.authorNameLink}>
+                     <UserInfo {...user} />
+                  </div>
                </div>
             </div>
          </div>

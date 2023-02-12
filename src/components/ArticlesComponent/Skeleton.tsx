@@ -1,20 +1,20 @@
-import './ArticleTemplate.scss'
+import classes from './ArticleTemplate.module.scss'
 
 const Skeleton = () => {
    return (
       <>
-         <div className="article skeleton">
-            <img src="./loading" alt="loading" className="img" />
-            <div className="descr">
+         <div className={classes.article + ' ' + classes.skeleton}>
+            <img src="./loading" alt="loading" className={classes.img} />
+            <div className={classes.descr}>
                <a href="fake">Loading</a>
                <p>Loading</p>
             </div>
-            <div className="date-author-name-link">
-               <div className="date-views">
+            <div className={classes.dateAuthorNameLink}>
+               <div className={classes.dateViews}>
                   <time dateTime={'0000'}></time>
-                  <p className="views">
+                  <p className={classes.views}>
                      <svg
-                        id="svg"
+                        className={classes.svg}
                         viewBox="0 0 20 20"
                         xmlns="http://www.w3.org/2000/svg"
                         width="15"
@@ -25,7 +25,7 @@ const Skeleton = () => {
                   </p>
                </div>
 
-               <p className="tags">loading</p>
+               <p className={classes.tags}>loading</p>
             </div>
          </div>
       </>

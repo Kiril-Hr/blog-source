@@ -1,0 +1,82 @@
+@import '../../fonts';
+.text	{
+	font-family: $font-family;
+	letter-spacing: 1px;
+	color: $color-text;
+	h1 {
+		margin-bottom: 15px;
+		font-weight: 900;
+		font-size: 28px;     
+	}
+	h2 {
+		margin-bottom: 15px;
+		font-weight: 900;
+		font-size: 26px;     
+	}
+	h3 {
+		margin-bottom: 15px;
+		font-weight: 900;
+		font-size: 24px;     
+	}
+	h4 {
+		margin-bottom: 15px;
+		font-weight: 900;
+		font-size: 22px;     
+	}
+	h5 {
+		margin-bottom: 15px;
+		font-weight: 900;
+		font-size: 20px;     
+	}
+	h6 {
+		margin-bottom: 15px;
+		font-weight: 900;
+		font-size: 18px;     
+	}
+	p {
+		margin: 0 0 15px 0;
+	}
+	 ul {
+		display: block;
+		margin: 0 0 15px 25px;
+		padding: 0;
+	}
+	 ul ul {
+		margin-top: 15px;
+	}
+	 ul li {
+		list-style: outside disc;
+		margin: 0 0 10px 0;
+	}
+	 ol {
+		display: block;
+		margin: 0 0 15px 25px;
+		padding: 0;
+	}
+	 ol ol {
+		margin-top: 15px;
+	}
+	 ol li {
+		list-style: outside decimal;
+		margin: 0 0 10px 0;
+	}
+	 table {
+		width: 100%;
+		margin-bottom: 15px;
+		table-layout: fixed;
+	}
+	 th {
+		font-weight: 900;
+		padding: 10px;
+	}
+	 thead th {
+		background-color: #f1f1f1;
+		border: 1px solid #ddd;
+		text-align: center;
+	}
+	 td {
+		border: 1px solid #ddd;
+		background-color: #fff;
+		padding: 10px;
+	}
+}
