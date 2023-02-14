@@ -2,8 +2,9 @@
 
 .containerArticlesPage {
 
-    > .title {
+    > h2 {
         margin-left: 60px;
+        cursor: pointer;
     }
     .containerArticlesTagsSection {
         display: flex;

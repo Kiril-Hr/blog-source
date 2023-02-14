@@ -1,6 +1,6 @@
 import ArticleTemplate from './ArticleTemplate'
 import { blogsArray } from '../../utils/ArticlesArray'
-import { SliderItemType } from '../../types'
+import { SliderItemType } from '../../utils/types'
 import Skeleton from './Skeleton'
 
 type BlogsProps = SliderItemType

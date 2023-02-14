@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom'
-import { SliderItemType } from '../../types'
+import { SliderItemType } from '../../utils/types'
 import { cutText } from '../../utils/functions'
 import UserInfo from '../UserInfo/UserInfo'
 import classes from './ArticleTemplate.module.scss'
@@ -23,7 +23,14 @@ const ArticleTemplate = ({
             <div className={classes.textContainer}>
                <div className={classes.descr}>
                   <Link to={`/article/${_id}`}>{title}</Link>
-                  <p>{cutText(text!, 500)}</p>
+                  <p>
+                     {cutText(text!, 400).replace(
+                        /./gi,
+                        (a: any, b: any, c: any) => {
+                           return a === '*' || a === '#' ? '' : a
+                        }
+                     )}
+                  </p>
                </div>
                <div className={classes.dateAuthorNameLink}>
                   <div className={classes.dateViews}>

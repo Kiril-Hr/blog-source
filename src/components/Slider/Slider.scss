@@ -1,3 +1,6 @@
 .swiper-wrapper {
     display: flex;
+    .swiper-slide {
+        flex-shrink: unset!important;
+    }
 }

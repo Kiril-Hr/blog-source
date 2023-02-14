@@ -1,4 +1,4 @@
-import { SliderItemType } from "../types"
+import { SliderItemType } from "./types"
 
 export type BlogsProps = SliderItemType
 

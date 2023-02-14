@@ -6,12 +6,12 @@ import {
    fetchTags,
 } from '../../redux/slices/posts'
 import { Link, Navigate, useNavigate } from 'react-router-dom'
-import LoadingCircle from '../../components/LoadingCircle/LoadingCircle'
+import LoadingCircle from '../../components/UI/LoadingCircle/LoadingCircle'
 import classes from './MyBlog.module.scss'
 import { cutText } from '../../utils/functions'
 import TagsBlockAside from '../../components/Tags/TagsBlockAside'
 import { selectIsAuth } from '../../redux/slices/auth'
-import Title from '../../components/Title/Title'
+import Title from '../../components/UI/Title/Title'
 
 const MyBlog = () => {
    const isAuth = useSelector(selectIsAuth)
@@ -46,15 +46,15 @@ const MyBlog = () => {
    }, {})
 
    const onClickRemove = (e: any) => {
-      const id: any = e.target.parentNode.parentNode.nextElementSibling.value
+      const id: string = e.target.parentNode.parentNode.nextElementSibling.value
       return e !== undefined ? dispatch(fetchRemovePost(id)) : null
    }
 
    const onClickEdit = (e: any) => {
-      const id: any =
+      const id: string =
          e.target.parentNode.parentNode.nextElementSibling.nextElementSibling
             .value
-      return navigate(`/article/${id}/edit`)
+      return e !== undefined ? navigate(`/article/${id}/edit`) : null
    }
 
    if (!isAuth && !window.localStorage.getItem('token')) {

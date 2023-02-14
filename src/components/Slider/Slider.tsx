@@ -1,6 +1,6 @@
 import { Swiper, SwiperSlide } from 'swiper/react'
 import { Navigation, Pagination } from 'swiper'
-import { SliderItemType } from '../../types'
+import { SliderItemType } from '../../utils/types'
 import SliderItem from './SliderItem'
 import './Slider.scss'
 import 'swiper/css/pagination'

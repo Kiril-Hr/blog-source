@@ -1,18 +1,40 @@
 import { blogsArray } from '../../utils/ArticlesArray'
 import RelatedArticleTemplate from '../../components/ArticlesComponent/RelatedArticleTemplate'
-import Title from '../../components/Title/Title'
+import Title from '../../components/UI/Title/Title'
 import './Home.scss'
 import { cutText } from '../../utils/functions'
 import { NavLink } from 'react-router-dom'
 import Slider from '../../components/Slider/Slider'
+import { useDispatch, useSelector } from 'react-redux'
+import { fetchPostsPopular } from '../../redux/slices/posts'
+import { useEffect, useState } from 'react'
+import LoadingCircle from '../../components/UI/LoadingCircle/LoadingCircle'
+import Skeleton from '../../components/ArticlesComponent/Skeleton'
+import UserInfo from '../../components/UserInfo/UserInfo'
 
 const Home = () => {
-   const items = [...blogsArray].sort(
-      (a: any, b: any) => b.viewsCount - a.viewsCount
-   )
+   const dispatch = useDispatch<any>()
+
+   const [isLoading, setIsLoading] = useState(true)
+
+   const { posts } = useSelector((state: any) => state.posts)
+
+   const isPostLoading: any = posts.status === 'loading'
+
+   useEffect(() => {
+      dispatch(fetchPostsPopular())
+      setIsLoading(false)
+   }, []) // eslint-disable-line react-hooks/exhaustive-deps
+
+   if (isLoading) {
+      return <LoadingCircle />
+   }
+
+   const popularPostsByViews = structuredClone(posts.items)
+
+   const [mainPost, ...restPosts] = popularPostsByViews
 
    const [
-      mainArticle,
       one,
       two,
       three,
@@ -22,10 +44,10 @@ const Home = () => {
       seven,
       eight,
       nine,
-      ...rest
-   ] = items
+      ...otherPopularArticles
+   ] = restPosts
 
-   const filteredArrOfArticles = [
+   const MostPopularArticles = [
       one,
       two,
       three,
@@ -35,46 +57,38 @@ const Home = () => {
       seven,
       eight,
       nine,
-   ].sort((a: any, b: any) => b.id - a.id)
-
-   filteredArrOfArticles.length =
-      window.innerWidth > 2600
-         ? 9
-         : window.innerWidth > 2000
-         ? 8
-         : window.innerWidth > 1850
-         ? 7
-         : 6
-
-   rest.length =
-      window.innerWidth > 2600
-         ? 8
-         : window.innerWidth > 2000
-         ? 7
-         : window.innerWidth > 1850
-         ? 6
-         : 5
+   ]
 
    return (
       <div className="home">
          <div className="container-popular-main">
-            <div className="main-article">
-               <img src={mainArticle.imageUrl} alt={mainArticle.user} />
-               <NavLink to={`/article/${mainArticle._id}`}>
-                  {mainArticle.title}
-               </NavLink>
-               <p>
-                  {window.innerWidth > 1450
-                     ? cutText(mainArticle.text!, 1300)
-                     : cutText(mainArticle.text!, 400)}
-               </p>
-               <div>
-                  <p>{mainArticle.user}</p>
-                  <time dateTime={mainArticle.createdAt}>
-                     {mainArticle.createdAt}
-                  </time>
+            {isPostLoading ? (
+               <LoadingCircle />
+            ) : (
+               <div className="main-article">
+                  <img
+                     src={`http://localhost:4444${mainPost.imageUrl}`}
+                     alt={mainPost.user.fullName}
+                  />
+                  <NavLink to={`/article/${mainPost._id}`}>
+                     {mainPost.title}
+                  </NavLink>
+                  <p>
+                     {window.innerWidth > 1450
+                        ? cutText(mainPost.text!, 1300)
+                        : cutText(mainPost.text!, 400)}
+                  </p>
+                  <div>
+                     <div>
+                        <UserInfo {...mainPost.user} />
+                     </div>
+                     <time dateTime={mainPost.createdAt}>
+                        {mainPost.createdAt.slice(0, 19).replace('T', ' ')}
+                     </time>
+                  </div>
                </div>
-            </div>
+            )}
+
             <div className="popular-articles">
                <Title
                   title="Most popular articles"
@@ -82,27 +96,47 @@ const Home = () => {
                   justifyContent="flex-start"
                />
                <div className="related-article-container">
-                  {rest.map((article) => (
-                     <RelatedArticleTemplate
-                        title={article.title}
-                        createdAt={article.createdAt}
-                        user={article.user}
-                        tags={article.tags}
-                        _id={article._id}
-                        key={article._id}
-                     />
-                  ))}
+                  {isPostLoading ? (
+                     <LoadingCircle />
+                  ) : (
+                     (popularPostsByViews.length < 15
+                        ? popularPostsByViews
+                        : MostPopularArticles
+                     ).map((article: any) =>
+                        isPostLoading ? (
+                           <Skeleton />
+                        ) : (
+                           <RelatedArticleTemplate
+                              title={article.title}
+                              createdAt={article.createdAt.slice(0, 10)}
+                              user={article.user}
+                              tags={article.tags}
+                              _id={article._id}
+                              key={article._id}
+                              text={cutText(article.text, 150)}
+                           />
+                        )
+                     )
+                  )}
                </div>
             </div>
          </div>
          <div className="container-slider-home">
             <Title title="Other popular articles" fontSize="1.7rem" />
             <div className="slider-home">
-               <Slider
-                  items={filteredArrOfArticles}
-                  slidesPerView={'auto'}
-                  spaceBetween={40}
-               />
+               {isPostLoading ? (
+                  <LoadingCircle />
+               ) : (
+                  <Slider
+                     items={
+                        popularPostsByViews.length < 15
+                           ? popularPostsByViews
+                           : otherPopularArticles
+                     }
+                     slidesPerView={'auto'}
+                     spaceBetween={40}
+                  />
+               )}
             </div>
          </div>
       </div>

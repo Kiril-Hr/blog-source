@@ -3,11 +3,13 @@ type Props = {
    title: string
    fontSize?: string
    justifyContent?: string
+   func?: () => void
 }
-const Title = ({ title, fontSize, justifyContent }: Props) => {
+const Title = ({ title, fontSize, justifyContent, func }: Props) => {
    return (
       <>
          <h2
+            onClick={func}
             className={'title'}
             style={{
                fontSize: `${fontSize}`,

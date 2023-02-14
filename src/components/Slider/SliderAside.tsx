@@ -1,5 +1,5 @@
 import { Swiper, SwiperSlide } from 'swiper/react'
-import { SliderItemType } from '../../types'
+import { SliderItemType } from '../../utils/types'
 import RelatedArticleTemplate from '../ArticlesComponent/RelatedArticleTemplate'
 
 type Props = {

@@ -1,13 +1,11 @@
 @import '../../fonts';
 
-.swiper-slide {
-    flex-shrink: unset!important;
-}
-.article-home {
+.articleHome {
     position: relative;
-    width: 500px;
+    width: 450px;
     height: max-content;
-    border: 1px solid white;
+    border: 1px solid #FF5C35;
+    background: white;
     box-shadow: 12px 12px 32px rgba(245, 230, 200, 0.2);
     border-radius: 8px;
     transition: all 0.45s cubic-bezier(0.25, 0.46, 0.45, 0.94);
@@ -20,23 +18,29 @@
         max-width: 555px;
         width: fit-content;
     }
-    .tags-home {
+    .tagsContainer {
+        display: flex;
+        gap: 5px;
         position: absolute;
-        width: 120px;
-        height: 30px;
-        top: 15px;
+        width: max-content;
+        height: max-content;
+        top: 25px;
         left: 15px;
-        background: #F4AD24;
-        font-size: 14px;
-        border-radius: 3px;
-        text-align: center;
-        line-height: 26px;
-        box-shadow: 10px 10px 20px rgb(0, 0, 0, 0.7);
-        transition: all .2s cubic-bezier(0.215, 0.610, 0.355, 1);
-        text-transform: uppercase;
+        p {
+            padding: 5px;
+            width: max-content;
+            background: #6366FC;
+            font-size: 0.7rem;
+            text-align: center;
+            transition: all .2s cubic-bezier(0.215, 0.610, 0.355, 1);
+            color: white;
+            text-transform: uppercase;
+            box-shadow: 1px 1px 4px 2px rgba(38, 36, 59, 0.616);
+        }
     }
     &:hover {
-        transform: scale(1.015);
+        transform: scale(1.006);
+        border: 1px solid #6366FC;
         .chapter-home {
             width: 3px;
             top: 5px;
@@ -48,7 +52,7 @@
         display: block;
         width: 100%;
         height: 260px;
-        background: #F4AD24;
+        background: rgba(155, 72, 72, 0.664);
         border-top-left-radius: 8px;
         border-top-right-radius: 8px;
         border-bottom: 1px solid white;
@@ -65,43 +69,55 @@
             text-decoration: underline;
         }
     }
-    .descr-home {
+    .descrHome {
         padding: 25px 15px;
         a {
-            font-size: 2rem;
+            font-size: 1.8rem;
             font-weight: 600;
         }
         p {
             margin-top: 20px;
-            font-size: 1.2rem;
+            font-size: 1rem;
             font-weight: 300;
             line-height: 1.5rem;
         }
     }
-    .date-author-name-link-home {
+    .dateAuthorNameLinkHome {
         display: flex;
         justify-content: space-between;
+        align-items: center;
         position: relative;
-        border-top: 2px solid white;
         
-        padding: 25px 15px;
+        padding: 25px 15px 15px;
         margin: 0 15px;
         time {
             align-self: center;
         }
-        .author-name-link-home {
+        .dateViews {
             display: flex;
-            flex-direction: column;
-            justify-content: flex-end;
+            gap: 20px;
+            .views {
+                display: flex;
+                gap: 5px;
+                color: grey;
+                font-weight: 500;
+                .svg {
+                    width: 15px;
+                    height: 15px;
+                    fill: grey;
+                }
+            }
+        }
+        .authorNameLinkHome {
+            display: flex;
+            flex-direction: row-reverse;
+            align-items: center;
             gap: 10px;
         }
         img {
-            position: absolute;
             width: 50px;
             height: 50px;
             border-radius: 50%;
-            right: 125px;
-            bottom: 25px;
             object-fit: cover;
         }
         

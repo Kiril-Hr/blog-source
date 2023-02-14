@@ -1,7 +1,9 @@
 import { Link } from 'react-router-dom'
 import { cutText } from '../../utils/functions'
-import { SliderItemType } from '../../types'
-import './SliderItem.scss'
+import { SliderItemType } from '../../utils/types'
+import TagsBlock from '../Tags/TagsBlock'
+import UserInfo from '../UserInfo/UserInfo'
+import classes from './SliderItem.module.scss'
 
 export type Props = SliderItemType
 
@@ -12,22 +14,44 @@ const SliderItem = ({
    text,
    createdAt,
    user,
-   userPhoto,
    tags,
+   viewsCount,
 }: Props) => {
+   const tagsFilter = tags
+   if (tagsFilter.length > 5) tagsFilter.length = 5
+
    return (
-      <div className="article-home" draggable={false}>
-         <p className="tags-home">{tags}</p>
-         <img src={imageUrl} alt="article" className="img" />
-         <div className="descr-home">
-            <Link to={`/article/${_id}`}>{cutText(title!, 50)}</Link>
-            <p>{text}</p>
+      <div className={classes.articleHome} draggable={false}>
+         <div className={classes.tagsContainer}>
+            <TagsBlock tags={tagsFilter} />
          </div>
-         <div className="date-author-name-link-home">
-            <time dateTime="">{createdAt}</time>
-            <div className="author-name-link-home">
-               <h4>{user}</h4>
-               <img src={userPhoto} alt="author" />
+         <img
+            src={`http://localhost:4444${imageUrl}`}
+            alt="article"
+            className={classes.img}
+         />
+         <div className={classes.descrHome}>
+            <Link to={`/article/${_id}`}>{cutText(title!, 50)}</Link>
+            <p>{cutText(text!, 130)}</p>
+         </div>
+         <div className={classes.dateAuthorNameLinkHome}>
+            <div className={classes.dateViews}>
+               <time dateTime={createdAt}>
+                  {createdAt?.slice(0, 19).replace('T', ' ')}
+               </time>
+               <p className={classes.views}>
+                  <svg
+                     className={classes.svg}
+                     viewBox="0 0 20 20"
+                     xmlns="http://www.w3.org/2000/svg"
+                  >
+                     <path d="M.2 10a11 11 0 0 1 19.6 0A11 11 0 0 1 .2 10zm9.8 4a4 4 0 1 0 0-8 4 4 0 0 0 0 8zm0-2a2 2 0 1 1 0-4 2 2 0 0 1 0 4z" />
+                  </svg>
+                  {viewsCount}
+               </p>
+            </div>
+            <div className={classes.authorNameLinkHome}>
+               <UserInfo {...user} />
             </div>
          </div>
       </div>
