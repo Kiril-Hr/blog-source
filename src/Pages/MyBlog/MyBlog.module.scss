@@ -80,12 +80,15 @@
             justify-content: space-between;
             gap: 15px;
             width: 100%;
-            @media(min-width: 1250px) {
-                width: unset;
+            @media(max-width: 1770px) {
+                gap: 60px;
                 justify-content: center;
-                gap: 150px;
+                .myArticles {
+                    width: unset;
+                    flex-direction: column;
+                }
             }
-            @media(max-width: 900px) {
+            @media(max-width: 940px) {
                 gap: 40px;
                 flex-direction: column-reverse;
                 .myArticles {
@@ -100,6 +103,13 @@
                 justify-content: flex-start;
                 gap: 40px;
                 flex-wrap: wrap;
+                @media(max-width: 1770px) {
+                    width: unset;
+                    flex-direction: column;
+                }
+                @media(max-width: 1770px) {
+                    align-items: center;
+                }
                 .myPost {
                     position: relative;
                     height: 120px;
@@ -107,6 +117,11 @@
                     transition: all 0.25s cubic-bezier(0.25, 0.46, 0.45, 0.94);
                     border-bottom: 1px solid #DBE4ED;
                     background: white;
+                    @media(max-width: 940px) {
+                        width: 100%;
+                        max-width: 600px;
+                        height: max-content;
+                    }
                     > button {
                         position: absolute;
                         padding: 0;
@@ -199,12 +214,7 @@
                 flex-wrap: wrap;
                 gap: 15px;
                 border: 1px solid #FF5C35;
-                @media(min-width: 2310px) {
-                    max-width: 900px;
-                    width: unset;
-                    min-width: 600px;
-                }
-                @media(max-width: 900px) {
+                @media(max-width: 940px) {
                     width: 100%;
                     min-width: unset;
                 }

@@ -1,6 +1,8 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
 import axios from '../../axios'
 
+///////////////////////////////////////////////////////// - posts
+
 export const fetchPosts = createAsyncThunk('/posts/fetchPosts', async () => {
     const { data } = await axios.get('/posts')
     return data
@@ -11,14 +13,20 @@ export const fetchPostsPopular = createAsyncThunk('/posts/fetchPostsPopular', as
     return data
 })
 
-export const fetchTags = createAsyncThunk('/posts/fetchTags', async () => {
-    const { data } = await axios.get('/tags')
-    return data
-}) 
-
 export const fetchRemovePost = createAsyncThunk('/posts/fetchRemovePost', async (id:any) => 
     axios.delete(`/posts/${id}`)
 )
+///////////////////////////////////////////////////////// - tags
+export const fetchTags = createAsyncThunk('/posts/fetchTags', async () => {
+    const { data } = await axios.get('/tags')
+    return data
+})
+
+///////////////////////////////////////////////////////// - tags
+export const fetchComments = createAsyncThunk('/posts/fetchComments', async () => {
+    const { data } = await axios.get('/comments')
+    return data
+})
 
 const initialState = {
     posts: {
@@ -27,6 +35,10 @@ const initialState = {
     },
     tags: {
         items: [],
+        status: 'loading'
+    },
+    comments: {
+        items:[],
         status: 'loading'
     }
 }
@@ -84,6 +96,21 @@ const postSlice = createSlice({
         builder.addCase(fetchPostsPopular.rejected, (state) => {
             state.posts.items = []
             state.posts.status = 'error'
+        })
+/////////////////////////////////////////////////////////////////////
+        builder.addCase(fetchComments.pending, (state) => {
+            state.comments.items = []
+            state.comments.status = 'loading'
+        })
+
+        builder.addCase(fetchComments.fulfilled, (state, action) => {
+            state.comments.items = action.payload
+            state.comments.status = 'loaded'
+        })
+
+        builder.addCase(fetchComments.rejected, (state) => {
+            state.comments.items = []
+            state.comments.status = 'error'
         })
     }, 
 })

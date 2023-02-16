@@ -1,5 +1,5 @@
 import { useCallback, useMemo, useRef, useState, useEffect } from 'react'
-import { useNavigate, useParams } from 'react-router-dom'
+import { Link, useNavigate, useParams } from 'react-router-dom'
 import SimpleMDE from 'react-simplemde-editor'
 import 'easymde/dist/easymde.min.css'
 import classes from './AddPost.module.scss'
@@ -15,7 +15,7 @@ export const AddPost = () => {
    const [imageUrl, setImageUrl] = useState('')
    const inputFileRef = useRef<any>(null)
 
-   const isEditing = !!id
+   const isEditing = Boolean(id)
 
    const handleChangeFile = async (e: any) => {
       try {
@@ -34,7 +34,7 @@ export const AddPost = () => {
       setImageUrl('')
    }
 
-   const onChange = useCallback((text: any) => {
+   const onChange = useCallback((text: string) => {
       setText(text)
    }, [])
 
@@ -42,7 +42,12 @@ export const AddPost = () => {
       try {
          setIsLoading(true)
 
-         const fields: any = {
+         const fields: {
+            title: string
+            imageUrl: string
+            tags: Array<string>
+            text: string
+         } = {
             title,
             imageUrl,
             tags: tags.trim().split(','),
@@ -139,9 +144,9 @@ export const AddPost = () => {
             <button className={classes.button} onClick={onSubmit}>
                {isEditing ? 'Edit' : 'Post'}
             </button>
-            <a href="/">
+            <Link to="/">
                <button className={classes.button}>Decline</button>
-            </a>
+            </Link>
          </div>
       </div>
    )

@@ -23,10 +23,11 @@
         article {
             display: flex;
             flex-direction: column;
-            gap: 65px;
+            gap: 60px;
             @media(min-width: 2100px) {
                 flex-direction: row;
                 flex-wrap: wrap;
+                gap: 40px;
             }
         }
     }
@@ -41,12 +42,20 @@
         flex-wrap: wrap;
         gap: 15px;
         border: 1px solid #FF5C35;
-        @media(min-width: 2310px) {
-            max-width: 900px;
-            width: unset;
-            min-width: 600px;
+        @media(min-width: 2770px) {
+            max-width: 400px;
+            width: 100%;
+            min-width: 300px;
         }
-        @media(max-width: 900px) {
+        @media(max-width: 2770px) {
+            width: 100%;
+        }
+        @media(max-width: 2255px) {
+            max-width: 900px;
+            width: 480px;
+            min-width: 480px;
+        }
+        @media(max-width: 1200px) {
             width: unset;
             min-width: unset;
         }

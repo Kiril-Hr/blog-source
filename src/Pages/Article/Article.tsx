@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
-import { BlogsProps } from '../../utils/ArticlesArray'
 import Title from '../../components/UI/Title/Title'
 import classes from './Article.module.scss'
 import axios from '../../axios'
@@ -10,19 +9,29 @@ import { useDispatch, useSelector } from 'react-redux'
 import { fetchPosts } from '../../redux/slices/posts'
 import TagsBlockAside from '../../components/Tags/TagsBlockAside'
 import MarkDown from '../../components/MarkDown/MarkDown'
-
-type ArticlePageProps = {
-   [id: number]: BlogsProps
-}
+import Comments from '../../components/Comments/Comments'
+import AddComment from '../../components/AddComment/AddComment'
+import RelatedArticleTemplate from '../../components/ArticlesComponent/RelatedArticleTemplate'
+import { SliderItemType } from '../../utils/types'
 
 const Article = () => {
    const navigate = useNavigate()
    const dispatch = useDispatch<any>()
    const { posts } = useSelector((state: any) => state.posts)
+
    const [data, setData] = useState<any>()
+   const [comments, setComments] = useState<any>()
    const [isLoading, setIsLoading] = useState<boolean>(true)
+   const [isLoadingComments, setIsLoadingComments] = useState<boolean>(true)
+
    const { id } = useParams()
+
    const isPostLoading: any = posts.status === 'loading'
+
+   const popularPosts = structuredClone(posts.items).sort(
+      (a: SliderItemType, b: SliderItemType) => b.viewsCount! - a.viewsCount!
+   )
+   popularPosts.length = 5
 
    useEffect(() => {
       dispatch(fetchPosts())
@@ -36,6 +45,15 @@ const Article = () => {
             console.warn(err)
             alert('Failed to get post')
             navigate('/articles')
+         })
+      axios
+         .get(`/comments/${id}`)
+         .then((res) => {
+            setComments(res.data)
+            setIsLoadingComments(false)
+         })
+         .catch((err) => {
+            console.warn(err)
          })
    }, []) // eslint-disable-line react-hooks/exhaustive-deps
 
@@ -107,10 +125,42 @@ const Article = () => {
                      alt={data.user.fullName}
                      className={classes.img}
                   />
-                  {/* <div className={classes.relatedArticleContainer}></div> */}
+                  {window.innerWidth > 1850 ? (
+                     <div className={classes.relatedArticleContainer}>
+                        {popularPosts.map((post: SliderItemType) => (
+                           <RelatedArticleTemplate
+                              _id={post._id}
+                              imageUrl={post.imageUrl}
+                              title={post.title}
+                              text={post.text}
+                              createdAt={post.createdAt}
+                              user={post.user}
+                           />
+                        ))}
+                     </div>
+                  ) : (
+                     ''
+                  )}
                </div>
             </div>
             <MarkDown text={data.text} />
+            <section className={classes.commentsSection}>
+               <Title
+                  title="Comments"
+                  fontSize="2.5rem"
+                  justifyContent="flex-start"
+               />
+               <div className={classes.writeCommentField}>
+                  <AddComment postId={id!} />
+               </div>
+               <div className={classes.commentsBlock}>
+                  {isLoadingComments ? (
+                     <LoadingCircle />
+                  ) : (
+                     <Comments comments={comments} />
+                  )}
+               </div>
+            </section>
          </div>
       </>
    )

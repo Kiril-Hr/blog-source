@@ -4,10 +4,109 @@
     display: flex;
     flex-direction: column;
     padding: 0 60px;
-    // background: #FEF4EA;
     > h2 {
         width: 100%;
         margin-bottom: 20px;
+    }
+    .commentsSection {
+        padding: 40px 0 0 7%;
+        border-top: 2px solid $color-text;
+        .writeCommentField {
+            margin-top: 60px;
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+            width: 100%;
+            height: max-content;
+            padding-bottom: 10px;
+            textarea {
+                font-family: $font-family;
+                font-size: 1rem;
+                letter-spacing: 1px;
+                resize: none;
+                width: 100%;
+                max-width: 400px;
+                min-height: 25px;
+                border: 0;
+                background: none;
+                height: max-content;
+                outline: none;
+                border-bottom: 1px solid $color-text;
+            }
+            button {
+                font-family: $font-family;
+                font-size: 1rem;
+                color: white;
+                width: 75px;
+                height: 25px;
+                border: 0;
+                background: #ff3713c9;
+                cursor: pointer;
+                transition: .3s;
+                &:hover {
+                    background: #FF3713;
+                }
+                
+            }
+            button:disabled {
+                cursor: auto;
+            }
+        }
+        .commentsBlock {
+            margin-top: 40px;
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+            > div {
+                padding: 10px;
+                position: relative;
+                display: flex;
+                width: max-content;
+                max-width: 500px;
+                min-width: 230px;
+                height: max-content;
+                background: wite;
+                border-radius: 4px;
+                box-shadow: 2px 2px 7px 7px rgba(202, 202, 202, 0.137);
+                h4, p, time {
+                    font-family: $font-family;
+                }
+                h4 {
+                    position: absolute;
+                    font-weight: 500;
+                    font-size: 1.1rem;
+                    top: 10px;
+                    color: black;
+                    left: 73px;
+                }
+                p {
+                    display: block;
+                    font-size: 1rem;
+                    padding: 25px 20px 5px;
+                    width: 100%;
+                    color: $color-text;
+                }
+                time {
+                    font-weight: 500;
+                    color: grey;
+                    font-size: 0.75rem;
+                    top: 10px;
+                    position: absolute;
+                    right: 10px;
+                }
+                div {
+                    display: flex;
+                    flex-direction: row-reverse;
+                    align-items: flex-start;
+                    img {
+                        object-fit: cover;
+                        width: 45px;
+                        height: 45px;
+                        border-radius: 50%;
+                    }
+                }
+            }
+        }
     }
 }
 
@@ -49,7 +148,7 @@
                 max-height: 700px;
                 max-width: none;
                 padding-bottom: 50px;
-                border-bottom: 1px solid $color-text;
+                border-bottom: 2px solid $color-text;
             }
         }
     }
@@ -58,42 +157,10 @@
 
 .relatedArticleContainer {
     display: flex;
-    height: 730px;
-    margin: 12px 0;
-    padding: 12px;
-    overflow: hidden;
-    @media(min-width: 2300px) {
-        height: 900px;
-    }
+    flex-direction: column;
+    height: max-content;
     .title {
         margin-bottom: 0;
-    }
-    .swiper {
-        .swiper-wrapper {
-            display: flex;
-            flex-direction: column;
-            .swiper-slide {
-                flex-grow: 1;
-            }
-        }
-    }
-    
-    @media(max-width: 1250px) {
-        flex-direction: column;
-        margin: 20px 20px;
-        padding: 0 10px;
-        .title {
-            margin-bottom: 40px;
-        }
-        .swiper {
-            .swiper-wrapper {
-                flex-direction: row;
-                .swiper-slide {
-                    flex-grow: unset;
-                }
-            }
-        }
-
     }
 }
 
@@ -104,8 +171,8 @@
     height: 100px;
     margin-bottom: 35px;
     padding: 20px 0;
-    border-top: 1px solid $color-text;
-    border-bottom: 1px solid $color-text;
+    border-top: 2px solid $color-text;
+    border-bottom: 2px solid $color-text;
     img {
         display: block;
         max-width: 60px;
