@@ -18,12 +18,12 @@ const SliderItem = ({
    viewsCount,
 }: Props) => {
    const tagsFilter = tags
-   if (tagsFilter.length > 5) tagsFilter.length = 5
+   if (tagsFilter!.length > 5) tagsFilter!.length = 5
 
    return (
       <div className={classes.articleHome} draggable={false}>
          <div className={classes.tagsContainer}>
-            <TagsBlock tags={tagsFilter} />
+            <TagsBlock tags={tagsFilter!} />
          </div>
          <img
             src={`http://localhost:4444${imageUrl}`}
@@ -37,7 +37,7 @@ const SliderItem = ({
          <div className={classes.dateAuthorNameLinkHome}>
             <div className={classes.dateViews}>
                <time dateTime={createdAt}>
-                  {createdAt?.slice(0, 19).replace('T', ' ')}
+                  {createdAt?.slice(0, 10).replace('T', ' ')}
                </time>
                <p className={classes.views}>
                   <svg

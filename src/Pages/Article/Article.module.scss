@@ -1,6 +1,7 @@
 @import '../../fonts';
 
 .selectedArticle {
+    position: relative;
     display: flex;
     flex-direction: column;
     padding: 0 60px;
@@ -11,102 +12,7 @@
     .commentsSection {
         padding: 40px 0 0 7%;
         border-top: 2px solid $color-text;
-        .writeCommentField {
-            margin-top: 60px;
-            display: flex;
-            flex-direction: column;
-            gap: 30px;
-            width: 100%;
-            height: max-content;
-            padding-bottom: 10px;
-            textarea {
-                font-family: $font-family;
-                font-size: 1rem;
-                letter-spacing: 1px;
-                resize: none;
-                width: 100%;
-                max-width: 400px;
-                min-height: 25px;
-                border: 0;
-                background: none;
-                height: max-content;
-                outline: none;
-                border-bottom: 1px solid $color-text;
-            }
-            button {
-                font-family: $font-family;
-                font-size: 1rem;
-                color: white;
-                width: 75px;
-                height: 25px;
-                border: 0;
-                background: #ff3713c9;
-                cursor: pointer;
-                transition: .3s;
-                &:hover {
-                    background: #FF3713;
-                }
-                
-            }
-            button:disabled {
-                cursor: auto;
-            }
-        }
-        .commentsBlock {
-            margin-top: 40px;
-            display: flex;
-            flex-direction: column;
-            gap: 30px;
-            > div {
-                padding: 10px;
-                position: relative;
-                display: flex;
-                width: max-content;
-                max-width: 500px;
-                min-width: 230px;
-                height: max-content;
-                background: wite;
-                border-radius: 4px;
-                box-shadow: 2px 2px 7px 7px rgba(202, 202, 202, 0.137);
-                h4, p, time {
-                    font-family: $font-family;
-                }
-                h4 {
-                    position: absolute;
-                    font-weight: 500;
-                    font-size: 1.1rem;
-                    top: 10px;
-                    color: black;
-                    left: 73px;
-                }
-                p {
-                    display: block;
-                    font-size: 1rem;
-                    padding: 25px 20px 5px;
-                    width: 100%;
-                    color: $color-text;
-                }
-                time {
-                    font-weight: 500;
-                    color: grey;
-                    font-size: 0.75rem;
-                    top: 10px;
-                    position: absolute;
-                    right: 10px;
-                }
-                div {
-                    display: flex;
-                    flex-direction: row-reverse;
-                    align-items: flex-start;
-                    img {
-                        object-fit: cover;
-                        width: 45px;
-                        height: 45px;
-                        border-radius: 50%;
-                    }
-                }
-            }
-        }
+       
     }
 }
 
@@ -116,7 +22,18 @@
     gap: 15px;
     max-height: 1200px;
     margin-bottom: 60px;
-    .containerSliderMainPhoto {
+    padding-bottom: 60px;
+    border-bottom: 2px solid $color-text;
+    @media(max-width: 1850px) {
+        border-bottom: none;
+        margin-bottom: 0;
+    }
+    h2 {
+        padding-bottom: 15px;
+        border-bottom: 2px solid #FF5C35;
+        margin-bottom: 20px;
+    }
+    .containerPopularArticlesMainPhoto {
         display: flex;
         justify-content: space-between;
         gap: 40px;
@@ -158,6 +75,7 @@
 .relatedArticleContainer {
     display: flex;
     flex-direction: column;
+    gap: 20px;
     height: max-content;
     .title {
         margin-bottom: 0;
@@ -182,12 +100,18 @@
         border-radius: 50%;
         object-fit: cover;
     }
-    h3, h4, time, div, p {
+    h3, a, time, div, p {
+        text-decoration: none;
         font-family: $font-family;
         color: $color-text;
         font-size: 1rem;
         font-weight: 700;
         letter-spacing: 0.15rem;
+    }
+    a {
+        &:hover {
+            text-decoration: underline;
+        }
     }
     > p {
         display: flex;

@@ -1,28 +1,23 @@
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
-import { NavLink } from 'react-router-dom'
+import { NavLink, useNavigate } from 'react-router-dom'
 import { logout, selectIsAuth } from '../../redux/slices/auth'
 import './Header.scss'
 const Header = () => {
-   const [isActive, setIsActive] = useState<boolean>(false)
-   const [scroll, setScroll] = useState(0)
    const accountDetailsBtn = document.querySelector('.account-details')
-   const isAuth = useSelector(selectIsAuth)
+
+   const navigate = useNavigate()
+
+   const [isActive, setIsActive] = useState<boolean>(false)
+
    const dispatch = useDispatch()
+   const isAuth = useSelector(selectIsAuth)
+
    const onClickLogout = () => {
-      if (window.confirm('Are you want to log out ?')) {
-         dispatch(logout())
-         window.localStorage.removeItem('token')
-      }
+      dispatch(logout())
+      window.localStorage.removeItem('token')
+      navigate('/')
    }
-
-   const handleScrollEffectUnderMenu = () => {
-      setScroll(window.scrollY)
-   }
-
-   useEffect(() => {
-      window.addEventListener('scroll', handleScrollEffectUnderMenu)
-   })
 
    const activeAccountDetails = (e?: any) => {
       e.stopPropagation()
@@ -87,6 +82,12 @@ const Header = () => {
                                  </NavLink>
                               </li>
                               <li>
+                                 <NavLink to="/blogs">Blogs</NavLink>
+                              </li>
+                              <li>
+                                 <NavLink to="/articles">Articles</NavLink>
+                              </li>
+                              <li>
                                  <button onClick={onClickLogout}>
                                     Log out
                                  </button>
@@ -98,16 +99,6 @@ const Header = () => {
                      )}
                   </ul>
                </div>
-            </nav>
-            <nav
-               className={
-                  scroll > 80 ? 'below-menu scroll-after' : 'below-menu'
-               }
-            >
-               <NavLink to="/translations">Translations</NavLink>
-               <NavLink to="/essays">Essays</NavLink>
-               <NavLink to="/blogs">Blogs</NavLink>
-               <NavLink to="/articles">Articles</NavLink>
             </nav>
          </div>
       </>

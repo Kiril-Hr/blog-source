@@ -5,11 +5,13 @@ import ArticlesList from '../../components/ArticlesComponent/ArticlesList'
 import TagsBlockAside from '../../components/Tags/TagsBlockAside'
 import Title from '../../components/UI/Title/Title'
 import classes from './Articles.module.scss'
+import PageScrollUp from '../../components/PageScrollUp/PageScrollUp'
 
 const Articles = () => {
    const dispatch = useDispatch<any>()
 
    const [isLoading, setIsLoading] = useState(true)
+
    const [filteredPostsByTag, setFilteredPostByTag] = useState<Array<object>>(
       []
    )
@@ -17,7 +19,7 @@ const Articles = () => {
 
    const { tags, posts } = useSelector((state: any) => state.posts)
 
-   const isPostLoading: any = posts.status === 'loading'
+   const isPostLoading: boolean = posts.status === 'loading'
 
    useEffect(() => {
       dispatch(fetchPosts())
@@ -87,6 +89,7 @@ const Articles = () => {
                />
             </div>
          </section>
+         <PageScrollUp />
       </div>
    )
 }

@@ -9,10 +9,11 @@ import { useDispatch, useSelector } from 'react-redux'
 import { fetchPosts } from '../../redux/slices/posts'
 import TagsBlockAside from '../../components/Tags/TagsBlockAside'
 import MarkDown from '../../components/MarkDown/MarkDown'
-import Comments from '../../components/Comments/Comments'
 import AddComment from '../../components/AddComment/AddComment'
 import RelatedArticleTemplate from '../../components/ArticlesComponent/RelatedArticleTemplate'
 import { SliderItemType } from '../../utils/types'
+import { cutText } from '../../utils/functions'
+import PageScrollUp from '../../components/PageScrollUp/PageScrollUp'
 
 const Article = () => {
    const navigate = useNavigate()
@@ -20,13 +21,9 @@ const Article = () => {
    const { posts } = useSelector((state: any) => state.posts)
 
    const [data, setData] = useState<any>()
-   const [comments, setComments] = useState<any>()
    const [isLoading, setIsLoading] = useState<boolean>(true)
-   const [isLoadingComments, setIsLoadingComments] = useState<boolean>(true)
 
    const { id } = useParams()
-
-   const isPostLoading: any = posts.status === 'loading'
 
    const popularPosts = structuredClone(posts.items).sort(
       (a: SliderItemType, b: SliderItemType) => b.viewsCount! - a.viewsCount!
@@ -46,30 +43,7 @@ const Article = () => {
             alert('Failed to get post')
             navigate('/articles')
          })
-      axios
-         .get(`/comments/${id}`)
-         .then((res) => {
-            setComments(res.data)
-            setIsLoadingComments(false)
-         })
-         .catch((err) => {
-            console.warn(err)
-         })
    }, []) // eslint-disable-line react-hooks/exhaustive-deps
-
-   if (!isPostLoading) {
-      try {
-         const getThisPostFilter = posts.items.filter(
-            (post: any) => post._id === id
-         )
-
-         const [thisPost] = getThisPostFilter
-
-         var { user } = thisPost
-      } catch (err) {
-         window.location.reload()
-      }
-   }
 
    if (isLoading) {
       return <LoadingCircle />
@@ -84,7 +58,7 @@ const Article = () => {
                justifyContent={'flex-start'}
             />
             <div className={classes.authorBlock}>
-               <UserInfo {...user} />
+               <UserInfo {...data.user} />
                <time>{data.createdAt.slice(0, 19).replace('T', ' ')}</time>
                <p>
                   <svg
@@ -106,16 +80,7 @@ const Article = () => {
                </div>
             </div>
             <div className={classes.imgOfMainArticlePlusRelatedArticles}>
-               {window.innerWidth > 1850 ? (
-                  <Title
-                     title={'Related Articles'}
-                     justifyContent={'flex-end'}
-                     fontSize={'3.6rem'}
-                  />
-               ) : (
-                  ''
-               )}
-               <div className={classes.containerSliderMainPhoto}>
+               <div className={classes.containerPopularArticlesMainPhoto}>
                   <img
                      src={
                         data.imageUrl
@@ -127,13 +92,20 @@ const Article = () => {
                   />
                   {window.innerWidth > 1850 ? (
                      <div className={classes.relatedArticleContainer}>
+                        <Title
+                           title={'Most popular articles'}
+                           justifyContent={'flex-start'}
+                           fontSize={'2.4rem'}
+                        />
                         {popularPosts.map((post: SliderItemType) => (
                            <RelatedArticleTemplate
                               _id={post._id}
                               imageUrl={post.imageUrl}
                               title={post.title}
-                              text={post.text}
-                              createdAt={post.createdAt}
+                              text={cutText(post.text!, 200)}
+                              createdAt={post.createdAt
+                                 ?.slice(0, 19)
+                                 .replace('T', ' ')}
                               user={post.user}
                            />
                         ))}
@@ -150,17 +122,9 @@ const Article = () => {
                   fontSize="2.5rem"
                   justifyContent="flex-start"
                />
-               <div className={classes.writeCommentField}>
-                  <AddComment postId={id!} />
-               </div>
-               <div className={classes.commentsBlock}>
-                  {isLoadingComments ? (
-                     <LoadingCircle />
-                  ) : (
-                     <Comments comments={comments} />
-                  )}
-               </div>
+               <AddComment postId={id!} />
             </section>
+            <PageScrollUp />
          </div>
       </>
    )

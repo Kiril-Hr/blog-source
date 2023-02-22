@@ -1,0 +1,200 @@
+@import '../../fonts';
+
+.containerUserInfo {
+    position: relative;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    gap: 40px;
+    padding: 0 40px;
+    .userInfoPhoto {
+        display: flex;
+        justify-content: space-evenly;
+        width: 100%;
+        .userPhoto {
+            img {
+                border-radius: 50%;
+                width: 250px;
+                height: 250px;
+                object-fit: cover;
+            }
+        }
+        .userInfo {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            h2, p, div {
+                font-family: $font-family;
+                font-size: 1.6rem;
+                font-weight: 800;
+                color: $color-text;
+            }
+            div {
+                display: flex;
+                align-items: center;
+                font-size: 1.2rem;
+                font-weight: 600;
+                gap: 20px;
+                p {
+                    font-size: 1rem;
+                    font-weight: 600;
+                }
+            }
+        }
+    }
+    .myArticlesBlock {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 40px;
+        border-top: 1px solid #FF5C35;
+        padding-top: 40px;
+        .containerArticlesTags {
+            display: flex;
+            justify-content: space-between;
+            gap: 15px;
+            width: 100%;
+            @media(max-width: 1770px) {
+                gap: 60px;
+                justify-content: center;
+                .myArticles {
+                    width: unset;
+                    flex-direction: column;
+                }
+            }
+            @media(max-width: 940px) {
+                gap: 40px;
+                flex-direction: column-reverse;
+                .myArticles {
+                    .myPost {
+                        width: 100%;
+                    }
+                }
+            }
+        .myArticles {
+            width: 100%;
+            display: flex;
+            justify-content: flex-start;
+            gap: 40px;
+            flex-wrap: wrap;
+            @media(max-width: 1770px) {
+                width: unset;
+                flex-direction: column;
+            }
+            @media(max-width: 1770px) {
+                align-items: center;
+            }
+            .myPost {
+                position: relative;
+                height: 120px;
+                width: 600px;
+                transition: all 0.25s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+                border-bottom: 1px solid #DBE4ED;
+                background: white;
+                @media(max-width: 940px) {
+                    width: 100%;
+                    max-width: 600px;
+                    height: max-content;
+                }
+                
+                
+                &:hover {
+                    border-bottom: 1px solid #FF5C35;
+                    transform: scale(1.015);
+                }
+                .description {
+                    div {
+                        display: flex;
+                        justify-content: space-between;
+                        }
+                    }
+                    
+                    a, p {
+                        font-family: $font-family;
+                        font-size: 1.2rem;
+                        font-weight: 400;
+                        color: $color-text;
+                    }
+                    a {
+                        display: block;
+                        text-decoration: none;
+                        font-size: 1.4rem;
+                        font-weight: 600;
+                        margin-bottom: 10px;
+                        &:hover {
+                            text-decoration: underline;
+                        }
+                    }
+                    p {
+                        margin-bottom: 10px;
+                    }
+                }
+                .dateAndViews {
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+                    time, p {
+                        font-family: $font-family;
+                        font-size: 1rem;
+                        font-weight: 600;
+                        color: $color-text;
+                    }
+                    
+                    .viewsComments {
+                        display: flex;
+                        gap: 15px;
+                        .viewsCount, .commentsCount {
+                            display: flex;
+                            align-items: center;
+                            flex-direction: row-reverse;
+                            gap: 5px;
+                            color: #535353c2;
+                            svg {
+                                fill: #535353c2;
+                                width: 15px;
+                                height: 15px;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        .wrapperSortBtn {
+            background: #FCEAD7;
+            width: 350px;
+            min-width: 220px;
+            height: 100%;
+            max-height: 600px;
+            padding: 30px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            border: 1px solid #FF5C35;
+            @media(max-width: 940px) {
+                width: 100%;
+                min-width: unset;
+            }
+            .title {
+                margin: 30px 0 0 30px;
+                height: fit-content;
+            }
+            button {
+                cursor: pointer;
+                height: max-content;
+                width: max-content;
+                background: #6366fc;
+                color: white;
+                font-family: $font-family;
+                font-size: 0.95rem;
+                font-weight: 700;
+                letter-spacing: 1px;
+                transition: all .3s ;
+                border: unset;
+                &:hover {
+                    transform: scale(1.03);
+                }
+            }
+        }
+    }
+}

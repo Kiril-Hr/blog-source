@@ -11,11 +11,12 @@ import 'swiper/css/navigation'
 type Props = {
    items: Array<SliderItemType>
    slidesPerGroup?: number
-   slidesPerView?: any
+   slidesPerView?: number | 'auto' | undefined
    spaceBetween?: number
    centeredSlides?: boolean
    loop?: boolean
    sizeDescr?: number
+   navigation?: boolean
 }
 
 const Slider = ({
@@ -25,6 +26,7 @@ const Slider = ({
    spaceBetween = 60,
    centeredSlides = false,
    loop = false,
+   navigation = true,
 }: Props) => {
    return (
       <>
@@ -39,7 +41,7 @@ const Slider = ({
                pagination={{
                   dynamicBullets: true,
                }}
-               navigation={true}
+               navigation={navigation}
                modules={[Pagination, Navigation]}
                breakpoints={{
                   1200: {

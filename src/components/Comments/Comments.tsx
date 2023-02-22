@@ -3,11 +3,14 @@ import UserInfo from '../UserInfo/UserInfo'
 type Props = {
    comments: [
       {
+         _id: string
+         postId: string
          text: string
          createdAt: string
          user: {
             fullName: string
             avatarUrl: string
+            _id: string
          }
       }
    ]
@@ -52,12 +55,12 @@ const Comments = ({ comments }: Props) => {
          {comments.map((comment, i) => (
             <div key={i}>
                <div>
-                  <UserInfo {...comment.user} />
+                  <UserInfo
+                     {...comment.user}
+                     time={timeChecker(comment.createdAt)}
+                  />
                </div>
                <p>{comment.text}</p>
-               <time dateTime={comment.createdAt}>
-                  {timeChecker(comment.createdAt)}
-               </time>
             </div>
          ))}
       </>

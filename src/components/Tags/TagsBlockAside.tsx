@@ -2,11 +2,15 @@ import LoadingCircle from '../UI/LoadingCircle/LoadingCircle'
 
 type Tags = {
    tags: Array<string>
-   isLoading: any
+   isLoading?: any
    filterPostsByTag?: (e: any) => void
 }
 
-const TagsBlockAside = ({ tags, isLoading, filterPostsByTag }: Tags) => {
+const TagsBlockAside = ({
+   tags,
+   isLoading = false,
+   filterPostsByTag,
+}: Tags) => {
    const filteredTags = tags.reduce((obj: any, tag: string) => {
       const innerTag = tag.trim().toLowerCase()
       if (!obj[innerTag]) {

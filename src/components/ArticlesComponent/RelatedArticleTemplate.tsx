@@ -1,4 +1,4 @@
-import './RelatedArticleTemplate.scss'
+import classes from './RelatedArticleTemplate.module.scss'
 import { Link } from 'react-router-dom'
 import { SliderItemType } from '../../utils/types'
 import UserInfo from '../UserInfo/UserInfo'
@@ -15,14 +15,14 @@ const RelatedArticleTemplate = ({
 }: Props) => {
    return (
       <>
-         <div className="article-related">
-            <img src={imageUrl} alt="article" className="img" />
-            <div className="descr">
+         <div className={classes.articleRelated}>
+            <img src={imageUrl} alt="article" className={classes.img} />
+            <div className={classes.descr}>
                <Link to={`/article/${_id}`}>{title}</Link>
                <p>{text}</p>
             </div>
-            <div className="date-author-name-link">
-               <div className="author-name-link">
+            <div className={classes.dateAuthorNameLink}>
+               <div className={classes.authorNameLink}>
                   <UserInfo {...user} />
                </div>
                <time dateTime={createdAt}>{createdAt}</time>

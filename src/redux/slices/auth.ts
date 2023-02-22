@@ -16,7 +16,6 @@ export const fetchAuthMe = createAsyncThunk('auth/fetchAuthMe', async () => {
     return data
 })
 
-
 const initialState = {
     data: null,
     status: 'loading',
@@ -78,7 +77,7 @@ const authSlice = createSlice({
     }
 })
 
-export const selectIsAuth = (state:any) => Boolean(state.auth.data)
+export const selectIsAuth = (state: any) => Boolean(state.auth.data)
 
 export const authReducer = authSlice.reducer
 

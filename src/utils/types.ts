@@ -6,6 +6,7 @@ export type SliderItemType = {
     createdAt?: string
     user?: any
     userPhoto?: string
-    tags?: any
+    tags?: Array<string>
     viewsCount?: number
+    commentsCount?: any
 }

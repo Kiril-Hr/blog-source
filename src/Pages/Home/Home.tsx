@@ -1,4 +1,3 @@
-import { blogsArray } from '../../utils/ArticlesArray'
 import RelatedArticleTemplate from '../../components/ArticlesComponent/RelatedArticleTemplate'
 import Title from '../../components/UI/Title/Title'
 import './Home.scss'
@@ -11,6 +10,7 @@ import { useEffect, useState } from 'react'
 import LoadingCircle from '../../components/UI/LoadingCircle/LoadingCircle'
 import Skeleton from '../../components/ArticlesComponent/Skeleton'
 import UserInfo from '../../components/UserInfo/UserInfo'
+import PageScrollUp from '../../components/PageScrollUp/PageScrollUp'
 
 const Home = () => {
    const dispatch = useDispatch<any>()
@@ -74,9 +74,13 @@ const Home = () => {
                      {mainPost.title}
                   </NavLink>
                   <p>
-                     {window.innerWidth > 1450
+                     {window.innerWidth > 2450
+                        ? cutText(mainPost.text!, 2200)
+                        : window.innerWidth < 2450 && window.innerWidth > 1450
                         ? cutText(mainPost.text!, 1300)
-                        : cutText(mainPost.text!, 400)}
+                        : window.innerWidth < 1450
+                        ? cutText(mainPost.text!, 800)
+                        : cutText(mainPost.text!, 800)}
                   </p>
                   <div>
                      <div>
@@ -135,10 +139,14 @@ const Home = () => {
                      }
                      slidesPerView={'auto'}
                      spaceBetween={40}
+                     centeredSlides={window.innerWidth < 1000 ? true : false}
+                     loop={window.innerWidth < 1000 ? true : false}
+                     navigation={window.innerWidth <= 700 ? false : true}
                   />
                )}
             </div>
          </div>
+         <PageScrollUp />
       </div>
    )
 }

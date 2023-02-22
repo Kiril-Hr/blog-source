@@ -5,9 +5,7 @@ import { Link } from 'react-router-dom'
 import './Login.scss'
 import { fetchAuth, selectIsAuth } from '../../redux/slices/auth'
 
-type Props = {}
-
-const Login = (props: Props) => {
+const Login = () => {
    const isAuth = useSelector(selectIsAuth)
 
    const dispatch = useDispatch<any>()
@@ -18,7 +16,7 @@ const Login = (props: Props) => {
       formState: { errors, isValid },
    } = useForm({
       defaultValues: {
-         email: 'sanya@sanya.ua',
+         email: 'stepan@newmail.ua',
          password: '123123',
       },
    })

@@ -22,11 +22,11 @@ export const AddPost = () => {
          const formData = new FormData()
          const file = e.target.files[0]
          formData.append('image', file)
-         const { data } = await axios.post('/upload', formData)
+         const { data } = await axios.post('/uploads/post', formData)
          setImageUrl(data.url)
       } catch (err) {
          console.warn(err)
-         alert('Failed during upload file')
+         alert('Failed during uploading file')
       }
    }
 
@@ -144,7 +144,7 @@ export const AddPost = () => {
             <button className={classes.button} onClick={onSubmit}>
                {isEditing ? 'Edit' : 'Post'}
             </button>
-            <Link to="/">
+            <Link to="/my-blog">
                <button className={classes.button}>Decline</button>
             </Link>
          </div>

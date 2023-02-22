@@ -12,13 +12,7 @@ header {
     .main-footer-container {
         display: flex;
         flex-direction: column;
-        padding: 140px 0;
-        @media(max-width: 1250px) {
-            padding: 160px 0 40px;
-        }
-        @media(max-width: 600px) {
-            padding: 160px 0 40px ;
-        }
+        padding: 75px 0;
     }
 }
 .container-for-mobile-menu {
@@ -29,7 +23,6 @@ header {
 @media(max-width: 1024px) {
     .container-for-all {
         .main-footer-container {
-            margin-top: 100px;
             margin-left: 0;
             padding: 60px 20px;
         }
