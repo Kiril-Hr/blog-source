@@ -5,12 +5,14 @@ import { Link, Navigate, useNavigate } from 'react-router-dom'
 import LoadingCircle from '../../components/UI/LoadingCircle/LoadingCircle'
 import classes from './MyBlog.module.scss'
 import './ShowConfirm.scss'
-import { cutText } from '../../utils/functions'
+import './Transition.scss'
+import { cutText, removeSymbols } from '../../utils/functions'
 import TagsBlockAside from '../../components/Tags/TagsBlockAside'
 import { selectIsAuth } from '../../redux/slices/auth'
 import Title from '../../components/UI/Title/Title'
 import PageScrollUp from '../../components/PageScrollUp/PageScrollUp'
 import axios from '../../axios'
+import { CSSTransition, TransitionGroup } from 'react-transition-group'
 
 interface User {
    _id: string
@@ -38,7 +40,6 @@ const MyBlog = () => {
       avatarUrl: null,
       error: null,
    })
-   const [avatarKey, setAvatarKey] = useState(Date.now())
 
    const inputFileRef = useRef<any>(null)
 
@@ -53,8 +54,8 @@ const MyBlog = () => {
    const isUserLoading: any = userData.status === 'loading'
 
    useEffect(() => {
-      if (!isUserLoading) {
-         const myId = userData.data._id
+      if (!isUserLoading && isPostsLoading) {
+         const myId = userData?.data?._id
 
          axios
             .get(`/posts/user/${myId}`)
@@ -79,10 +80,17 @@ const MyBlog = () => {
       }, {})
    }
 
-   const onClickRemove = (e: any) => {
+   const onClickRemove = async (e: any) => {
       const userId = userData.data._id
       let id: string = e.target.parentNode.previousElementSibling.value
-      return e !== undefined ? dispatch(fetchRemovePost({ id, userId })) : null
+      e.target.parentNode.classList.remove('active')
+      try {
+         await dispatch(fetchRemovePost({ id, userId }))
+         const res = await axios.get(`/posts/user/${userId}`)
+         setMyPosts(res.data)
+      } catch (error) {
+         console.log(error)
+      }
    }
 
    const showConfirmWindow = (e: any) => {
@@ -134,6 +142,7 @@ const MyBlog = () => {
    const changeAvatar = async (e: React.ChangeEvent<HTMLInputElement>) => {
       if (!isUserLoading) {
          const myId = userData.data._id
+         const email = userData.data.email.replace(/\./g, '_')
          try {
             setAvatar((prevAvatar) => ({
                ...prevAvatar,
@@ -142,22 +151,22 @@ const MyBlog = () => {
 
             const formData = new FormData()
             const file = e.target.files![0]
+            const fileExtension = file.name.split('.').pop()
+            const random = Math.random().toString(36).substring(5)
+            const newFileName = `${random}-${email}.${fileExtension}`
 
-            formData.append('image', file)
+            formData.append('image', file, newFileName)
 
             const { data } = await axios.patch(
                `/avatar-update/${myId}`,
                formData
             )
-
             setAvatar((prevstate) => ({
                ...prevstate,
-               avatarUrl: data.url,
+               avatarUrl: data.avatarUrl,
                isAvatarLoading: false,
                error: null,
             }))
-
-            console.log(data.url)
          } catch (err) {
             setAvatar((prevAvatar) => ({
                ...prevAvatar,
@@ -177,7 +186,7 @@ const MyBlog = () => {
          {isUserLoading ? (
             <LoadingCircle />
          ) : (
-            <div className={classes.containerUserInfo}>
+            <div className={classes.containerUserInfo} id="myBlogContainer">
                <div className={classes.userInfoPhoto}>
                   <div className={classes.userPhoto}>
                      <input
@@ -195,12 +204,11 @@ const MyBlog = () => {
                                  ? { border: 'none' }
                                  : { border: '1px solid #FF5C35' }
                            }
-                           key={avatarKey}
                         >
                            <img
                               src={
-                                 !avatar.isAvatarLoading
-                                    ? `http://localhost:4444${avatar.avatarUrl}?${avatarKey}`
+                                 avatar
+                                    ? `http://localhost:4444${avatar.avatarUrl}`
                                     : ''
                               }
                               alt={userData.data.fullName}
@@ -249,118 +257,139 @@ const MyBlog = () => {
                            <LoadingCircle />
                         ) : (
                            myPosts.map((post: any) => (
-                              <div className={classes.myPost} key={post._id}>
-                                 <div className={classes.description}>
-                                    <div>
-                                       <Link to={`/article/${post._id}`}>
-                                          {post.title}
-                                       </Link>
-                                       <div className={classes.btnBlock}>
-                                          <button
-                                             onClick={onClickEdit}
-                                             className="btn"
-                                          >
-                                             <svg
-                                                className="svg"
-                                                viewBox="0 0 576 512"
-                                                xmlns="http://www.w3.org/2000/svg"
+                              <TransitionGroup>
+                                 <CSSTransition
+                                    key={post._id}
+                                    timeout={500}
+                                    classNames="post-transition-myBlog"
+                                 >
+                                    <div
+                                       className={classes.myPost}
+                                       key={post._id}
+                                       id="myPost"
+                                    >
+                                       <div className={classes.description}>
+                                          <div>
+                                             <Link to={`/article/${post._id}`}>
+                                                {post.title}
+                                             </Link>
+                                             <div
+                                                className={classes.btnBlock}
+                                                id="btnBlock"
                                              >
-                                                <path
-                                                   className="path"
-                                                   d="M402.3 344.9l32-32c5-5 13.7-1.5 13.7 5.7V464c0 26.5-21.5 48-48 48H48c-26.5 0-48-21.5-48-48V112c0-26.5 21.5-48 48-48h273.5c7.1 0 10.7 8.6 5.7 13.7l-32 32c-1.5 1.5-3.5 2.3-5.7 2.3H48v352h352V350.5c0-2.1.8-4.1 2.3-5.6zm156.6-201.8L296.3 405.7l-90.4 10c-26.2 2.9-48.5-19.2-45.6-45.6l10-90.4L432.9 17.1c22.9-22.9 59.9-22.9 82.7 0l43.2 43.2c22.9 22.9 22.9 60 .1 82.8zM460.1 174L402 115.9 216.2 301.8l-7.3 65.3 65.3-7.3L460.1 174zm64.8-79.7l-43.2-43.2c-4.1-4.1-10.8-4.1-14.8 0L436 82l58.1 58.1 30.9-30.9c4-4.2 4-10.8-.1-14.9z"
+                                                <button
+                                                   onClick={onClickEdit}
+                                                   className="btn"
+                                                >
+                                                   <svg
+                                                      className="svg"
+                                                      viewBox="0 0 576 512"
+                                                      xmlns="http://www.w3.org/2000/svg"
+                                                   >
+                                                      <path
+                                                         className="path"
+                                                         d="M402.3 344.9l32-32c5-5 13.7-1.5 13.7 5.7V464c0 26.5-21.5 48-48 48H48c-26.5 0-48-21.5-48-48V112c0-26.5 21.5-48 48-48h273.5c7.1 0 10.7 8.6 5.7 13.7l-32 32c-1.5 1.5-3.5 2.3-5.7 2.3H48v352h352V350.5c0-2.1.8-4.1 2.3-5.6zm156.6-201.8L296.3 405.7l-90.4 10c-26.2 2.9-48.5-19.2-45.6-45.6l10-90.4L432.9 17.1c22.9-22.9 59.9-22.9 82.7 0l43.2 43.2c22.9 22.9 22.9 60 .1 82.8zM460.1 174L402 115.9 216.2 301.8l-7.3 65.3 65.3-7.3L460.1 174zm64.8-79.7l-43.2-43.2c-4.1-4.1-10.8-4.1-14.8 0L436 82l58.1 58.1 30.9-30.9c4-4.2 4-10.8-.1-14.9z"
+                                                      />
+                                                   </svg>
+                                                </button>
+                                                <input
+                                                   type="text"
+                                                   value={post._id}
+                                                   readOnly
+                                                   hidden
                                                 />
-                                             </svg>
-                                          </button>
-                                          <input
-                                             type="text"
-                                             value={post._id}
-                                             readOnly
-                                             hidden
-                                          />
-                                          <div className="confirmWindow">
-                                             <p
-                                                className="confirm"
-                                                onClick={onClickRemove}
-                                             >
-                                                Delete
+                                                <div className="confirmWindow">
+                                                   <p
+                                                      className="confirm"
+                                                      onClick={onClickRemove}
+                                                   >
+                                                      Delete
+                                                   </p>
+                                                   <p
+                                                      className="decline"
+                                                      onClick={(e: any) =>
+                                                         e.target.parentNode.classList.remove(
+                                                            'active'
+                                                         )
+                                                      }
+                                                   >
+                                                      Skip
+                                                   </p>
+                                                </div>
+                                                <button
+                                                   className="btn"
+                                                   onClick={showConfirmWindow}
+                                                >
+                                                   <svg
+                                                      className="svg"
+                                                      viewBox="0 0 48 48"
+                                                      xmlns="http://www.w3.org/2000/svg"
+                                                   >
+                                                      <path
+                                                         className="path"
+                                                         d="M12 38c0 2.21 1.79 4 4 4h16c2.21 0 4-1.79 4-4V14H12v24zM38 8h-7l-2-2H19l-2 2h-7v4h28V8z"
+                                                      />
+                                                   </svg>
+                                                </button>
+                                             </div>
+                                          </div>
+                                          <p>
+                                             {window.innerWidth < 500
+                                                ? cutText(
+                                                     removeSymbols(post.text),
+                                                     80
+                                                  )
+                                                : cutText(
+                                                     removeSymbols(post.text),
+                                                     150
+                                                  )}
+                                          </p>
+                                       </div>
+                                       <div className={classes.dateAndViews}>
+                                          <time dateTime={post.createdAt}>
+                                             {post.createdAt
+                                                .slice(0, 19)
+                                                .replace('T', ' ')}
+                                          </time>
+                                          <div
+                                             className={classes.viewsComments}
+                                          >
+                                             <p className={classes.viewsCount}>
+                                                <svg
+                                                   id="svg"
+                                                   viewBox="0 0 20 20"
+                                                   xmlns="http://www.w3.org/2000/svg"
+                                                >
+                                                   <path d="M.2 10a11 11 0 0 1 19.6 0A11 11 0 0 1 .2 10zm9.8 4a4 4 0 1 0 0-8 4 4 0 0 0 0 8zm0-2a2 2 0 1 1 0-4 2 2 0 0 1 0 4z" />
+                                                </svg>
+                                                {post.viewsCount}
                                              </p>
                                              <p
-                                                className="decline"
-                                                onClick={(e: any) =>
-                                                   e.target.parentNode.classList.remove(
-                                                      'active'
-                                                   )
+                                                className={
+                                                   classes.commentsCount
                                                 }
                                              >
-                                                Skip
+                                                <svg
+                                                   className={
+                                                      classes.commentsImg
+                                                   }
+                                                   xmlns="http://www.w3.org/2000/svg"
+                                                   viewBox="0 0 122.88 113.94"
+                                                >
+                                                   <path d="M3.77,0H119.11a3.79,3.79,0,0,1,3.77,3.77V80.94a3.79,3.79,0,0,1-3.77,3.78H61.44l-29.1,21.62c-9.61,9.13-16.08,11.45-15.15-1V84.72H3.77A3.79,3.79,0,0,1,0,80.94V3.77A3.79,3.79,0,0,1,3.77,0ZM62.92,34.34a7.12,7.12,0,1,1-7.12,7.11,7.11,7.11,0,0,1,7.12-7.11Zm27.19,0A7.12,7.12,0,1,1,83,41.45a7.11,7.11,0,0,1,7.11-7.11Zm-54.39,0a7.12,7.12,0,1,1-7.11,7.11,7.11,7.11,0,0,1,7.11-7.11Z" />
+                                                </svg>
+                                                {post.commentsCount}
                                              </p>
                                           </div>
-                                          <button
-                                             className="btn"
-                                             onClick={showConfirmWindow}
-                                          >
-                                             <svg
-                                                className="svg"
-                                                viewBox="0 0 48 48"
-                                                xmlns="http://www.w3.org/2000/svg"
-                                             >
-                                                <path
-                                                   className="path"
-                                                   d="M12 38c0 2.21 1.79 4 4 4h16c2.21 0 4-1.79 4-4V14H12v24zM38 8h-7l-2-2H19l-2 2h-7v4h28V8z"
-                                                />
-                                             </svg>
-                                          </button>
                                        </div>
                                     </div>
-                                    <p>
-                                       {cutText(
-                                          post.text.replace(
-                                             /./gi,
-                                             (a: any, b: any, c: any) => {
-                                                return a == '#' || a == '*'
-                                                   ? ''
-                                                   : a
-                                             }
-                                          ),
-                                          150
-                                       )}
-                                    </p>
-                                 </div>
-                                 <div className={classes.dateAndViews}>
-                                    <time dateTime={post.createdAt}>
-                                       {post.createdAt
-                                          .slice(0, 19)
-                                          .replace('T', ' ')}
-                                    </time>
-                                    <div className={classes.viewsComments}>
-                                       <p className={classes.viewsCount}>
-                                          <svg
-                                             id="svg"
-                                             viewBox="0 0 20 20"
-                                             xmlns="http://www.w3.org/2000/svg"
-                                          >
-                                             <path d="M.2 10a11 11 0 0 1 19.6 0A11 11 0 0 1 .2 10zm9.8 4a4 4 0 1 0 0-8 4 4 0 0 0 0 8zm0-2a2 2 0 1 1 0-4 2 2 0 0 1 0 4z" />
-                                          </svg>
-                                          {post.viewsCount}
-                                       </p>
-                                       <p className={classes.commentsCount}>
-                                          <svg
-                                             className={classes.commentsImg}
-                                             xmlns="http://www.w3.org/2000/svg"
-                                             viewBox="0 0 122.88 113.94"
-                                          >
-                                             <path d="M3.77,0H119.11a3.79,3.79,0,0,1,3.77,3.77V80.94a3.79,3.79,0,0,1-3.77,3.78H61.44l-29.1,21.62c-9.61,9.13-16.08,11.45-15.15-1V84.72H3.77A3.79,3.79,0,0,1,0,80.94V3.77A3.79,3.79,0,0,1,3.77,0ZM62.92,34.34a7.12,7.12,0,1,1-7.12,7.11,7.11,7.11,0,0,1,7.12-7.11Zm27.19,0A7.12,7.12,0,1,1,83,41.45a7.11,7.11,0,0,1,7.11-7.11Zm-54.39,0a7.12,7.12,0,1,1-7.11,7.11,7.11,7.11,0,0,1,7.11-7.11Z" />
-                                          </svg>
-                                          {post.commentsCount}
-                                       </p>
-                                    </div>
-                                 </div>
-                              </div>
+                                 </CSSTransition>
+                              </TransitionGroup>
                            ))
                         )}
                      </div>
                      {!isPostsLoading && myPosts.length !== 0 ? (
-                        <div className={classes.wrapperSortBtn}>
+                        <div className={classes.wrapperSortBtn} id="tagsMyBlog">
                            <Title
                               fontSize="1.4rem"
                               justifyContent="flex-start"

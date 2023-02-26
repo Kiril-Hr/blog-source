@@ -18,7 +18,10 @@
         align-items: center;
         flex-direction: column;
         gap: 20px;
-
+        @media(max-width: 900px) {
+            width: unset;
+            max-width: 800px;
+        }
         .blogContainer {
             display: flex;
             align-items: center;
@@ -70,6 +73,18 @@
                         height: 15px;
                         fill: grey;
                     }
+                }
+            }
+            @media(max-width: 550px ) {
+                flex-direction: column;
+                a {
+                    text-align: center;
+                }
+                width: unset;
+                max-width: 350px;
+                gap: 10px;
+                .total {
+                    justify-content: space-evenly;
                 }
             }
         }

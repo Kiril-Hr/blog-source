@@ -2,8 +2,8 @@
 
 .articleHome {
     position: relative;
-    width: 450px;
-    height: max-content;
+    width: 400px;
+    height: 430px;
     border: 1px solid #FF5C35;
     background: white;
     box-shadow: 12px 12px 32px rgba(245, 230, 200, 0.2);
@@ -11,8 +11,12 @@
     transition: all 0.45s cubic-bezier(0.25, 0.46, 0.45, 0.94);
     cursor: pointer;
     @media(max-width: 700px) {
-        width: 400px;
-        height: 450px;
+        width: 350px;
+        height: 400px;
+    }
+    @media(max-width: 500px) {
+        width: 300px;
+        height: 400px;
     }
     .tagsContainer {
         display: flex;
@@ -52,14 +56,14 @@
     .img {
         display: block;
         width: 100%;
-        height: 260px;
+        height: 160px;
         background: rgba(155, 72, 72, 0.664);
         border-top-left-radius: 8px;
         border-top-right-radius: 8px;
         border-bottom: 1px solid white;
         object-fit: cover;
         @media(max-width: 700px) {
-            height: 165px;
+            height: 160px;
         }
     }
     h4,p,time,a {
@@ -76,14 +80,17 @@
     .descrHome {
         padding: 25px 15px;
         a {
-            font-size: 1.8rem;
+            font-size: 1.55rem;
             font-weight: 600;
         }
         p {
             margin-top: 20px;
-            font-size: 1rem;
+            font-size: .85rem;
             font-weight: 300;
             line-height: 1.5rem;
+        }
+        @media(max-width: 700px) {
+            padding: 12px 8px;
         }
     }
     .dateAuthorNameLinkHome {
@@ -111,6 +118,9 @@
                     fill: grey;
                 }
             }
+            @media(max-width: 500px) {
+                flex-direction: column;
+            }
         }
         .authorNameLinkHome {
             display: flex;
@@ -128,6 +138,18 @@
             border-radius: 50%;
             object-fit: cover;
         }
-        
+        @media(max-width: 700px) {
+            padding: 0 10px 10px;
+            margin: 0 10px;
+            img {
+                width: 45px;
+                height: 45px;
+            }
+        }
+    }
+    @media(max-width: 700px) {
+        > a {
+            font-size: 1.2rem!important;
+        }
     }
 }

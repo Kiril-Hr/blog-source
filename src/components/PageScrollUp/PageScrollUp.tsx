@@ -23,6 +23,8 @@ const PageScrollUp = () => {
       <div
          className={scroll < 500 ? classes.toUpDeactivated : classes.toUpActive}
          onClick={toUpPage}
+         style={window.innerWidth < 500 ? { display: 'none' } : {}}
+         id="pageUp"
       >
          <svg
             xmlns="http://www.w3.org/2000/svg"

@@ -12,7 +12,7 @@ const CreatedArticle = () => {
    }
 
    return (
-      <div className={classes.editorPage}>
+      <div className={classes.editorPage} id="createArticle">
          <AddPost />
       </div>
    )

@@ -1,0 +1,16 @@
+
+.post-transition-userBlog-enter {
+    transform: translateX(0);
+}
+.post-transition-userBlog-enter-active {
+    transform: translateX(-450px);
+    transition: all 500ms ease-in-out;
+}
+.post-transition-userBlog-exit {
+    transform: translateX(450px);
+    opacity: 1;
+}
+.post-transition-userBlog-exit-active {
+    transform: translateX(-450px);
+    transition: all 500ms ease-in-out;
+}

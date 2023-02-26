@@ -7,10 +7,18 @@
     flex-direction: column;
     gap: 40px;
     padding: 0 40px;
+    @media(max-width: 500px) {
+        padding: 0 5px;
+    }
     .userInfoPhoto {
         display: flex;
         justify-content: space-evenly;
         width: 100%;
+        @media(max-width: 750px) {
+            flex-direction: column;
+            align-items: center;
+            gap: 30px;
+        }
         .userPhoto {
             div {
                 position: relative;
@@ -36,6 +44,7 @@
         }
         .userInfo {
             display: flex;
+            align-self: flex-start;
             flex-direction: column;
             gap: 20px;
             h2, p, div {
@@ -97,6 +106,10 @@
             justify-content: space-between;
             gap: 15px;
             width: 100%;
+            @media(min-width: 1771px) {
+                gap: 60px;
+                justify-content: center;
+            }
             @media(max-width: 1770px) {
                 gap: 60px;
                 justify-content: center;
@@ -120,12 +133,21 @@
                 justify-content: flex-start;
                 gap: 40px;
                 flex-wrap: wrap;
+                @media(min-width: 1771px) {
+                    gap: 60px;
+                    justify-content: center;
+                }
                 @media(max-width: 1770px) {
                     width: unset;
                     flex-direction: column;
-                }
-                @media(max-width: 1770px) {
                     align-items: center;
+                }
+                
+                > div {
+                    width: max-content;
+                    @media(max-width: 700px) {
+                        width: unset;
+                    }
                 }
                 .myPost {
                     position: relative;
@@ -133,14 +155,11 @@
                     width: 600px;
                     transition: all 0.25s cubic-bezier(0.25, 0.46, 0.45, 0.94);
                     border-bottom: 1px solid #DBE4ED;
-                    background: white;
                     @media(max-width: 940px) {
                         width: 100%;
                         max-width: 600px;
                         height: max-content;
                     }
-                    
-                    
                     &:hover {
                         border-bottom: 1px solid #FF5C35;
                         transform: scale(1.015);
@@ -149,6 +168,7 @@
                         div {
                             display: flex;
                             justify-content: space-between;
+                            
                             .btnBlock {
                                 position: relative;
                                 display: flex;
@@ -196,6 +216,7 @@
                             font-size: 1.2rem;
                             font-weight: 400;
                             color: $color-text;
+                            word-break: break-all;
                         }
                         a {
                             display: block;
@@ -246,7 +267,6 @@
                 width: 350px;
                 min-width: 220px;
                 height: 100%;
-                max-height: 600px;
                 padding: 30px;
                 display: flex;
                 flex-wrap: wrap;

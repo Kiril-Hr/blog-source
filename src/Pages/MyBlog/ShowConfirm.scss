@@ -32,3 +32,27 @@
     opacity: 1;
     pointer-events: all;
 }
+@media(max-width: 500px) {
+    .confirmWindow  {
+        padding: 5px;
+        align-items: center;
+        z-index: 100;
+        width: 150px;
+        height: max-content;
+        top: -10px!important;
+        left: -80px;
+        .confirm, .decline {
+            margin-bottom: 0!important;
+            width: 100%;
+        }
+    }
+    .dark {
+        .confirmWindow  {
+            background: #27292B!important;
+            .confirm, .decline {
+                margin-bottom: 0!important;
+                width: 100%;
+            }
+        }
+    }
+}

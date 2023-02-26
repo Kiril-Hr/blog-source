@@ -7,10 +7,18 @@
     flex-direction: column;
     gap: 40px;
     padding: 0 40px;
+    @media(max-width: 500px) {
+        padding: 0 5px;
+    }
     .userInfoPhoto {
         display: flex;
         justify-content: space-evenly;
         width: 100%;
+        @media(max-width: 750px) {
+            flex-direction: column;
+            align-items: center;
+            gap: 30px;
+        }
         .userPhoto {
             img {
                 border-radius: 50%;
@@ -55,6 +63,10 @@
             justify-content: space-between;
             gap: 15px;
             width: 100%;
+            @media(min-width: 1771px) {
+                gap: 60px;
+                justify-content: center;
+            }
             @media(max-width: 1770px) {
                 gap: 60px;
                 justify-content: center;
@@ -78,6 +90,10 @@
             justify-content: flex-start;
             gap: 40px;
             flex-wrap: wrap;
+            @media(min-width: 1771px) {
+                gap: 60px;
+                justify-content: center;
+            }
             @media(max-width: 1770px) {
                 width: unset;
                 flex-direction: column;
@@ -91,19 +107,18 @@
                 width: 600px;
                 transition: all 0.25s cubic-bezier(0.25, 0.46, 0.45, 0.94);
                 border-bottom: 1px solid #DBE4ED;
-                background: white;
                 @media(max-width: 940px) {
                     width: 100%;
                     max-width: 600px;
                     height: max-content;
                 }
-                
-                
                 &:hover {
                     border-bottom: 1px solid #FF5C35;
                     transform: scale(1.015);
                 }
                 .description {
+                    word-wrap: break-word;
+  	hyphens: auto;
                     div {
                         display: flex;
                         justify-content: space-between;
@@ -115,6 +130,7 @@
                         font-size: 1.2rem;
                         font-weight: 400;
                         color: $color-text;
+
                     }
                     a {
                         display: block;

@@ -1,7 +1,7 @@
 import RelatedArticleTemplate from '../../components/ArticlesComponent/RelatedArticleTemplate'
 import Title from '../../components/UI/Title/Title'
 import './Home.scss'
-import { cutText } from '../../utils/functions'
+import { cutText, dateUTC } from '../../utils/functions'
 import { NavLink } from 'react-router-dom'
 import Slider from '../../components/Slider/Slider'
 import { useDispatch, useSelector } from 'react-redux'
@@ -11,6 +11,7 @@ import LoadingCircle from '../../components/UI/LoadingCircle/LoadingCircle'
 import Skeleton from '../../components/ArticlesComponent/Skeleton'
 import UserInfo from '../../components/UserInfo/UserInfo'
 import PageScrollUp from '../../components/PageScrollUp/PageScrollUp'
+import { SliderItemType } from '../../utils/types'
 
 const Home = () => {
    const dispatch = useDispatch<any>()
@@ -86,8 +87,10 @@ const Home = () => {
                      <div>
                         <UserInfo {...mainPost.user} />
                      </div>
-                     <time dateTime={mainPost.createdAt}>
-                        {mainPost.createdAt.slice(0, 19).replace('T', ' ')}
+                     <time dateTime={dateUTC(mainPost.createdAt)}>
+                        {dateUTC(mainPost.createdAt)
+                           .slice(0, 19)
+                           .replace('T', ' ')}
                      </time>
                   </div>
                </div>
@@ -106,13 +109,16 @@ const Home = () => {
                      (popularPostsByViews.length < 15
                         ? popularPostsByViews
                         : MostPopularArticles
-                     ).map((article: any) =>
+                     ).map((article: SliderItemType) =>
                         isPostLoading ? (
                            <Skeleton />
                         ) : (
                            <RelatedArticleTemplate
                               title={article.title}
-                              createdAt={article.createdAt.slice(0, 10)}
+                              createdAt={dateUTC(article.createdAt).slice(
+                                 0,
+                                 10
+                              )}
                               user={article.user}
                               tags={article.tags}
                               _id={article._id}

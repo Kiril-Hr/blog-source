@@ -1,6 +1,8 @@
 import ArticleTemplate from './ArticleTemplate'
 import { SliderItemType } from '../../utils/types'
+import { TransitionGroup, CSSTransition } from 'react-transition-group'
 import Skeleton from './Skeleton'
+import './Transition.scss'
 
 type BlogsProps = SliderItemType
 
@@ -68,26 +70,44 @@ const ArticlesList = ({ isPostLoading, posts }: articleProps) => {
       },
    ]
 
+   if (!posts.length) {
+      return <p className="has-not-found">Posts has not found</p>
+   }
+
    return (
       <>
          {(isPostLoading ? falseArrayOfPosts : posts).map((obj: BlogsProps) =>
             isPostLoading ? (
                <Skeleton />
             ) : (
-               <ArticleTemplate
-                  title={obj.title}
-                  imageUrl={
-                     obj.imageUrl ? `http://localhost:4444${obj.imageUrl}` : ''
-                  }
-                  text={obj.text}
-                  createdAt={obj.createdAt?.slice(0, 10)}
-                  key={obj._id}
-                  _id={obj._id}
-                  viewsCount={obj.viewsCount}
-                  user={obj.user}
-                  tags={obj.tags!.length > 3 ? obj.tags!.slice(0, 3) : obj.tags}
-                  commentsCount={obj.commentsCount}
-               />
+               <TransitionGroup>
+                  <CSSTransition
+                     key={obj._id}
+                     timeout={500}
+                     classNames="post-transition"
+                  >
+                     <ArticleTemplate
+                        title={obj.title}
+                        imageUrl={
+                           obj.imageUrl
+                              ? `http://localhost:4444${obj.imageUrl}`
+                              : ''
+                        }
+                        text={obj.text}
+                        createdAt={obj.createdAt?.slice(0, 10)}
+                        key={obj._id}
+                        _id={obj._id}
+                        viewsCount={obj.viewsCount}
+                        user={obj.user}
+                        tags={
+                           obj.tags!.length > 3
+                              ? obj.tags!.slice(0, 3)
+                              : obj.tags
+                        }
+                        commentsCount={obj.commentsCount}
+                     />
+                  </CSSTransition>
+               </TransitionGroup>
             )
          )}
       </>

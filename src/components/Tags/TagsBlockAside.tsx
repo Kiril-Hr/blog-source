@@ -2,8 +2,8 @@ import LoadingCircle from '../UI/LoadingCircle/LoadingCircle'
 
 type Tags = {
    tags: Array<string>
-   isLoading?: any
-   filterPostsByTag?: (e: any) => void
+   isLoading?: boolean
+   filterPostsByTag?: React.ChangeEvent<HTMLButtonElement> | any
 }
 
 const TagsBlockAside = ({

@@ -16,7 +16,7 @@ const Login = () => {
       formState: { errors, isValid },
    } = useForm({
       defaultValues: {
-         email: 'stepan@newmail.ua',
+         email: 'anotherGuy@newmail.ua',
          password: '123123',
       },
    })
@@ -63,10 +63,6 @@ const Login = () => {
                   type="password"
                />
                <p className="errors-text">{errors.password?.message}</p>
-            </label>
-            <label className="remember-me">
-               <input type="checkbox" />
-               <p>Remember me</p>
             </label>
             <button disabled={!isValid} className="submit" type="submit">
                Submit

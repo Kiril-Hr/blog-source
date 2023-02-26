@@ -95,5 +95,9 @@ form {
 
         }
     }
+    @media(max-width: 500px) {
+        width: unset;
+        margin: 0 5px 30px;
+    }
 }
 

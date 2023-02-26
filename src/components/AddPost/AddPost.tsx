@@ -1,37 +1,67 @@
-import { useCallback, useMemo, useRef, useState, useEffect } from 'react'
+import {
+   useCallback,
+   useMemo,
+   useRef,
+   useState,
+   useEffect,
+   ChangeEvent,
+} from 'react'
 import { Link, useNavigate, useParams } from 'react-router-dom'
 import SimpleMDE from 'react-simplemde-editor'
 import 'easymde/dist/easymde.min.css'
 import classes from './AddPost.module.scss'
 import axios from '../../axios'
+import { useSelector } from 'react-redux'
 
 export const AddPost = () => {
    const { id } = useParams()
+
    const navigate = useNavigate()
-   const [isLoading, setIsLoading] = useState(false)
    const [text, setText] = useState('')
    const [title, setTitle] = useState('')
    const [tags, setTags] = useState('')
    const [imageUrl, setImageUrl] = useState('')
+
    const inputFileRef = useRef<any>(null)
+
+   const userData = useSelector((state: any) => state.auth)
+
+   const isUserDataLoading: any = userData.status === 'loading'
 
    const isEditing = Boolean(id)
 
-   const handleChangeFile = async (e: any) => {
-      try {
-         const formData = new FormData()
-         const file = e.target.files[0]
-         formData.append('image', file)
-         const { data } = await axios.post('/uploads/post', formData)
-         setImageUrl(data.url)
-      } catch (err) {
-         console.warn(err)
-         alert('Failed during uploading file')
+   const handleChangeFile = async (e: ChangeEvent<HTMLInputElement>) => {
+      if (!isUserDataLoading) {
+         const email = userData.data.email.replace(/\./g, '_')
+         try {
+            const formData = new FormData()
+            const file = e.target.files![0]
+            const fileExtension = file.name.split('.').pop()
+            const random = Math.random().toString(36).substring(5)
+            const newFileName = `${random}-${email}.${fileExtension}`
+            formData.append('image', file, newFileName)
+            const { data } = await axios.post('/uploads/post', formData)
+            setImageUrl(data.url)
+            localStorage.setItem('imageUrl', data.url)
+         } catch (err) {
+            console.warn(err)
+            alert('Failed during uploading file')
+         }
       }
    }
 
-   const onClickRemoveImage = () => {
-      setImageUrl('')
+   const savedImage = localStorage.getItem('imageUrl')
+
+   useEffect(() => {
+      if (savedImage) {
+         setImageUrl(savedImage)
+      }
+   }, [imageUrl])
+
+   const onClickRemoveImage = async () => {
+      await axios.delete(`/image-delete/${'post'}/${imageUrl.slice(14)}`)
+      localStorage.removeItem('imageUrl')
+      setImageUrl((prevstate) => (prevstate = ''))
    }
 
    const onChange = useCallback((text: string) => {
@@ -40,8 +70,6 @@ export const AddPost = () => {
 
    const onSubmit = async () => {
       try {
-         setIsLoading(true)
-
          const fields: {
             title: string
             imageUrl: string
@@ -61,6 +89,7 @@ export const AddPost = () => {
          const _id = isEditing ? id : data._id
 
          navigate(`/article/${_id}`)
+         localStorage.removeItem('imageUrl')
       } catch (err) {
          console.warn(err)
          alert('Failed to create article')

@@ -18,10 +18,10 @@ const Registration = (props: Props) => {
       formState: { errors, isValid },
    } = useForm({
       defaultValues: {
-         fullName: 'Kiril Khromyi',
-         email: 'kiril@gmail.com',
-         password: '12312',
-         confirm_password: '12312',
+         fullName: '',
+         email: '',
+         password: '',
+         confirm_password: '',
       },
       mode: 'onChange',
    })
@@ -89,10 +89,6 @@ const Registration = (props: Props) => {
                   })}
                />
                <p className="errors-text">{errors.confirm_password?.message}</p>
-            </label>
-            <label className="remember-me">
-               <input type="checkbox" />
-               <p>Remember me</p>
             </label>
             <button disabled={!isValid} className="submit" type="submit">
                Submit

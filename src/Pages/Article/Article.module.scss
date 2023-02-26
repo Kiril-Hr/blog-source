@@ -14,6 +14,15 @@
         border-top: 2px solid $color-text;
        
     }
+    @media(max-width: 900px) {
+        padding: 0 30px;
+    }
+    @media(max-width: 700px) {
+        padding: 0 15px;
+    }
+    @media(max-width: 500px) {
+        padding: 0 5px;
+    }
 }
 
 .imgOfMainArticlePlusRelatedArticles {
@@ -27,6 +36,9 @@
     @media(max-width: 1850px) {
         border-bottom: none;
         margin-bottom: 0;
+    }
+    @media(max-width: 500px) {
+        padding-bottom: 10px;
     }
     h2 {
         padding-bottom: 15px;
@@ -67,6 +79,9 @@
                 padding-bottom: 50px;
                 border-bottom: 2px solid $color-text;
             }
+            @media(max-width: 500px) {
+                padding-bottom: 35px;
+            }
         }
     }
 
@@ -83,6 +98,7 @@
 }
 
 .authorBlock {
+    position: relative;
     display: flex;
     align-items: center;
     gap: 20px;
@@ -169,6 +185,23 @@
             &:hover {
                 transform: scale(1.03);
             }
+        }
+        @media(max-width: 1300px) {
+            justify-content: flex-start;
+            max-width: 800px;
+            flex-wrap: wrap;
+            position: absolute;
+            top: 150px;
+            left: 5px;
+            h2 {
+                display: none;
+            }
+        }
+        @media(max-width: 700px) {
+            width: 400px;
+        }
+        @media(max-width: 500px) {
+            width: 300px;
         }
     }
 }

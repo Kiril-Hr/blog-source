@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom'
-import { cutText } from '../../utils/functions'
+import { cutText, dateUTC } from '../../utils/functions'
 import { SliderItemType } from '../../utils/types'
 import TagsBlock from '../Tags/TagsBlock'
 import UserInfo from '../UserInfo/UserInfo'
@@ -32,12 +32,16 @@ const SliderItem = ({
          />
          <div className={classes.descrHome}>
             <Link to={`/article/${_id}`}>{cutText(title!, 50)}</Link>
-            <p>{cutText(text!, 130)}</p>
+            <p>
+               {window.innerWidth < 500
+                  ? cutText(text!, 80)
+                  : cutText(text!, 130)}
+            </p>
          </div>
          <div className={classes.dateAuthorNameLinkHome}>
             <div className={classes.dateViews}>
-               <time dateTime={createdAt}>
-                  {createdAt?.slice(0, 10).replace('T', ' ')}
+               <time dateTime={dateUTC(createdAt)}>
+                  {dateUTC(createdAt)?.slice(0, 10).replace('T', ' ')}
                </time>
                <p className={classes.views}>
                   <svg

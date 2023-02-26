@@ -12,7 +12,7 @@ import MarkDown from '../../components/MarkDown/MarkDown'
 import AddComment from '../../components/AddComment/AddComment'
 import RelatedArticleTemplate from '../../components/ArticlesComponent/RelatedArticleTemplate'
 import { SliderItemType } from '../../utils/types'
-import { cutText } from '../../utils/functions'
+import { cutText, dateUTC } from '../../utils/functions'
 import PageScrollUp from '../../components/PageScrollUp/PageScrollUp'
 
 const Article = () => {
@@ -31,19 +31,21 @@ const Article = () => {
    popularPosts.length = 5
 
    useEffect(() => {
-      dispatch(fetchPosts())
-      axios
-         .get(`/posts/${id}`)
-         .then((res) => {
+      const fetchData = async () => {
+         try {
+            dispatch(fetchPosts())
+            const res = await axios.get(`/posts/${id}`)
             setData(res.data)
             setIsLoading(false)
-         })
-         .catch((err) => {
+         } catch (err) {
             console.warn(err)
             alert('Failed to get post')
             navigate('/articles')
-         })
-   }, []) // eslint-disable-line react-hooks/exhaustive-deps
+         }
+      }
+
+      fetchData()
+   }, [id]) // eslint-disable-line react-hooks/exhaustive-deps
 
    if (isLoading) {
       return <LoadingCircle />
@@ -51,7 +53,7 @@ const Article = () => {
 
    return (
       <>
-         <div className={classes.selectedArticle}>
+         <div className={classes.selectedArticle} id="oneArticle">
             <Title
                title={`${data.title}`}
                fontSize={'3.25rem'}
@@ -59,7 +61,9 @@ const Article = () => {
             />
             <div className={classes.authorBlock}>
                <UserInfo {...data.user} />
-               <time>{data.createdAt.slice(0, 19).replace('T', ' ')}</time>
+               <time>
+                  {dateUTC(data.createdAt).slice(0, 19).replace('T', ' ')}
+               </time>
                <p>
                   <svg
                      className={classes.svg}
@@ -103,7 +107,7 @@ const Article = () => {
                               imageUrl={post.imageUrl}
                               title={post.title}
                               text={cutText(post.text!, 200)}
-                              createdAt={post.createdAt
+                              createdAt={dateUTC(post.createdAt)
                                  ?.slice(0, 19)
                                  .replace('T', ' ')}
                               user={post.user}
@@ -116,13 +120,13 @@ const Article = () => {
                </div>
             </div>
             <MarkDown text={data.text} />
-            <section className={classes.commentsSection}>
+            <section className={classes.commentsSection} id="articleComments">
                <Title
                   title="Comments"
                   fontSize="2.5rem"
                   justifyContent="flex-start"
                />
-               <AddComment postId={id!} />
+               <AddComment postId={id!} postAuthorId={data.user._id} />
             </section>
             <PageScrollUp />
          </div>

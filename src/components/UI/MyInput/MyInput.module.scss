@@ -1,0 +1,12 @@
+@import '../../../fonts';
+
+.myInput {
+    background: none;
+    border: 0;
+    border-bottom: 1px solid #ff5d35c9;
+    padding: 0;
+    outline: none;
+    font-family: $font-family;
+    font-size: 1.1rem;
+    font-weight: 500;
+}

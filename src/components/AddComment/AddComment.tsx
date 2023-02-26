@@ -9,13 +9,14 @@ import { Link } from 'react-router-dom'
 
 type Props = {
    postId: string
+   postAuthorId?: string
 }
 
-const AddComment = ({ postId }: Props) => {
+const AddComment = ({ postId, postAuthorId }: Props) => {
    const [comments, setComments] = useState<any>()
    const [text, setText] = useState<string>('')
 
-   const [loggerSendComment, setLoggerSendComment] = useState<number>(0)
+   const [loggerChangeComments, setLoggerChangeComments] = useState<number>(0)
    const [isLoadingComments, setIsLoadingComments] = useState<boolean>(true)
 
    const textareaRef = useRef<HTMLTextAreaElement>(null!)
@@ -27,9 +28,11 @@ const AddComment = ({ postId }: Props) => {
    }
 
    useEffect(() => {
-      textareaRef.current.style.height = '0px'
-      const scrollHeight = textareaRef.current.scrollHeight
-      textareaRef.current.style.height = scrollHeight + 'px'
+      if (isAuth) {
+         textareaRef.current.style.height = '0px'
+         const scrollHeight = textareaRef.current.scrollHeight
+         textareaRef.current.style.height = scrollHeight + 'px'
+      }
    }, [text])
 
    useEffect(() => {
@@ -42,7 +45,7 @@ const AddComment = ({ postId }: Props) => {
          .catch((err) => {
             console.warn(err)
          })
-   }, [loggerSendComment])
+   }, [loggerChangeComments])
 
    const sendComment = async () => {
       try {
@@ -59,24 +62,45 @@ const AddComment = ({ postId }: Props) => {
          console.warn(err)
       }
       setText('')
-      setLoggerSendComment((prevstate) => (prevstate += 1))
+      setLoggerChangeComments((prevstate) => (prevstate += 1))
+   }
+
+   const onKeyDown = (e: React.KeyboardEvent<HTMLTextAreaElement>) => {
+      if (e.key === 'Enter') {
+         sendComment()
+      }
+   }
+
+   const deleteComment = async (
+      commentId: string,
+      e: React.MouseEvent<HTMLParagraphElement>
+   ) => {
+      const parentNode = e.currentTarget.parentNode as HTMLElement
+      parentNode.classList.remove('active')
+      try {
+         await axios.delete(`/comments/${commentId}/${postId}`)
+         setLoggerChangeComments((prevstate) => (prevstate -= 1))
+      } catch (err) {
+         console.log('Problem to delete comment', err)
+      }
    }
 
    return (
       <>
-         <div className={classes.writeCommentField}>
-            <textarea
-               ref={textareaRef}
-               value={text}
-               onChange={onChange}
-               placeholder="Write a comment..."
-               minLength={1}
-               maxLength={1000}
-               style={{
-                  overflow: 'hidden',
-               }}
-            />
-            {isAuth ? (
+         {isAuth && (
+            <div className={classes.writeCommentField}>
+               <textarea
+                  ref={textareaRef}
+                  value={text}
+                  onChange={onChange}
+                  onKeyDown={onKeyDown}
+                  placeholder="Write a comment..."
+                  minLength={1}
+                  maxLength={1000}
+                  style={{
+                     overflow: 'hidden',
+                  }}
+               />
                <button
                   onClick={sendComment}
                   disabled={text.length === 0 || text === null ? true : false}
@@ -90,17 +114,18 @@ const AddComment = ({ postId }: Props) => {
                >
                   Comment
                </button>
-            ) : (
-               <Link to="/register">
-                  Want to comment on post ? Follow this link and get an able !
-               </Link>
-            )}
-         </div>
+            </div>
+         )}
+
          <div className={classes.commentsBlock}>
             {isLoadingComments ? (
                <LoadingCircle />
             ) : (
-               <Comments comments={comments} />
+               <Comments
+                  comments={comments}
+                  deleteComment={deleteComment}
+                  postAuthorId={postAuthorId}
+               />
             )}
          </div>
       </>

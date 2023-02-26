@@ -40,7 +40,7 @@ const Blogs = () => {
             fontSize="2.6rem"
             justifyContent="flex-start"
          />
-         <div className={classes.containerBlogs}>
+         <div className={classes.containerBlogs} id="blogsContainer">
             {isLoadingBlogs ? (
                <LoadingCircle />
             ) : (

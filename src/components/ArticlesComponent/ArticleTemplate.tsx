@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom'
 import { SliderItemType } from '../../utils/types'
-import { cutText } from '../../utils/functions'
+import { cutText, dateUTC, removeSymbols } from '../../utils/functions'
 import UserInfo from '../UserInfo/UserInfo'
 import classes from './ArticleTemplate.module.scss'
 
@@ -25,17 +25,20 @@ const ArticleTemplate = ({
                <div className={classes.descr}>
                   <Link to={`/article/${_id}`}>{title}</Link>
                   <p>
-                     {cutText(text!, 400).replace(
-                        /./gi,
-                        (a: any, b: any, c: any) => {
-                           return a === '*' || a === '#' ? '' : a
-                        }
-                     )}
+                     {window.innerWidth > 1000
+                        ? cutText(removeSymbols(text!), 400)
+                        : window.innerWidth <= 1000 && window.innerWidth > 500
+                        ? cutText(removeSymbols(text!), 300)
+                        : window.innerWidth < 500
+                        ? cutText(removeSymbols(text!), 150)
+                        : cutText(removeSymbols(text!), 100)}
                   </p>
                </div>
                <div className={classes.dateAuthorNameLink}>
                   <div className={classes.dateViewsComments}>
-                     <time dateTime={createdAt}>{createdAt}</time>
+                     <time dateTime={dateUTC(createdAt)}>
+                        {dateUTC(createdAt)}
+                     </time>
                      <div className={classes.viewsComments}>
                         <p className={classes.views}>
                            <svg
@@ -62,8 +65,10 @@ const ArticleTemplate = ({
 
                   <div className={classes.tags}>
                      {tags?.map((tag: string, i: number) => (
-                        <p className={classes.tag} key={i}>
-                           {tag}
+                        <p className={classes.tag} key={`${i}`} id="tag">
+                           {window.innerWidth < 700 && tag.length > 9
+                              ? cutText(tag, 9)
+                              : tag}
                         </p>
                      ))}
                   </div>

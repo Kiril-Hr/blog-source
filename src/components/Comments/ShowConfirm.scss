@@ -1,0 +1,90 @@
+@import '../../fonts';
+
+.container-comment {
+
+    .confirmWindowComments  {
+        position: absolute;
+        top: 0;
+        left: -60px;
+        width: 120px;
+        height: 30px;
+        background-color: rgb(190, 27, 27);
+        display: flex;
+        flex-direction: row!important;
+        opacity: 0;
+        pointer-events: none;
+        transition: all .4s  cubic-bezier(0.075, 0.82, 0.165, 1);
+        .confirm, .decline {
+            padding: 0;
+            height: 30px;
+            width: 60px;
+            line-height: 30px;
+            text-align: center;
+            margin-bottom: 0;
+            color: white!important;
+            font-family: $font-family;
+            font-size: 1.1rem;
+            transition: .2s;
+            cursor: pointer;
+            &:hover {
+                background-color: #6366fc;
+            }
+        }
+    }
+    .confirmWindowComments.active {
+        top: -33px;
+        opacity: 1;
+        pointer-events: all;
+    }
+    &:hover {
+        button  {
+            pointer-events: all;
+            display: block;
+        }
+    }
+    button {
+        pointer-events: none;
+        display: none;
+        z-index: 10;
+        position: absolute;
+        padding: 0;
+        top: 0;
+        left: -10px;
+        width: 30px;
+        height: 30px;
+        cursor: pointer;
+        background: none;
+        border: 0;
+        svg {
+            top: 0;
+            left: 0;
+            z-index: 5;
+            position: absolute;
+            fill: #535353c2;
+            width: 20px;
+            height: 20px; 
+        }
+        &:hover {
+            svg {
+                fill: rgb(190, 27, 27);
+            }
+        }
+        &:nth-child(1) {
+            &:hover {
+                svg {
+                    fill: $color-text;
+                }
+            }
+            
+        }
+    }
+}
+@media(max-width: 700px) {
+    .confirmWindowComments.active {
+        top: -33px;
+        left: 0;
+        opacity: 1;
+        pointer-events: all;
+    }
+}
+

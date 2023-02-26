@@ -13,6 +13,15 @@ header {
         display: flex;
         flex-direction: column;
         padding: 75px 0;
+        @media(max-width: 1024px) {
+            margin-left: 0;
+            padding: 75px 20px;
+        }
+        @media(max-width: 1024px) {
+            margin-left: 0;
+            padding: 75px 0px;
+        }
+
     }
 }
 .container-for-mobile-menu {
@@ -20,84 +29,261 @@ header {
         display: none;
     }
 }
-@media(max-width: 1024px) {
+
+.light {
     .container-for-all {
+        background-color: white;
         .main-footer-container {
-            margin-left: 0;
-            padding: 60px 20px;
+            .container-popular-main {
+                background: #F6F9FC;
+            }
         }
     }
-    .hb-menu.active {
-        &::after,
-        &:before,
-        span {
-            background: #F4AD24;
+}
+
+.dark {
+    body {
+        background: #27292B;
+    }
+    header {
+        .container-for-menu {
+            background: #1E2021;
+            .above-menu {
+                a, p, h1, h2, h3, h4, h5, time, button {
+                    color: #939fad!important;
+                }
+                svg {
+                    fill: #939fad!important;
+                }
+                .account-details {
+                    ul {
+                        background-color: #1E2021;
+                    }
+                }
+            }
+            
         }
         
-        &::after {
-            top: 13px;
-            transform: rotate(135deg);
-        }
-        &:before {
-            bottom: 13px;
-            transform: rotate(45deg);
-        }
-        span {
-            transform: scale(0);
-        }
     }
-    .container-menu-mobile {
-        position: fixed;
-        width: 100%;
-        z-index: 20;
-        background-color: #232A34;
-    }
-    .hb-menu {
-        z-index: 25;
-        top: 35px;
-        right: 50px;
-        width: 40px;
-        height: 31px;
-        position: absolute;
-        cursor: pointer;
-        &::after,
-        &:before,
-        span {
-            content: "";
-            position: absolute;
-            width: 100%;
-            height: 5px;
-            background: black;
-            transition: all .3s cubic-bezier(.42, .01, .58, 1);
-            border-radius: 5px;
+    .container-for-all {
+        a, p, h1, h3, h4, h5, time {
+            color: #939fad!important;
         }
-        &::after {
-            top: 0;
+        h2 {
+            color: #F6F9FC;
         }
-        span {
-            top: 13px;
-        }
-        &:before {
-            bottom: 0;
-        }
-    }
-    .container-for-mobile-menu {
-        .mobile-menu {
-            display: flex;
-            .container-mobile-menu {
-                .mobile-menu {
-                    li {
-                        a {
-                            display: block;
-                            text-decoration: none;
-                            font-size: 24px;
-                            font-weight: 900;
-                            text-transform: uppercase;
-                            letter-spacing: 2px;
+        background: #27292B;
+        .main-footer-container {
+            .home {
+                svg {
+                    fill: #F2B35B;
+                }
+            }
+            #pageUp {
+                svg {
+                    fill: #F2B35B;
+                }
+            }
+            #oneArticle {
+                svg {
+                    fill: #F2B35B;
+                }
+                div {
+                    border-color: #131414;
+                    &:nth-child(3) {
+                        img {
+                            border-color: #131414;
+                        }
+                    }
+                    div {
+                        border: none;
+                        button {
+                            background: #F2B35B;
+                            color: white;
+                        }  
+                    }
+                }
+                #articleComments {
+                    div {
+                        background: none;
+                        textarea {
+                            border-color: #131414;
+                            color: #F2B35B;
+                        }
+                        > button {
+                            &:hover {
+                                background: #F2B35B;
+                                color: #131414;
+                            }
+                        }
+                        button:disabled {
+                            background-color: #f2b35ba1!important;
+                        }
+                        &:last-child {
+                            button {
+                                background: none;
+                            }
+                        }
+                    }
+                }
+            }
+            #blogsContainer {
+                > div {
+                    background: rgba(89, 94, 99, 0.377);
+                    box-shadow: 1px 1px 6px 5px #1e2021b6;
+                    border: 1px solid #131414;
+                    svg {
+                        fill: #F2B35B;
+                    }
+                }
+            }
+            #createArticle {
+                background: white;
+            }
+            #myBlogContainer {
+                svg {
+                    fill: #F2B35B!important;
+                }
+                > div {
+                    &:nth-child(1) {
+                        div {
+                            &:last-child {
+                                div, h2 {
+                                    color: #F6F9FC;
+                                }
+                            }
+                        }
+                    }
+                    &:nth-child(2) {
+                        border-top: 1px solid #131414;
+                        > div {
+                            border-top: none;
+                            border-color: #131414;
+                        }
+                        button {
+                            background: #1E2021;
+                        }
+                    }
+                }
+                #btnBlock {
+                    button {
+                        background: none;
+                    }
+                }
+            }
+            #tagsMyBlog {
+                background: #F2B35B;
+                border: none;
+                h2 {
+                color: #1E2021;
+                }
+                button {
+                    background: #1E2021;
+                    color: #939fad;
+                }
+
+            }
+            #myPost {
+                .confirmWindow {
+                    background: none;
+                    p {
+                        color: white!important;
+                    }
+                }
+                border-bottom: 1px solid #5498DE;
+                &:hover {
+                    border-color: #FF5C35;
+                }
+            }
+            section {
+                background: #27292B;
+                svg {
+                    fill: #F2B35B!important;
+                }
+                article {
+                    > div {
+                        > div {
+                            border: 1px solid #000000cc;
+                            box-shadow: none;
+                            #tag {
+                                background: #1E2021!important;
+                            }   
+                        }
+                    }
+                    
+                }
+                > div {
+                    background: #F2B35B;
+                    border: none;
+                    h2 {
+                    color: #1E2021;
+                    }
+                    button {
+                        background: #1E2021;
+                        color: #939fad;
+                    }
+                }
+            }
+            .container-slider-home {
+                background: #1E2021;
+                .slider {
+                    div {
+                        div {
+                            div {
+                                > div {
+                                    background: #27292B;
+                                    box-shadow: none;
+                                    &:hover {
+                                        border-color: #5498DE;
+                                    }
+                                    img {
+                                        border-bottom: 0;
+                                    }
+                                    div {
+                                        
+                                        &:first-child {
+                                            background: none!important;
+                                            > p {
+                                                background: #1E2021;
+                                            }
+                                        }
+                                        
+                                        &:last-child {
+                                            p {
+                                                background: none!important;
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            .container-popular-main {
+                background: #27292B;
+                .popular-articles {
+                    background: #1E2021;
+                    .related-article-container {
+                        div {
+                            &:hover {
+                                div {
+                                    &:last-child {
+                                        border-color: #FF5C35;
+                                        
+                                    }
+                                }
+                            }
+                            div {
+                                &:last-child {
+                                    border-color: #5498DE;
+                                    
+                                }
+                            }
                         }
                     }
                 }
             }
         }
-    }  
+    }
 }

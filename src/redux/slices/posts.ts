@@ -22,12 +22,6 @@ export const fetchTags = createAsyncThunk('/posts/fetchTags', async () => {
     return data
 })
 
-///////////////////////////////////////////////////////// - comments
-export const fetchComments = createAsyncThunk('/posts/fetchComments', async () => {
-    const { data } = await axios.get('/comments')
-    return data
-})
-
 const initialState = {
     posts: {
         items:[],
@@ -37,10 +31,6 @@ const initialState = {
         items: [],
         status: 'loading'
     },
-    comments: {
-        items:[],
-        status: 'loading'
-    }
 }
 
 const postSlice = createSlice({
@@ -96,21 +86,6 @@ const postSlice = createSlice({
         builder.addCase(fetchPostsPopular.rejected, (state) => {
             state.posts.items = []
             state.posts.status = 'error'
-        })
-/////////////////////////////////////////////////////////////////////
-        builder.addCase(fetchComments.pending, (state) => {
-            state.comments.items = []
-            state.comments.status = 'loading'
-        })
-
-        builder.addCase(fetchComments.fulfilled, (state, action) => {
-            state.comments.items = action.payload
-            state.comments.status = 'loaded'
-        })
-
-        builder.addCase(fetchComments.rejected, (state) => {
-            state.comments.items = []
-            state.comments.status = 'error'
         })
     }, 
 })
