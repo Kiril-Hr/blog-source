@@ -208,7 +208,7 @@ const MyBlog = () => {
                            <img
                               src={
                                  avatar
-                                    ? `http://localhost:4444${avatar.avatarUrl}`
+                                    ? `${process.env.REACT_APP_API_URL}${avatar.avatarUrl}`
                                     : ''
                               }
                               alt={userData.data.fullName}

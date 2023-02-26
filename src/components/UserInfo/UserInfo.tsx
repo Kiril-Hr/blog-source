@@ -25,7 +25,9 @@ const UserInfo = ({ avatarUrl, fullName, _id, time }: Props) => {
          </Link>
 
          <img
-            src={`http://localhost:4444${avatarUrl}` || '/noavatar.png'}
+            src={
+               `${process.env.REACT_APP_API_URL}${avatarUrl}` || '/noavatar.png'
+            }
             alt={fullName}
          />
       </>

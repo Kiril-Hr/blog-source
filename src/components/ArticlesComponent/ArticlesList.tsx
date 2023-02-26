@@ -90,7 +90,7 @@ const ArticlesList = ({ isPostLoading, posts }: articleProps) => {
                         title={obj.title}
                         imageUrl={
                            obj.imageUrl
-                              ? `http://localhost:4444${obj.imageUrl}`
+                              ? `${process.env.REACT_APP_API_URL}${obj.imageUrl}`
                               : ''
                         }
                         text={obj.text}

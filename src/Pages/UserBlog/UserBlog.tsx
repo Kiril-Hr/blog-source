@@ -76,7 +76,7 @@ const UserBlog = () => {
                   <div className={classes.userPhoto}>
                      {user?.avatarUrl ? (
                         <img
-                           src={`http://localhost:4444${user.avatarUrl}`}
+                           src={`${process.env.REACT_APP_API_URL}${user.avatarUrl}`}
                            alt={user.fullName}
                         />
                      ) : (
