@@ -26,7 +26,7 @@ const SliderItem = ({
             <TagsBlock tags={tagsFilter!} />
          </div>
          <img
-            src={`${process.env.REACT_APP_API_URL}${imageUrl}`}
+            src={imageUrl ? `${process.env.REACT_APP_API_URL}${imageUrl}` : ''}
             alt="article"
             className={classes.img}
          />

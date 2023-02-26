@@ -47,7 +47,11 @@ const Blogs = () => {
                blogs.map((blog: IBlogs) => (
                   <div className={classes.blogContainer} key={blog._id}>
                      <img
-                        src={`${process.env.REACT_APP_API_URL}${blog.avatarUrl}`}
+                        src={
+                           blog.avatarUrl
+                              ? `${process.env.REACT_APP_API_URL}${blog.avatarUrl}`
+                              : ''
+                        }
                         alt={blog.fullName}
                      />
                      <div className={classes.description}>

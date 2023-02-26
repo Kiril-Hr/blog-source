@@ -76,7 +76,11 @@ const UserBlog = () => {
                   <div className={classes.userPhoto}>
                      {user?.avatarUrl ? (
                         <img
-                           src={`${process.env.REACT_APP_API_URL}${user.avatarUrl}`}
+                           src={
+                              user.avatarUrl
+                                 ? `${process.env.REACT_APP_API_URL}${user.avatarUrl}`
+                                 : ''
+                           }
                            alt={user.fullName}
                         />
                      ) : (

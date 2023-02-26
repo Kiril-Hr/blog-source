@@ -68,7 +68,11 @@ const Home = () => {
             ) : (
                <div className="main-article">
                   <img
-                     src={`${process.env.REACT_APP_API_URL}${mainPost.imageUrl}`}
+                     src={
+                        mainPost.imageUrl
+                           ? `${process.env.REACT_APP_API_URL}${mainPost.imageUrl}`
+                           : ''
+                     }
                      alt={mainPost.user.fullName}
                   />
                   <NavLink to={`/article/${mainPost._id}`}>
