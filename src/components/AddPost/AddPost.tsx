@@ -12,6 +12,7 @@ import 'easymde/dist/easymde.min.css'
 import classes from './AddPost.module.scss'
 import axios from '../../axios'
 import { useSelector } from 'react-redux'
+import { BASEURL } from '../../utils/URL'
 
 export const AddPost = () => {
    const { id } = useParams()
@@ -143,7 +144,7 @@ export const AddPost = () => {
                </button>
                <img
                   className={classes.image}
-                  src={`${process.env.REACT_APP_API_URL}${imageUrl}`}
+                  src={`${BASEURL}${imageUrl}`}
                   alt="Uploaded"
                />
             </>

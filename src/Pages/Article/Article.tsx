@@ -14,6 +14,7 @@ import RelatedArticleTemplate from '../../components/ArticlesComponent/RelatedAr
 import { SliderItemType } from '../../utils/types'
 import { cutText, dateUTC } from '../../utils/functions'
 import PageScrollUp from '../../components/PageScrollUp/PageScrollUp'
+import { BASEURL } from '../../utils/URL'
 
 const Article = () => {
    const navigate = useNavigate()
@@ -86,11 +87,7 @@ const Article = () => {
             <div className={classes.imgOfMainArticlePlusRelatedArticles}>
                <div className={classes.containerPopularArticlesMainPhoto}>
                   <img
-                     src={
-                        data.imageUrl
-                           ? `${process.env.REACT_APP_API_URL}${data.imageUrl}`
-                           : ''
-                     }
+                     src={data.imageUrl ? `${BASEURL}${data.imageUrl}` : ''}
                      alt={data.user.fullName}
                      className={classes.img}
                   />

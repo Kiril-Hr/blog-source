@@ -5,6 +5,7 @@ import classes from './Blogs.module.scss'
 import LoadingCircle from '../../components/UI/LoadingCircle/LoadingCircle'
 import { Link } from 'react-router-dom'
 import Title from '../../components/UI/Title/Title'
+import { BASEURL } from '../../utils/URL'
 
 interface IBlogs {
    _id: string
@@ -48,9 +49,7 @@ const Blogs = () => {
                   <div className={classes.blogContainer} key={blog._id}>
                      <img
                         src={
-                           blog.avatarUrl
-                              ? `${process.env.REACT_APP_API_URL}${blog.avatarUrl}`
-                              : ''
+                           blog.avatarUrl ? `${BASEURL}${blog.avatarUrl}` : ''
                         }
                         alt={blog.fullName}
                      />

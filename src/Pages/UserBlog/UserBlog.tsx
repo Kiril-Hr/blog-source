@@ -9,6 +9,7 @@ import TagsBlockAside from '../../components/Tags/TagsBlockAside'
 import PageScrollUp from '../../components/PageScrollUp/PageScrollUp'
 import { cutText, removeSymbols } from '../../utils/functions'
 import { CSSTransition, TransitionGroup } from 'react-transition-group'
+import { BASEURL } from '../../utils/URL'
 
 type User = {
    avatarUrl: string
@@ -78,7 +79,7 @@ const UserBlog = () => {
                         <img
                            src={
                               user.avatarUrl
-                                 ? `${process.env.REACT_APP_API_URL}${user.avatarUrl}`
+                                 ? `${BASEURL}${user.avatarUrl}`
                                  : ''
                            }
                            alt={user.fullName}

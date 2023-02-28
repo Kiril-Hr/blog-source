@@ -12,6 +12,7 @@ import Skeleton from '../../components/ArticlesComponent/Skeleton'
 import UserInfo from '../../components/UserInfo/UserInfo'
 import PageScrollUp from '../../components/PageScrollUp/PageScrollUp'
 import { SliderItemType } from '../../utils/types'
+import { BASEURL } from '../../utils/URL'
 
 const Home = () => {
    const dispatch = useDispatch<any>()
@@ -70,7 +71,7 @@ const Home = () => {
                   <img
                      src={
                         mainPost.imageUrl
-                           ? `${process.env.REACT_APP_API_URL}${mainPost.imageUrl}`
+                           ? `${BASEURL}${mainPost.imageUrl}`
                            : ''
                      }
                      alt={mainPost.user.fullName}

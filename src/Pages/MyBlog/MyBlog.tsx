@@ -13,6 +13,7 @@ import Title from '../../components/UI/Title/Title'
 import PageScrollUp from '../../components/PageScrollUp/PageScrollUp'
 import axios from '../../axios'
 import { CSSTransition, TransitionGroup } from 'react-transition-group'
+import { BASEURL } from '../../utils/URL'
 
 interface User {
    _id: string
@@ -207,9 +208,7 @@ const MyBlog = () => {
                         >
                            <img
                               src={
-                                 avatar
-                                    ? `${process.env.REACT_APP_API_URL}${avatar.avatarUrl}`
-                                    : ''
+                                 avatar ? `${BASEURL}${avatar.avatarUrl}` : ''
                               }
                               alt={userData.data.fullName}
                            />

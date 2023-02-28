@@ -3,6 +3,7 @@ import { SliderItemType } from '../../utils/types'
 import { TransitionGroup, CSSTransition } from 'react-transition-group'
 import Skeleton from './Skeleton'
 import './Transition.scss'
+import { BASEURL } from '../../utils/URL'
 
 type BlogsProps = SliderItemType
 
@@ -89,9 +90,7 @@ const ArticlesList = ({ isPostLoading, posts }: articleProps) => {
                      <ArticleTemplate
                         title={obj.title}
                         imageUrl={
-                           obj.imageUrl
-                              ? `${process.env.REACT_APP_API_URL}${obj.imageUrl}`
-                              : ''
+                           obj.imageUrl ? `${BASEURL}${obj.imageUrl}` : ''
                         }
                         text={obj.text}
                         createdAt={obj.createdAt?.slice(0, 10)}
