@@ -15,4 +15,4 @@ export const dateUTC = (date: string) => {
     return dateNew;
 }
 
-export const cutSlash = (str: string) => str.replace('/', '')
+export const cutSlash = (str: string) => str
