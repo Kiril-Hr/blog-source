@@ -13,6 +13,7 @@ import classes from './AddPost.module.scss'
 import axios from '../../axios'
 import { useSelector } from 'react-redux'
 import { BASEURL } from '../../utils/URL'
+import { cutSlash } from '../../utils/functions'
 
 export const AddPost = () => {
    const { id } = useParams()
@@ -144,7 +145,7 @@ export const AddPost = () => {
                </button>
                <img
                   className={classes.image}
-                  src={`${BASEURL}${imageUrl}`}
+                  src={`${BASEURL}${cutSlash(imageUrl)}`}
                   alt="Uploaded"
                />
             </>

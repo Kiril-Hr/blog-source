@@ -1,6 +1,7 @@
 import { useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
 import { selectIsAuth } from '../../redux/slices/auth'
+import { cutSlash } from '../../utils/functions'
 import { BASEURL } from '../../utils/URL'
 
 type Props = {
@@ -26,7 +27,7 @@ const UserInfo = ({ avatarUrl, fullName, _id, time }: Props) => {
          </Link>
 
          <img
-            src={`${BASEURL}${avatarUrl}` || '/noavatar.png'}
+            src={`${BASEURL}${cutSlash(avatarUrl)}` || '/noavatar.png'}
             alt={fullName}
          />
       </>

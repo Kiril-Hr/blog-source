@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom'
-import { cutText, dateUTC } from '../../utils/functions'
+import { cutSlash, cutText, dateUTC } from '../../utils/functions'
 import { SliderItemType } from '../../utils/types'
 import { BASEURL } from '../../utils/URL'
 import TagsBlock from '../Tags/TagsBlock'
@@ -27,7 +27,7 @@ const SliderItem = ({
             <TagsBlock tags={tagsFilter!} />
          </div>
          <img
-            src={imageUrl ? `${BASEURL}${imageUrl}` : ''}
+            src={imageUrl ? `${BASEURL}${cutSlash(imageUrl)}` : ''}
             alt="article"
             className={classes.img}
          />

@@ -6,6 +6,7 @@ import LoadingCircle from '../../components/UI/LoadingCircle/LoadingCircle'
 import { Link } from 'react-router-dom'
 import Title from '../../components/UI/Title/Title'
 import { BASEURL } from '../../utils/URL'
+import { cutSlash } from '../../utils/functions'
 
 interface IBlogs {
    _id: string
@@ -49,7 +50,9 @@ const Blogs = () => {
                   <div className={classes.blogContainer} key={blog._id}>
                      <img
                         src={
-                           blog.avatarUrl ? `${BASEURL}${blog.avatarUrl}` : ''
+                           blog.avatarUrl
+                              ? `${BASEURL}${cutSlash(blog.avatarUrl)}`
+                              : ''
                         }
                         alt={blog.fullName}
                      />

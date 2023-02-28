@@ -7,7 +7,7 @@ import LoadingCircle from '../../components/UI/LoadingCircle/LoadingCircle'
 import Title from '../../components/UI/Title/Title'
 import TagsBlockAside from '../../components/Tags/TagsBlockAside'
 import PageScrollUp from '../../components/PageScrollUp/PageScrollUp'
-import { cutText, removeSymbols } from '../../utils/functions'
+import { cutSlash, cutText, removeSymbols } from '../../utils/functions'
 import { CSSTransition, TransitionGroup } from 'react-transition-group'
 import { BASEURL } from '../../utils/URL'
 
@@ -79,7 +79,7 @@ const UserBlog = () => {
                         <img
                            src={
                               user.avatarUrl
-                                 ? `${BASEURL}${user.avatarUrl}`
+                                 ? `${BASEURL}${cutSlash(user.avatarUrl)}`
                                  : ''
                            }
                            alt={user.fullName}

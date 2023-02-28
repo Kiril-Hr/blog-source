@@ -1,7 +1,7 @@
 import RelatedArticleTemplate from '../../components/ArticlesComponent/RelatedArticleTemplate'
 import Title from '../../components/UI/Title/Title'
 import './Home.scss'
-import { cutText, dateUTC } from '../../utils/functions'
+import { cutSlash, cutText, dateUTC } from '../../utils/functions'
 import { NavLink } from 'react-router-dom'
 import Slider from '../../components/Slider/Slider'
 import { useDispatch, useSelector } from 'react-redux'
@@ -71,7 +71,7 @@ const Home = () => {
                   <img
                      src={
                         mainPost.imageUrl
-                           ? `${BASEURL}${mainPost.imageUrl}`
+                           ? `${BASEURL}${cutSlash(mainPost.imageUrl)}`
                            : ''
                      }
                      alt={mainPost.user.fullName}

@@ -6,7 +6,7 @@ import LoadingCircle from '../../components/UI/LoadingCircle/LoadingCircle'
 import classes from './MyBlog.module.scss'
 import './ShowConfirm.scss'
 import './Transition.scss'
-import { cutText, removeSymbols } from '../../utils/functions'
+import { cutSlash, cutText, removeSymbols } from '../../utils/functions'
 import TagsBlockAside from '../../components/Tags/TagsBlockAside'
 import { selectIsAuth } from '../../redux/slices/auth'
 import Title from '../../components/UI/Title/Title'
@@ -29,7 +29,7 @@ interface User {
 
 interface IUserData {
    isAvatarLoading: boolean
-   avatarUrl: User | null
+   avatarUrl: string | null
    error: string | null
 }
 
@@ -208,7 +208,9 @@ const MyBlog = () => {
                         >
                            <img
                               src={
-                                 avatar ? `${BASEURL}${avatar.avatarUrl}` : ''
+                                 avatar
+                                    ? `${BASEURL}${cutSlash(avatar.avatarUrl!)}`
+                                    : ''
                               }
                               alt={userData.data.fullName}
                            />
