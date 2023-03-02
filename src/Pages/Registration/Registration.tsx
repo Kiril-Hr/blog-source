@@ -77,7 +77,7 @@ const Registration = (props: Props) => {
                <p className="errors-text">{errors.password?.message}</p>
             </label>
             <label>
-               <p>Conform password</p>
+               <p>Confirm password</p>
                <input
                   {...register('confirm_password', {
                      required: 'Confirm your password',

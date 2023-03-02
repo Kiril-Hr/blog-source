@@ -14,5 +14,3 @@ export const dateUTC = (date: string) => {
     const dateNew = `${year}/${month}/${day}`;
     return dateNew;
 }
-
-export const cutSlash = (str: string) => str

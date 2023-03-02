@@ -1,12 +1,12 @@
 import { useSelector, useDispatch } from 'react-redux'
-import { useEffect, useRef, useState } from 'react'
+import { HTMLInputTypeAttribute, useEffect, useRef, useState } from 'react'
 import { fetchRemovePost } from '../../redux/slices/posts'
 import { Link, Navigate, useNavigate } from 'react-router-dom'
 import LoadingCircle from '../../components/UI/LoadingCircle/LoadingCircle'
 import classes from './MyBlog.module.scss'
 import './ShowConfirm.scss'
 import './Transition.scss'
-import { cutSlash, cutText, removeSymbols } from '../../utils/functions'
+import { cutText, removeSymbols } from '../../utils/functions'
 import TagsBlockAside from '../../components/Tags/TagsBlockAside'
 import { selectIsAuth } from '../../redux/slices/auth'
 import Title from '../../components/UI/Title/Title'
@@ -81,10 +81,16 @@ const MyBlog = () => {
       }, {})
    }
 
-   const onClickRemove = async (e: any) => {
+   const onClickRemove = async (e: React.MouseEvent<HTMLParagraphElement>) => {
       const userId = userData.data._id
-      let id: string = e.target.parentNode.previousElementSibling.value
-      e.target.parentNode.classList.remove('active')
+      const parentNode = e.currentTarget.parentNode as HTMLElement
+      let id: string =
+         parentNode.previousElementSibling instanceof HTMLInputElement
+            ? parentNode.previousElementSibling.value
+            : ''
+      parentNode.style.pointerEvents = 'none'
+      parentNode.classList.remove('active')
+      if (!id) return
       try {
          await dispatch(fetchRemovePost({ id, userId }))
          const res = await axios.get(`/posts/user/${userId}`)
@@ -208,9 +214,7 @@ const MyBlog = () => {
                         >
                            <img
                               src={
-                                 avatar
-                                    ? `${BASEURL}${cutSlash(avatar.avatarUrl!)}`
-                                    : ''
+                                 avatar ? `${BASEURL}${avatar.avatarUrl!}` : ''
                               }
                               alt={userData.data.fullName}
                            />

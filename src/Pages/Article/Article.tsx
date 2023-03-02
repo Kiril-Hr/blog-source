@@ -12,7 +12,7 @@ import MarkDown from '../../components/MarkDown/MarkDown'
 import AddComment from '../../components/AddComment/AddComment'
 import RelatedArticleTemplate from '../../components/ArticlesComponent/RelatedArticleTemplate'
 import { SliderItemType } from '../../utils/types'
-import { cutSlash, cutText, dateUTC } from '../../utils/functions'
+import { cutText, dateUTC } from '../../utils/functions'
 import PageScrollUp from '../../components/PageScrollUp/PageScrollUp'
 import { BASEURL } from '../../utils/URL'
 
@@ -87,11 +87,7 @@ const Article = () => {
             <div className={classes.imgOfMainArticlePlusRelatedArticles}>
                <div className={classes.containerPopularArticlesMainPhoto}>
                   <img
-                     src={
-                        data.imageUrl
-                           ? `${BASEURL}${cutSlash(data.imageUrl)}`
-                           : ''
-                     }
+                     src={data.imageUrl ? `${BASEURL}${data.imageUrl}` : ''}
                      alt={data.user.fullName}
                      className={classes.img}
                   />

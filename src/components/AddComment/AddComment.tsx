@@ -76,6 +76,7 @@ const AddComment = ({ postId, postAuthorId }: Props) => {
       e: React.MouseEvent<HTMLParagraphElement>
    ) => {
       const parentNode = e.currentTarget.parentNode as HTMLElement
+      parentNode.style.pointerEvents = 'none'
       parentNode.classList.remove('active')
       try {
          await axios.delete(`/comments/${commentId}/${postId}`)

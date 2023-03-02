@@ -4,7 +4,6 @@ import { TransitionGroup, CSSTransition } from 'react-transition-group'
 import Skeleton from './Skeleton'
 import './Transition.scss'
 import { BASEURL } from '../../utils/URL'
-import { cutSlash } from '../../utils/functions'
 
 type BlogsProps = SliderItemType
 
@@ -91,9 +90,7 @@ const ArticlesList = ({ isPostLoading, posts }: articleProps) => {
                      <ArticleTemplate
                         title={obj.title}
                         imageUrl={
-                           obj.imageUrl
-                              ? `${BASEURL}${cutSlash(obj.imageUrl)}`
-                              : ''
+                           obj.imageUrl ? `${BASEURL}${obj.imageUrl}` : ''
                         }
                         text={obj.text}
                         createdAt={obj.createdAt?.slice(0, 10)}
