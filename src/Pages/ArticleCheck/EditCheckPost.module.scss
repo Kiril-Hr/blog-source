@@ -1,0 +1,106 @@
+@import '../../fonts';
+
+.textEditor {
+    margin: 40px 80px;
+    padding: 20px 0;
+    min-height: 600px;
+    height: 100%;
+    background-color: white;
+    border-top: 1px solid #ff3713;
+    border-bottom: 1px solid #ff3713;
+    @media(max-width: 1000px) {
+        margin: 0px 0;
+    }
+    .button {
+        padding: 10px;
+        font-family:  $font-family;
+        font-weight: 700;
+        font-size: 1rem;
+        letter-spacing: 0.07rem;
+        margin-left: 40px;
+        margin-bottom: 20px;
+        border: 0;
+        color: white;
+        cursor: pointer;
+        background: #FF7F60;
+        transition: .2s;
+        &:hover {
+            background: #FF8F73;
+        }
+    }
+    .title, .tags input {
+        display: block;
+        margin-bottom: 20px;
+        border: 0;
+        font-family: $font-family;
+        color: $color-text;
+        font-weight: 800;
+        font-size: 2.6rem;
+        background: none;
+        outline-style: none;
+    }
+    .title {
+        margin-left: 40px;
+        @media(max-width: 600px) {
+            margin-left: 0;
+            padding-left: 40px;
+            width: fit-content;
+            max-width: 450px;
+        }
+        @media(max-width: 500px) {
+            margin-left: 0;
+            padding-left: 20px;
+            width: fit-content;
+            max-width: 350px;
+        }
+    }
+    
+    .tags {
+        padding: 0 40px 20px;
+        border-bottom: 1px solid #ff3713;
+
+        input {
+            width: 100%;
+            padding: 5px 0;
+            font-weight: 400;
+            font-size: 0.9rem;
+            margin: 0;
+        }
+        &::after {
+            content: "";
+            display: block;
+            width: 100%;
+            height: 1px;
+            background-color: grey;
+        }
+    }
+    
+    .image {    
+        display: block;
+        width: 100%;
+        max-height: 1400px;
+        object-fit: cover;
+    }
+    
+    .editor {
+        margin-bottom: 30px;          
+        :global {
+            .cm-s-easymde {
+            border: 0;
+            font-size: 1.1rem;
+            font-family: $font-family;
+            }
+            .editor-toolbar {
+            border: 0;
+            background-color: #F6F9FC;
+            border-bottom: 1px solid #ff3713;
+            }
+        }
+    }
+    .buttons {
+        display: flex;
+        .button {
+            width: 120px;
+        }
+    }
+}

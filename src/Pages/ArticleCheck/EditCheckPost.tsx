@@ -9,46 +9,57 @@ import {
 import { Link, useNavigate, useParams } from 'react-router-dom'
 import SimpleMDE from 'react-simplemde-editor'
 import 'easymde/dist/easymde.min.css'
-import classes from './AddPost.module.scss'
+import classes from './EditCheckPost.module.scss'
 import axios from '../../axios'
-import { useSelector } from 'react-redux'
 import { BASEURL } from '../../utils/URL'
 import { selectIsAuth } from '../../redux/slices/auth'
 
-export const AddPost = () => {
+export const EditCheckPost = () => {
    const { id } = useParams()
 
    const navigate = useNavigate()
-   const [text, setText] = useState('')
-   const [title, setTitle] = useState('')
-   const [tags, setTags] = useState('')
-   const [imageUrl, setImageUrl] = useState('')
+   const [data, setData] = useState({
+      text: '',
+      title: '',
+      tags: '',
+      imageUrl: '',
+      email: '',
+   })
 
    const inputFileRef = useRef<any>(null)
 
-   const userData = useSelector((state: any) => state.auth)
+   const { text, title, tags, imageUrl } = data
 
-   const isUserDataLoading: any = userData.status === 'loading'
-
-   const isEditing = Boolean(id)
+   useEffect(() => {
+      axios.get(`/posts/check/${id}`).then(({ data }: any) => {
+         setData({
+            text: data.text,
+            title: data.title,
+            tags: data.tags,
+            imageUrl: data.imageUrl,
+            email: data.user.email,
+         })
+      })
+   }, [])
 
    const handleChangeFile = async (e: ChangeEvent<HTMLInputElement>) => {
-      if (!isUserDataLoading) {
-         const email = userData.data.email.replace(/\./g, '_')
-         try {
-            const formData = new FormData()
-            const file = e.target.files![0]
-            const fileExtension = file.name.split('.').pop()
-            const random = Math.random().toString(36).substring(5)
-            const newFileName = `${random}-${email}.${fileExtension}`
-            formData.append('image', file, newFileName)
-            const { data } = await axios.post('/uploads/post', formData)
-            setImageUrl(data.url)
-            localStorage.setItem('imageUrl', data.url)
-         } catch (err) {
-            console.warn(err)
-            alert('Failed during uploading file')
-         }
+      const email = data.email.replace(/\./g, '_')
+      try {
+         const formData = new FormData()
+         const file = e.target.files![0]
+         const fileExtension = file.name.split('.').pop()
+         const random = Math.random().toString(36).substring(5)
+         const newFileName = `${random}-${email}.${fileExtension}`
+         formData.append('image', file, newFileName)
+         const { data } = await axios.post('/uploads/post', formData)
+         setData((prevstate: any) => ({
+            ...prevstate,
+            imageUrl: data.url,
+         }))
+         localStorage.setItem('imageUrl', data.url)
+      } catch (err) {
+         console.warn(err)
+         alert('Failed during uploading file')
       }
    }
 
@@ -56,23 +67,28 @@ export const AddPost = () => {
 
    useEffect(() => {
       if (savedImage) {
-         setImageUrl(savedImage)
+         setData((prevstate: any) => ({
+            ...prevstate,
+            imageUrl: savedImage,
+         }))
       }
    }, [imageUrl])
 
    const onClickRemoveImage = async () => {
       await axios.delete(`/image-delete/${'post'}/${imageUrl.slice(14)}`)
       localStorage.removeItem('imageUrl')
-      setImageUrl((prevstate) => (prevstate = ''))
+      setData((prevstate: any) => ({
+         ...prevstate,
+         imageUrl: '',
+      }))
    }
 
    const onChange = useCallback((text: string) => {
-      setText(text)
+      setData((prevstate: any) => ({
+         ...prevstate,
+         text,
+      }))
    }, [])
-
-   if (!selectIsAuth) {
-      navigate('/')
-   }
 
    const onSubmit = async () => {
       try {
@@ -88,15 +104,9 @@ export const AddPost = () => {
             text,
          }
 
-         isEditing
-            ? await axios.patch(`/posts/${id}`, fields)
-            : await axios.post('/posts/check', fields)
+         await axios.patch(`/posts/check/edit/${id}`, fields)
 
-         if (isEditing) {
-            navigate(`/article/${id}`)
-         } else {
-            navigate('/my-blog')
-         }
+         navigate(`/article-check/${id}`)
 
          localStorage.removeItem('imageUrl')
       } catch (err) {
@@ -120,16 +130,9 @@ export const AddPost = () => {
       []
    )
 
-   useEffect(() => {
-      if (id) {
-         axios.get(`/posts/${id}`).then(({ data }: any) => {
-            setTitle(data.title)
-            setText(data.text)
-            setImageUrl(data.imageUrl)
-            setTags(data.tags)
-         })
-      }
-   }, [])
+   if (!selectIsAuth) {
+      navigate('/')
+   }
 
    return (
       <div className={classes.textEditor}>
@@ -163,13 +166,23 @@ export const AddPost = () => {
             className={classes.title}
             placeholder="Title of article..."
             value={title}
-            onChange={(e) => setTitle(e.target.value)}
+            onChange={(e) =>
+               setData((prevstate: any) => ({
+                  ...prevstate,
+                  title: e.target.value,
+               }))
+            }
          />
          <div className={classes.tags}>
             <input
                placeholder="Tags"
                value={tags}
-               onChange={(e) => setTags(e.target.value)}
+               onChange={(e) =>
+                  setData((prevstate: any) => ({
+                     ...prevstate,
+                     tags: e.target.value,
+                  }))
+               }
             />
          </div>
          <SimpleMDE
@@ -180,7 +193,7 @@ export const AddPost = () => {
          />
          <div className={classes.buttons}>
             <button className={classes.button} onClick={onSubmit}>
-               {isEditing ? 'Edit' : 'Post'}
+               Edit
             </button>
             <Link to="/my-blog">
                <button className={classes.button}>Decline</button>

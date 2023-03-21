@@ -1,12 +1,12 @@
 import { useSelector, useDispatch } from 'react-redux'
-import { HTMLInputTypeAttribute, useEffect, useRef, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { fetchRemovePost } from '../../redux/slices/posts'
 import { Link, Navigate, useNavigate } from 'react-router-dom'
 import LoadingCircle from '../../components/UI/LoadingCircle/LoadingCircle'
 import classes from './MyBlog.module.scss'
 import './ShowConfirm.scss'
 import './Transition.scss'
-import { cutText, removeSymbols } from '../../utils/functions'
+import { cutText, dateUTC, removeSymbols } from '../../utils/functions'
 import TagsBlockAside from '../../components/Tags/TagsBlockAside'
 import { selectIsAuth } from '../../redux/slices/auth'
 import Title from '../../components/UI/Title/Title'
@@ -15,7 +15,7 @@ import axios from '../../axios'
 import { CSSTransition, TransitionGroup } from 'react-transition-group'
 import { BASEURL } from '../../utils/URL'
 
-interface User {
+interface IUser {
    _id: string
    fullName: string
    email: string
@@ -41,6 +41,11 @@ const MyBlog = () => {
       avatarUrl: null,
       error: null,
    })
+   const [checkPostsData, setCheckPostsData] = useState<any>({
+      posts: [],
+      isPostCheckLoading: true,
+   })
+   const [switcherData, setSwitcherData] = useState('posts')
 
    const inputFileRef = useRef<any>(null)
 
@@ -70,6 +75,23 @@ const MyBlog = () => {
       }
    }, [userData, isUserLoading, myPosts]) // eslint-disable-line react-hooks/exhaustive-deps
 
+   useEffect(() => {
+      if (!isUserLoading && isPostsLoading) {
+         const myId = userData?.data?._id
+
+         axios
+            .get(`/posts/check/user-posts/${myId}`)
+            .then((res) => {
+               setCheckPostsData({
+                  posts: res.data,
+                  isPostCheckLoading: false,
+               })
+               console.log(res.data)
+            })
+            .catch((err) => console.log(err))
+      }
+   }, [checkPostsData.posts, userData])
+
    if (!isPostsLoading) {
       var myTags = myPosts.reduce((obj: any, post: any) => {
          for (let i = 0; i < post.tags.length; i++) {
@@ -95,9 +117,31 @@ const MyBlog = () => {
          await dispatch(fetchRemovePost({ id, userId }))
          const res = await axios.get(`/posts/user/${userId}`)
          setMyPosts(res.data)
-      } catch (error) {
-         console.log(error)
+      } catch (err) {
+         console.log(err)
       }
+   }
+
+   const onClickRemoveCheck = async (
+      e: React.MouseEvent<HTMLParagraphElement>
+   ) => {
+      const parentNode = e.currentTarget.parentNode as HTMLElement
+      let id: string =
+         parentNode.previousElementSibling instanceof HTMLInputElement
+            ? parentNode.previousElementSibling.value
+            : ''
+      parentNode.style.pointerEvents = 'none'
+      parentNode.classList.remove('active')
+      if (!id) return
+      try {
+         await axios.delete(`/posts/check/remove/${id}`)
+      } catch (err) {
+         console.log(err)
+      }
+      setCheckPostsData((prevstate: any) => ({
+         ...prevstate,
+         posts: prevstate.posts.filter((post: any) => post._id !== id),
+      }))
    }
 
    const showConfirmWindow = (e: any) => {
@@ -255,157 +299,291 @@ const MyBlog = () => {
                      <button>
                         <Link to="/add-article">Create article</Link>
                      </button>
+                     <button onClick={() => setSwitcherData('posts')}>
+                        My posts
+                     </button>
+                     <button onClick={() => setSwitcherData('check')}>
+                        Check posts
+                     </button>
                   </div>
-                  <div className={classes.containerArticlesTags}>
-                     <div className={classes.myArticles}>
-                        {isPostsLoading ? (
-                           <LoadingCircle />
-                        ) : (
-                           myPosts.map((post: any) => (
-                              <TransitionGroup>
-                                 <CSSTransition
-                                    key={post._id}
-                                    timeout={500}
-                                    classNames="post-transition-myBlog"
-                                 >
-                                    <div
-                                       className={classes.myPost}
-                                       key={post._id}
-                                       id="myPost"
+                  {switcherData === 'posts' && (
+                     <div className={classes.containerArticlesTags}>
+                        <div className={classes.myArticles}>
+                           {isPostsLoading ? (
+                              <LoadingCircle />
+                           ) : (
+                              myPosts.map((post: any) => (
+                                 <TransitionGroup key={post._id}>
+                                    <CSSTransition
+                                       timeout={500}
+                                       classNames="post-transition-myBlog"
                                     >
-                                       <div className={classes.description}>
-                                          <div>
-                                             <Link to={`/article/${post._id}`}>
-                                                {post.title}
-                                             </Link>
-                                             <div
-                                                className={classes.btnBlock}
-                                                id="btnBlock"
-                                             >
-                                                <button
-                                                   onClick={onClickEdit}
-                                                   className="btn"
+                                       <div
+                                          className={classes.myPost}
+                                          key={post._id}
+                                          id="myPost"
+                                       >
+                                          <div className={classes.description}>
+                                             <div>
+                                                <Link
+                                                   to={`/article/${post._id}`}
                                                 >
-                                                   <svg
-                                                      className="svg"
-                                                      viewBox="0 0 576 512"
-                                                      xmlns="http://www.w3.org/2000/svg"
+                                                   {post.title}
+                                                </Link>
+                                                <div
+                                                   className={classes.btnBlock}
+                                                   id="btnBlock"
+                                                >
+                                                   <button
+                                                      onClick={onClickEdit}
+                                                      className="btn"
                                                    >
-                                                      <path
-                                                         className="path"
-                                                         d="M402.3 344.9l32-32c5-5 13.7-1.5 13.7 5.7V464c0 26.5-21.5 48-48 48H48c-26.5 0-48-21.5-48-48V112c0-26.5 21.5-48 48-48h273.5c7.1 0 10.7 8.6 5.7 13.7l-32 32c-1.5 1.5-3.5 2.3-5.7 2.3H48v352h352V350.5c0-2.1.8-4.1 2.3-5.6zm156.6-201.8L296.3 405.7l-90.4 10c-26.2 2.9-48.5-19.2-45.6-45.6l10-90.4L432.9 17.1c22.9-22.9 59.9-22.9 82.7 0l43.2 43.2c22.9 22.9 22.9 60 .1 82.8zM460.1 174L402 115.9 216.2 301.8l-7.3 65.3 65.3-7.3L460.1 174zm64.8-79.7l-43.2-43.2c-4.1-4.1-10.8-4.1-14.8 0L436 82l58.1 58.1 30.9-30.9c4-4.2 4-10.8-.1-14.9z"
-                                                      />
-                                                   </svg>
-                                                </button>
-                                                <input
-                                                   type="text"
-                                                   value={post._id}
-                                                   readOnly
-                                                   hidden
-                                                />
-                                                <div className="confirmWindow">
-                                                   <p
-                                                      className="confirm"
-                                                      onClick={onClickRemove}
-                                                   >
-                                                      Delete
-                                                   </p>
-                                                   <p
-                                                      className="decline"
-                                                      onClick={(e: any) =>
-                                                         e.target.parentNode.classList.remove(
-                                                            'active'
-                                                         )
+                                                      <svg
+                                                         className="svg"
+                                                         viewBox="0 0 576 512"
+                                                         xmlns="http://www.w3.org/2000/svg"
+                                                      >
+                                                         <path
+                                                            className="path"
+                                                            d="M402.3 344.9l32-32c5-5 13.7-1.5 13.7 5.7V464c0 26.5-21.5 48-48 48H48c-26.5 0-48-21.5-48-48V112c0-26.5 21.5-48 48-48h273.5c7.1 0 10.7 8.6 5.7 13.7l-32 32c-1.5 1.5-3.5 2.3-5.7 2.3H48v352h352V350.5c0-2.1.8-4.1 2.3-5.6zm156.6-201.8L296.3 405.7l-90.4 10c-26.2 2.9-48.5-19.2-45.6-45.6l10-90.4L432.9 17.1c22.9-22.9 59.9-22.9 82.7 0l43.2 43.2c22.9 22.9 22.9 60 .1 82.8zM460.1 174L402 115.9 216.2 301.8l-7.3 65.3 65.3-7.3L460.1 174zm64.8-79.7l-43.2-43.2c-4.1-4.1-10.8-4.1-14.8 0L436 82l58.1 58.1 30.9-30.9c4-4.2 4-10.8-.1-14.9z"
+                                                         />
+                                                      </svg>
+                                                   </button>
+                                                   <input
+                                                      type="text"
+                                                      value={post._id}
+                                                      readOnly
+                                                      hidden
+                                                   />
+                                                   <div className="confirmWindow">
+                                                      <p
+                                                         className="confirm"
+                                                         onClick={onClickRemove}
+                                                      >
+                                                         Delete
+                                                      </p>
+                                                      <p
+                                                         className="decline"
+                                                         onClick={(e: any) =>
+                                                            e.target.parentNode.classList.remove(
+                                                               'active'
+                                                            )
+                                                         }
+                                                      >
+                                                         Skip
+                                                      </p>
+                                                   </div>
+                                                   <button
+                                                      className="btn"
+                                                      onClick={
+                                                         showConfirmWindow
                                                       }
                                                    >
-                                                      Skip
-                                                   </p>
+                                                      <svg
+                                                         className="svg"
+                                                         viewBox="0 0 48 48"
+                                                         xmlns="http://www.w3.org/2000/svg"
+                                                      >
+                                                         <path
+                                                            className="path"
+                                                            d="M12 38c0 2.21 1.79 4 4 4h16c2.21 0 4-1.79 4-4V14H12v24zM38 8h-7l-2-2H19l-2 2h-7v4h28V8z"
+                                                         />
+                                                      </svg>
+                                                   </button>
                                                 </div>
-                                                <button
-                                                   className="btn"
-                                                   onClick={showConfirmWindow}
-                                                >
-                                                   <svg
-                                                      className="svg"
-                                                      viewBox="0 0 48 48"
-                                                      xmlns="http://www.w3.org/2000/svg"
-                                                   >
-                                                      <path
-                                                         className="path"
-                                                         d="M12 38c0 2.21 1.79 4 4 4h16c2.21 0 4-1.79 4-4V14H12v24zM38 8h-7l-2-2H19l-2 2h-7v4h28V8z"
-                                                      />
-                                                   </svg>
-                                                </button>
                                              </div>
-                                          </div>
-                                          <p>
-                                             {window.innerWidth < 500
-                                                ? cutText(
-                                                     removeSymbols(post.text),
-                                                     80
-                                                  )
-                                                : cutText(
-                                                     removeSymbols(post.text),
-                                                     150
-                                                  )}
-                                          </p>
-                                       </div>
-                                       <div className={classes.dateAndViews}>
-                                          <time dateTime={post.createdAt}>
-                                             {post.createdAt
-                                                .slice(0, 19)
-                                                .replace('T', ' ')}
-                                          </time>
-                                          <div
-                                             className={classes.viewsComments}
-                                          >
-                                             <p className={classes.viewsCount}>
-                                                <svg
-                                                   id="svg"
-                                                   viewBox="0 0 20 20"
-                                                   xmlns="http://www.w3.org/2000/svg"
-                                                >
-                                                   <path d="M.2 10a11 11 0 0 1 19.6 0A11 11 0 0 1 .2 10zm9.8 4a4 4 0 1 0 0-8 4 4 0 0 0 0 8zm0-2a2 2 0 1 1 0-4 2 2 0 0 1 0 4z" />
-                                                </svg>
-                                                {post.viewsCount}
+                                             <p>
+                                                {window.innerWidth < 500
+                                                   ? cutText(
+                                                        removeSymbols(
+                                                           post.text
+                                                        ),
+                                                        80
+                                                     )
+                                                   : cutText(
+                                                        removeSymbols(
+                                                           post.text
+                                                        ),
+                                                        150
+                                                     )}
                                              </p>
-                                             <p
+                                          </div>
+                                          <div className={classes.dateAndViews}>
+                                             <time dateTime={post.createdAt}>
+                                                {post.createdAt
+                                                   .slice(0, 19)
+                                                   .replace('T', ' ')}
+                                             </time>
+                                             <div
                                                 className={
-                                                   classes.commentsCount
+                                                   classes.viewsComments
                                                 }
                                              >
-                                                <svg
+                                                <p
                                                    className={
-                                                      classes.commentsImg
+                                                      classes.viewsCount
                                                    }
-                                                   xmlns="http://www.w3.org/2000/svg"
-                                                   viewBox="0 0 122.88 113.94"
                                                 >
-                                                   <path d="M3.77,0H119.11a3.79,3.79,0,0,1,3.77,3.77V80.94a3.79,3.79,0,0,1-3.77,3.78H61.44l-29.1,21.62c-9.61,9.13-16.08,11.45-15.15-1V84.72H3.77A3.79,3.79,0,0,1,0,80.94V3.77A3.79,3.79,0,0,1,3.77,0ZM62.92,34.34a7.12,7.12,0,1,1-7.12,7.11,7.11,7.11,0,0,1,7.12-7.11Zm27.19,0A7.12,7.12,0,1,1,83,41.45a7.11,7.11,0,0,1,7.11-7.11Zm-54.39,0a7.12,7.12,0,1,1-7.11,7.11,7.11,7.11,0,0,1,7.11-7.11Z" />
-                                                </svg>
-                                                {post.commentsCount}
-                                             </p>
+                                                   <svg
+                                                      id="svg"
+                                                      viewBox="0 0 20 20"
+                                                      xmlns="http://www.w3.org/2000/svg"
+                                                   >
+                                                      <path d="M.2 10a11 11 0 0 1 19.6 0A11 11 0 0 1 .2 10zm9.8 4a4 4 0 1 0 0-8 4 4 0 0 0 0 8zm0-2a2 2 0 1 1 0-4 2 2 0 0 1 0 4z" />
+                                                   </svg>
+                                                   {post.viewsCount}
+                                                </p>
+                                                <p
+                                                   className={
+                                                      classes.commentsCount
+                                                   }
+                                                >
+                                                   <svg
+                                                      className={
+                                                         classes.commentsImg
+                                                      }
+                                                      xmlns="http://www.w3.org/2000/svg"
+                                                      viewBox="0 0 122.88 113.94"
+                                                   >
+                                                      <path d="M3.77,0H119.11a3.79,3.79,0,0,1,3.77,3.77V80.94a3.79,3.79,0,0,1-3.77,3.78H61.44l-29.1,21.62c-9.61,9.13-16.08,11.45-15.15-1V84.72H3.77A3.79,3.79,0,0,1,0,80.94V3.77A3.79,3.79,0,0,1,3.77,0ZM62.92,34.34a7.12,7.12,0,1,1-7.12,7.11,7.11,7.11,0,0,1,7.12-7.11Zm27.19,0A7.12,7.12,0,1,1,83,41.45a7.11,7.11,0,0,1,7.11-7.11Zm-54.39,0a7.12,7.12,0,1,1-7.11,7.11,7.11,7.11,0,0,1,7.11-7.11Z" />
+                                                   </svg>
+                                                   {post.commentsCount}
+                                                </p>
+                                             </div>
                                           </div>
                                        </div>
-                                    </div>
-                                 </CSSTransition>
-                              </TransitionGroup>
-                           ))
+                                    </CSSTransition>
+                                 </TransitionGroup>
+                              ))
+                           )}
+                        </div>
+                        {!isPostsLoading && myPosts.length !== 0 ? (
+                           <div
+                              className={classes.wrapperSortBtn}
+                              id="tagsMyBlog"
+                           >
+                              <Title
+                                 fontSize="1.4rem"
+                                 justifyContent="flex-start"
+                                 title="#Tags"
+                              />
+                              <TagsBlockAside tags={Object.values(myTags)} />
+                           </div>
+                        ) : (
+                           ''
                         )}
                      </div>
-                     {!isPostsLoading && myPosts.length !== 0 ? (
-                        <div className={classes.wrapperSortBtn} id="tagsMyBlog">
-                           <Title
-                              fontSize="1.4rem"
-                              justifyContent="flex-start"
-                              title="#Tags"
-                           />
-                           <TagsBlockAside tags={Object.values(myTags)} />
-                        </div>
-                     ) : (
-                        ''
-                     )}
-                  </div>
+                  )}
+                  {switcherData === 'check' && (
+                     <>
+                        {checkPostsData.isPostCheckLoading ? (
+                           <LoadingCircle />
+                        ) : checkPostsData.posts.length > 0 ? (
+                           <div className={classes.checkPostsContainer}>
+                              {checkPostsData.posts.map((post: any) => (
+                                 <div
+                                    className={classes.checkPost}
+                                    id="myPostCheck"
+                                    key={post._id}
+                                 >
+                                    {post.isVerifyEdit ? (
+                                       <>
+                                          <Link
+                                             to={`/article/check-edit/${post._id}`}
+                                          >
+                                             {post.title} <span>[Edit]</span>
+                                          </Link>
+                                          <div
+                                             className={classes.btnBlock}
+                                             id="btnBlock"
+                                          >
+                                             <input
+                                                type="text"
+                                                value={post._id}
+                                                readOnly
+                                                hidden
+                                             />
+                                             <div className="confirmWindow">
+                                                <p
+                                                   className="confirm"
+                                                   onClick={onClickRemoveCheck}
+                                                >
+                                                   Delete
+                                                </p>
+                                                <p
+                                                   className="decline"
+                                                   onClick={(e: any) =>
+                                                      e.target.parentNode.classList.remove(
+                                                         'active'
+                                                      )
+                                                   }
+                                                >
+                                                   Skip
+                                                </p>
+                                             </div>
+                                             <button
+                                                className="btn"
+                                                onClick={showConfirmWindow}
+                                             >
+                                                <svg
+                                                   className="svg"
+                                                   viewBox="0 0 48 48"
+                                                   xmlns="http://www.w3.org/2000/svg"
+                                                >
+                                                   <path
+                                                      className="path"
+                                                      d="M12 38c0 2.21 1.79 4 4 4h16c2.21 0 4-1.79 4-4V14H12v24zM38 8h-7l-2-2H19l-2 2h-7v4h28V8z"
+                                                   />
+                                                </svg>
+                                             </button>
+                                          </div>
+                                       </>
+                                    ) : (
+                                       <>
+                                          <Link
+                                             to={`/article-check/${post._id}`}
+                                          >
+                                             {post.title}
+                                          </Link>
+                                          <div
+                                             className={classes.blockStatusDate}
+                                          >
+                                             <p id="onChecking">
+                                                Status: <span>On checking</span>
+                                             </p>
+                                             <p>{dateUTC(post.createdAt)}</p>
+                                          </div>
+                                       </>
+                                    )}
+                                    <div className={classes.checkPostComment}>
+                                       {post.comment && (
+                                          <>
+                                             <p>
+                                                Comment about problems:
+                                                <br />
+                                                <span>{post.comment}</span>
+                                             </p>
+                                             <p>{dateUTC(post.createdAt)}</p>
+                                          </>
+                                       )}
+                                    </div>
+                                 </div>
+                              ))}
+                           </div>
+                        ) : (
+                           <p
+                              style={{
+                                 color: '#2E475D',
+                                 fontSize: '3rem',
+                                 fontWeight: 800,
+                                 letterSpacing: '1.1px',
+                              }}
+                           >
+                              You have no posts for verification
+                           </p>
+                        )}
+                     </>
+                  )}
                </div>
                <PageScrollUp />
             </div>

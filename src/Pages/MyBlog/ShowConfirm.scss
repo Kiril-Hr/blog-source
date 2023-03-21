@@ -56,3 +56,11 @@
         }
     }
 }
+#myPostCheck {
+    .confirmWindow {
+        left: -50px!important;
+        @media(max-width: 500px) {
+            left: -120px!important;
+        }
+    }
+}

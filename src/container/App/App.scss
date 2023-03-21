@@ -40,7 +40,6 @@ header {
         }
     }
 }
-
 .dark {
     body {
         background: #27292B;
@@ -74,6 +73,13 @@ header {
         }
         background: #27292B;
         .main-footer-container {
+            #onChecking {
+                span {
+                    &::after {
+                        background: #F2B35B;
+                    }
+                }
+            }
             .home {
                 svg {
                     fill: #F2B35B;
@@ -183,7 +189,7 @@ header {
                 }
 
             }
-            #myPost {
+            #myPost, #myPostCheck {
                 .confirmWindow {
                     background: none;
                     p {

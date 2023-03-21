@@ -5,7 +5,6 @@ import LoadingCircle from '../UI/LoadingCircle/LoadingCircle'
 import Comments from '../Comments/Comments'
 import classes from './AddComment.module.scss'
 import { selectIsAuth } from '../../redux/slices/auth'
-import { Link } from 'react-router-dom'
 
 type Props = {
    postId: string

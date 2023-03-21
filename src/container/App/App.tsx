@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useEffect } from 'react'
 import { ThunkDispatch } from '@reduxjs/toolkit'
 import { useDispatch } from 'react-redux'
 import { fetchAuthMe } from '../../redux/slices/auth'

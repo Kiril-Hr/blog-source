@@ -1,6 +1,6 @@
-import { useEffect, useRef } from 'react'
+import { useEffect, useRef, MutableRefObject } from 'react'
 export const useObserver = (
-   ref: React.MutableRefObject<any>,
+   ref: MutableRefObject<any>,
    canLoad: boolean,
    isLoading: boolean,
    callback: () => void

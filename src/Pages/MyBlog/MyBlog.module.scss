@@ -80,6 +80,7 @@
             width: 100%;
             border-top: 1px solid #FF5C35;
             border-bottom: 1px solid #FF5C35;
+
             button {
                 height: 40px;
                 max-width: 120px;
@@ -89,16 +90,24 @@
                 cursor: pointer;
                 background: #FF7F60;
                 transition: .2s;
+                color: white;
+                font-family: $font-family;
+                font-size: 0.95rem;
+                font-weight: 600;
                 &:hover {
                     background: #FF8F73;
                 }
                 a {
+                    color: white!important;
                     text-decoration: none;
-                    color: white;
-                    font-family: $font-family;
-                    font-size: 0.95rem;
-                    font-weight: 600;
                 }
+            }
+            @media(max-width: 500px) {
+                padding: 10px 0;
+                min-height: 60px;
+                height: max-content;
+                flex-wrap: wrap;
+                gap: 10px;
             }
         }
         .containerArticlesTags {
@@ -168,7 +177,6 @@
                         div {
                             display: flex;
                             justify-content: space-between;
-                            
                             .btnBlock {
                                 position: relative;
                                 display: flex;
@@ -208,7 +216,6 @@
                                     }
                                 }
                             }
-                            
                         }
                         
                         a, p {
@@ -297,6 +304,155 @@
                     }
                 }
             }
+        }
+    }
+}
+.checkPostsContainer {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    gap: 40px;
+    padding: 0 5px;
+    .checkPost {
+        position: relative;
+        padding: 20px 5px 5px;
+        min-height: 60px;
+        height: max-content;
+        width: 600px;
+        transition: all 0.25s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        border-bottom: 1px solid #DBE4ED;
+        cursor: pointer;
+        .btnBlock {
+            top: 0;
+            right: 0;
+            position: absolute;
+            display: flex;
+            gap: 15px;
+            button {
+                z-index: 10;
+                position: relative;
+                padding: 0;
+                top: 0;
+                right: 0;
+                width: 30px;
+                height: 30px;
+                cursor: pointer;
+                background: none;
+                border: 0;
+                svg {
+                    top: 0;
+                    left: 0;
+                    z-index: 5;
+                    position: absolute;
+                    fill: #535353c2;
+                    width: 20px;
+                    height: 20px; 
+                }
+                &:hover {
+                    svg {
+                        fill: rgb(190, 27, 27);
+                    }
+                }
+                &:nth-child(1) {
+                    &:hover {
+                        svg {
+                            fill: $color-text;
+                        }
+                    }
+                    
+                }
+            }
+        }
+        
+        &:hover {
+            border-bottom: 1px solid #FF5C35;
+            transform: scale(1.015);
+        }
+        a, p {
+            display: block;
+            text-decoration: none;
+            font-size: 1.2rem;
+            font-family: $font-family;
+            font-weight: 400;
+            margin-bottom: 10px;
+            color: $color-text;
+        }
+        a {
+            span {
+                font-weight: 600;
+            }
+            &:hover {
+                text-decoration: underline;
+            }
+        }
+        .blockStatusDate {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            #onChecking, p {
+                display: flex;
+                align-items: center;
+                font-size: 1.4rem;
+                font-weight: 600;
+                span {
+                    display: block;
+                    padding-left: 30px;
+                    position: relative;
+                    font-size: 1.2rem;
+                    font-weight: 400;
+                    &::after {
+                        content: "";
+                        position: absolute;
+                        top: 3px;
+                        left: 5px;
+                        width: 15px;
+                        height: 15px;
+                        border-radius: 50%;
+                        background: #FF8F73;
+                    }
+                }
+            }
+            p {
+                &:last-child {
+                    font-size: 1.2rem;
+                    font-weight: 400;
+                }
+            }
+        }
+        .checkPostComment {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            p {
+                &:first-child {
+                    font-size: 1.4rem;
+                    font-weight: 600;
+                    span {
+                        display: block;
+                        margin-top: 15px;
+                        font-size: 1.2rem;
+                        font-weight: 400;
+                    }
+                }
+            }
+            @media(max-width: 500px) {
+                flex-direction: column-reverse;
+                gap: 5px;
+                p {
+                    &:last-child {
+                        align-self: flex-end;
+                    }
+                    &:first-child {
+                        align-self: flex-start;
+                    }
+                }
+            }
+        }
+        @media(max-width: 940px) {
+            width: 100%;
+            max-width: 600px;
+            height: max-content;
         }
     }
 }

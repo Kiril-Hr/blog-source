@@ -35,8 +35,8 @@ const Article = () => {
       const fetchData = async () => {
          try {
             dispatch(fetchPosts())
-            const res = await axios.get(`/posts/${id}`)
-            setData(res.data)
+            const { data } = await axios.get(`/posts/${id}`)
+            setData(data)
             setIsLoading(false)
          } catch (err) {
             console.warn(err)
